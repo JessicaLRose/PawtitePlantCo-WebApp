@@ -1,0 +1,266 @@
+<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="jstlC" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<jsp:include page="../include/head.jsp"/>
+
+<link href="<c:url value="../pub/css/navbarDash.css"/>" rel="stylesheet" type="text/css"/>
+
+<title>Pawt&iuml;te Plant Co | Admin Dashboard</title>
+</head>
+
+<body>
+<jsp:include page="../include/navbarAdmin.jsp"/>
+
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="add-product" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="add-product">Add Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form action="/admin/productlisting/productSubmit" method="post" id="addProduct">
+
+                    <div class="prod-name">
+                        <label for="add-prod-name" class="label-default">product name</label>
+                        <input type="text" name="productName" id="add-prod-name" class="input-default" value="${product.productName}">
+                    </div>
+
+                    <br>
+
+                    <div class="prod-cat">
+                        <label for="add-prod-cat" class="label-default">product category</label>
+                        <input type="text" name="productCategory" id="add-prod-cat" class="input-default" value="${product.productCategory}">
+                    </div>
+
+                    <br>
+
+                    <div class="prod-price">
+                        <label for="add-prod-price" class="label-default">product price</label>
+                        <input type="text" name="productPrice" id="add-prod-price" class="input-default" value="${product.productPrice}">
+                    </div>
+
+                    <br>
+
+                    <div class="prod-stock">
+                        <label for="add-prod-stock" class="label-default">product stock</label>
+                        <input type="text" name="productStock" id="add-prod-stock" class="input-default" value="${product.productStock}">
+                    </div>
+
+                    <br>
+
+<%--                    <form action="/upload" method="POST" enctype="multipart/form-data">--%>
+
+<%--                        <div class="prod-image">--%>
+<%--                           <span>the product image:</span>--%>
+<%--                            <img src ="${product.productImage}" alt="plant 1" id="add-prod-img">--%>
+<%--                            <br>--%>
+<%--                            Select Product Image : <input type="file" name="prod-image" />--%>
+<%--                            <br>--%>
+
+<%--                        </div>--%>
+<%--                        <br>--%>
+<%--                        <div class="prod-thumb">--%>
+<%--                            <span>the product thumbnail:</span>--%>
+<%--                            <br>--%>
+<%--                            <img src ="${product.productImage}" alt="plant 1" id="add-prod-thumb">--%>
+<%--                            <br>--%>
+<%--                            Select Product Thumbnail : <input type="file" name="prod-thumb" />--%>
+<%--                            <br>--%>
+
+<%--                        </div>--%>
+<%--                        <br>--%>
+
+<%--                    </form>--%>
+
+                    <div class="prod-descrip">
+                        <label for="add-prod-descrip" class="label-default">the product descrip:</label>
+                        <br>
+                        <input type="text" name="productDescription" id="add-prod-descrip" class="input-default" value="${product.productDescription}">
+                        <br>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" id="close-edit" data-bs-dismiss="modal">Close</a>
+                <button type="submit" class="btn" form="addProduct">Save Product</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="edit-product" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="edit-product">Edit Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form action="#">
+
+                    <div class="prod-name">
+                        <label for="prod-name" class="label-default">the product name</label>
+                        <input type="text" name="prod-name" id="edit-prod-name" class="input-default" placeholder="prod name">
+                    </div>
+
+                    <br>
+
+                    <div class="prod-cat">
+                        <label for="prod-cat" class="label-default">the product cat</label>
+                        <input type="text" name="prod-cat" id="edit-prod-cat" class="input-default" placeholder="prod cat">
+                    </div>
+
+                    <br>
+
+                    <div class="prod-price">
+                        <label for="prod-price" class="label-default">the product price</label>
+                        <input type="text" name="prod-price" id="edit-prod-price" class="input-default" placeholder="prod price">
+                    </div>
+
+                    <br>
+
+                    <div class="prod-stock">
+                        <label for="prod-stock" class="label-default">the product stock</label>
+                        <input type="text" name="prod-stock" id="edit-prod-stock" class="input-default" placeholder="prod stock">
+                    </div>
+
+                    <br>
+
+                    <form action="/upload" method="POST" enctype="multipart/form-data">
+
+                        <div class="prod-image">
+                            <label for="prod-image" class="label-default">the product image</label>
+                            <br>
+                            <img src="img/cart-plant-6.png" width="80px" alt="">
+                            <br>
+                            Select Product Image : <input type="file" name="prod-image" />
+                            <br>
+
+                        </div>
+                        <br>
+                        <div class="prod-thumb">
+                            <label for="prod-thumb" class="label-default">the product thumbnail</label>
+                            <br>
+                            <img src="img/cart-plant-9.png" width="80px" alt="">
+                            <br>
+                            Select Product Thumbnail : <input type="file" name="prod-thumb" />
+                            <br>
+
+                        </div>
+                        <br>
+
+                    </form>
+
+                    <div class="prod-descrip">
+                        <label for="prod-descrip" class="label-default">the product descrip</label>
+                        <br>
+                        <textarea name="prod-descrip" id="edit-prod-descrip" class="input-default" style="width:200px; height:200px;">
+                            The cat was playing in the garden.
+                            </textarea>
+                        <br>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" id="close-edit" data-bs-dismiss="modal">Close</a>
+                <a href="#" class="btn" id="save-edit" >Save Changes</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="delete-product" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="delete-product"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <br>
+                <center>Are you sure you want to delete this product?</center>
+                <br>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" id="close-delete-product" data-bs-dismiss="modal">Close</a>
+                <a href="#" class="btn" id="edit-delete-product" >Delete Product</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="admin-listing d-flex justify-content-center">
+
+    <div class=" table-responsive table-wrapper shadow">
+        <div class="table-title ">
+            <div class="row d-flex ">
+                <div class="col-sm-6">
+                    <h3>Manage <b>Products</b></h3>
+                </div>
+                <div class="col-sm-5">
+                    <div class="search-box">
+                        <div class="input-group">
+                            <input type="text" id="list-search" class="form-control" placeholder="search here...">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-1 ">
+                    <a href="#" class="add" title="Add New" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#addModal">
+                        <i class="fa-solid fa-square-plus"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID#</th>
+                <th>Image</th>
+                <th>Thumbnail</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <jstlC:forEach items = "${allProducts}" var = "product">
+            <tr>
+
+                <td>${product.productID}</td>
+                <td><img src ="${product.productImage}" alt="plant 1" id="show-prod-img"></td>
+                <td><img src ="${product.productThumbnail}" alt="plant 1" id="show-prod-thumb"></td>
+                <td>${product.productName}</td>
+                <td>${product.productCategory}</td>
+                <td><textarea id="show-prod-descrip">${product.productDescription}</textarea></td>
+                <td>$ ${product.productPrice}</td>
+                <td>${product.productStock}</td>
+                <td>
+                    <a href="#" class="edit" title="Edit" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="#" class="delete" title="Delete" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa-solid fa-circle-minus"></i></a>
+                </td>
+            </tr>
+            </jstlC:forEach>
+
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+</html>

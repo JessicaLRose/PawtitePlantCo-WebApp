@@ -1,0 +1,371 @@
+.home{
+    flex-wrap: wrap;
+    display: block;
+
+}
+
+.carousel-item img {
+    object-fit: cover;
+    object-position: center;
+    height: 60vh;
+    overflow: hidden;
+}
+
+.carousel-item:before {
+    content:"";
+    display:block;
+    position:absolute;
+    height: 100%;
+    width: 100%;
+    background-image:linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
+}
+
+.carousel-caption{
+    right: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.home .carousel-item h1{
+    font-size: 3rem;
+    /* margin-bottom: .5em; */
+    color:var(--white);
+    opacity: 0;
+
+}
+
+.home .carousel-item p{
+    font-size: 1.5em;
+    color:var(--white);
+    opacity: 0;
+}
+
+.home .carousel-item.active h1{
+    animation: fadeInLeft 1s ease forwards;
+}
+
+.home .carousel-item.active p{
+    animation: fadeInRight 1s ease forwards;
+}
+
+@keyframes fadeInLeft{
+    0%{
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+@keyframes fadeInRight{
+    0%{
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.icons-container{
+    background:var(--lochinvar);
+    display: flex;
+    flex-wrap: wrap;
+    gap:1.5rem;
+    padding: 5rem;
+
+}
+
+.icons-container .icons{
+    background:var(--white);
+    border:.1rem solid rgba(0,0,0,.1);
+    padding:2rem;
+    display: flex;
+    align-items: center;
+    flex:1 1 25rem;
+}
+
+.icons-container .icons img{
+    height:5rem;
+    margin-right: 2rem;
+}
+
+.icons-container .icons h3{
+    color:var(--lochinvar);
+    padding-bottom: .5rem;
+    font-size: 1.5rem;
+}
+
+.icons-container .icons span{
+    color:var(--main-text);
+    font-size: 1.3rem;
+}
+
+.diy{
+    padding: 20%;
+    background-image: url(../img/plantbg.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.diy span{
+    color: var(--button-color);
+    /* background-color: var(--white); */
+
+}
+
+.diy h1{
+    color: var(--main-text);
+    background-color: var(--white);
+    padding-bottom: 0 !important;
+}
+
+.table{
+    font-size: 2rem;
+}
+
+.about, .featured, .review, .contact{
+    padding:2rem 7%;
+}
+
+.about .row{
+    display:flex;
+    align-items: center;
+    background:var(--horizon);
+    flex-wrap: wrap;
+}
+
+.about .row:hover {
+    transform: scale(1.01);
+}
+
+.about .row .image{
+    flex:1 1 45rem;
+}
+
+.about .row .image img{
+    width: 100%;
+
+    padding: 1.5rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+.about .row .content{
+    flex:1 1 45rem;
+}
+
+.about .row .content h3{
+    font-size: 3rem;
+    color:var(--lochinvar);
+}
+
+.about .row .content p{
+    font-size: 1.6rem;
+    color:var(--white);
+    padding:1rem 0;
+    line-height: 1.8;
+}
+
+.featured{
+    background-color: var(--actual-white);
+}
+.featured .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap:1.5rem;
+}
+
+.featured .box-container .box{
+    padding:5rem;
+    text-align: center;
+    border:var(--soft-amber);
+    border-radius: 2.5rem;
+}
+
+.featured .box-container .box img{
+    height: 10rem;
+}
+
+.featured .box-container .box h3{
+    color: var(--soft-amber);
+    font-size: 2rem;
+    padding:1rem 0;
+}
+
+.featured .box-container .box:hover h3{
+    color: var(--main-text);
+}
+
+.featured .box-container .box:hover div{
+    color: var(--main-text);
+}
+
+.featured .box-container .box .price{
+    color: var(--soft-amber);
+    font-size: 2.5rem;
+    padding: .5rem 0;
+}
+
+.featured .box-container .box .price span{
+    font-size: 1.5rem;
+    text-decoration: line-through;
+    font-weight: lighter;
+}
+
+.featured .box-container .box:hover{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+
+/* featured products end */
+
+/* review section */
+.review .box-container{
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap:1.5rem;
+}
+
+.review .box-container .box{
+    border:var(--border);
+    text-align: center;
+    padding:3rem 2rem;
+}
+
+.review .box-container .box p{
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color:var(--main-text);
+    padding:2rem 0;
+}
+
+.review .box-container .box .user{
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.review .box-container .box h3{
+    padding:1rem 0;
+    font-size: 2rem;
+    color:var(--main-text);
+}
+
+.review .box-container .box .stars i{
+    font-size: 1.5rem;
+    color:var(--lochinvar);
+}
+/* review section end*/
+
+/* contact form starts */
+
+.contact{
+    padding-bottom: 10rem;
+}
+.contact .row{
+    display: flex;
+    background:var(--highlight-color);
+    flex-wrap: wrap;
+    gap:1rem;
+
+}
+
+.contact .row .map{
+    flex:1 1 45rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+.contact .row form{
+    flex:1 1 45rem;
+    padding:5rem 2rem;
+    text-align: center;
+}
+
+.contact .row form h3{
+    text-transform: uppercase;
+    font-size: 3.5rem;
+    color:var(--white);
+}
+
+.contact .row form .inputBox{
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background:var(--white);
+    border:var(--soft-amber);
+}
+
+.contact .row form .inputBox span{
+
+    color: var(--main-text);
+    font-size: 2rem;
+    padding-left: 2rem;
+}
+
+.contact .row form .inputBox input{
+    width: 100%;
+    padding:2rem;
+    font-size: 1.7rem;
+    color:var(--main-text);
+    text-transform: none;
+    background:none;
+}
+
+.select-box {
+    cursor: pointer;
+    position : relative;
+    margin-bottom: 5rem;
+
+    width: 100%;
+}
+
+.select,
+.label {
+    color: var(--main-text);
+    display: block;
+    font: 400 17px/2em 'Source Sans Pro', sans-serif;
+}
+
+.select {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    padding: 5px 0;
+    height: 40px;
+    opacity: 0;
+    /* filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; */
+    background: none transparent;
+    border: 0 none;
+}
+.select-box1 {
+    background: var(--white);
+}
+
+.label {
+    position: relative;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.open .label::after {
+    content: "▲";
+}
+.label::after {
+    content: "▼";
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 5px 15px;
+    border-left: 5px solid var(--white);
+}
+
+/* contact form ends */

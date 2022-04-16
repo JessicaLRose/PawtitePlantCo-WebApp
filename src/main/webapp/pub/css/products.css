@@ -1,0 +1,158 @@
+.banner-area {
+    background-image:
+            url(../img/catbanner2.jpg);
+    /* Create the parallax scrolling effect */
+    background-repeat: no-repeat;
+    position: relative;
+    /* background-attachment: fixed; */
+    background-position: center center;
+    background-size: cover;
+    /* object-fit: contain; */
+    height: 50vh;
+    width:100%;
+    padding-top: 90px;
+    display: block;
+}
+
+.banner-text {
+    font-size: 7rem;
+    color: var(--white);
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+#cart-add {
+    margin: 3rem;
+}
+
+.nav-tabs, .nav-link, .nav-link.active{
+    border: none !important;
+    justify-content: center;
+    color:var(--main-text);
+    font-size: 2rem;
+}
+.nav-link{
+    color:var(--main-text);
+}
+.nav-link:hover{
+    color:var(--highlight-color);
+}
+.nav-link.active{
+    color: var(--button-color) !important;
+    border-bottom: 1.5px solid var(--soft-amber) !important;
+}
+
+/* collection */
+body{
+    background-color: var(--actual-white);
+}
+
+.collection-img:hover {
+    display: block;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+.collection-img:hover .secondary-img{
+    opacity: 1;
+}
+
+.secondary-img{
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transition: all 0.3s ease 0.1s;
+    z-index: 1;
+}
+.product-name{
+    color:var(--main-text);
+    text-decoration: underline;
+    font-size: 2em;
+    padding-top: 1rem;
+    margin: 0;
+}
+.product-price{
+    color: var(--button-color);
+    font-size: 2.5em;
+}
+.modal-content{
+    border-radius: 1rem;
+}
+.container-fluid{
+    /* height:50rem;
+    width: 90rem; */
+    display: flex;
+}
+.image-container{
+    width: 50%;
+}
+
+.big-image{
+    /* height:70%;
+    width: 70%; */
+    padding: 1rem;
+    object-fit: contain;
+
+}
+
+.big-image img{
+    height:100%;
+    width: 100%;
+    object-fit: fill;
+
+}
+
+
+.small-image{
+    /* height:30%;
+    width: 100%; */
+    display: flex;
+    object-fit: contain;
+}
+
+.small-image img{
+    height:13rem;
+    width: 13rem;
+    object-fit: fill;
+    object-fit: cover;
+    cursor: pointer;
+
+}
+
+.description-container{
+    width: 50%;
+}
+
+
+.text-container{
+    font-size: 1.5em;
+}
+
+
+
+@media (max-width:437px){
+    .description-container{
+        width: 100%;
+    }
+
+    .small-image{
+        display: none;
+    }
+
+    .big-image{
+        height:100%;
+        width: 100%;
+        object-fit: fill;
+    }
+    /* .container-fluid{
+    justify-content: center;
+    display: flex;
+} */
+    .modal-body .container .row{
+        display: flex;
+        justify-content: center;
+    }
+}
