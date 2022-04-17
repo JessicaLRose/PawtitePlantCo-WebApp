@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="jstlC" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <jsp:include page="../include/head.jsp"/>
 
 <link href="<c:url value="../pub/css/navbarDash.css"/>" rel="stylesheet" type="text/css"/>
@@ -10,6 +11,8 @@
 
 <body>
 <jsp:include page="../include/navbarAdmin.jsp"/>
+
+<!--Add Product Modal -->
 
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="add-product" aria-hidden="true">
     <div class="modal-dialog">
@@ -84,7 +87,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <a href="#" class="btn" id="close-edit" data-bs-dismiss="modal">Close</a>
+                <a href="#" class="btn" id="close-add" data-bs-dismiss="modal">Close</a>
                 <button type="submit" class="btn" form="addProduct">Save Product</button>
             </div>
 
@@ -93,89 +96,103 @@
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="edit-product" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="edit-product">Edit Product</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
+<!--Edit Product Modal -->
 
-                <form action="#">
+<%--<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="edit-product" aria-hidden="true">--%>
+<%--    <div class="modal-dialog">--%>
+<%--        <div class="modal-content">--%>
+<%--            <div class="modal-header">--%>
+<%--                <h5 class="modal-title" id="edit-product">Edit Product</h5>--%>
+<%--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--%>
+<%--            </div>--%>
+<%--            <div class="modal-body">--%>
 
-                    <div class="prod-name">
-                        <label for="prod-name" class="label-default">the product name</label>
-                        <input type="text" name="prod-name" id="edit-prod-name" class="input-default" placeholder="prod name">
-                    </div>
+<%--                <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="edit-product" aria-hidden="true">--%>
+<%--                    <div class="modal-dialog">--%>
+<%--                        <div class="modal-content">--%>
+<%--                            <div class="modal-header">--%>
+<%--                                <h5 class="modal-title" id="edit-product">Edit Product</h5>--%>
+<%--                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--%>
+<%--                            </div>--%>
+<%--                            <div class="modal-body">--%>
 
-                    <br>
+<%--                                <form action="/admin/productlisting/edit/${product.productID}" id="editProduct">--%>
 
-                    <div class="prod-cat">
-                        <label for="prod-cat" class="label-default">the product cat</label>
-                        <input type="text" name="prod-cat" id="edit-prod-cat" class="input-default" placeholder="prod cat">
-                    </div>
+<%--                                    <input type="number" name="productID" id="productID" class="form-control" style="visibility:hidden;" value="${product.productID}"/>--%>
 
-                    <br>
+<%--                                    <div class="prod-name">--%>
+<%--                                        <label for="edit-prod-name" class="label-default">product name</label>--%>
+<%--                                        <input type="text" name="productName" id="edit-prod-name" class="input-default" value="${product.productName}">--%>
+<%--                                    </div>--%>
 
-                    <div class="prod-price">
-                        <label for="prod-price" class="label-default">the product price</label>
-                        <input type="text" name="prod-price" id="edit-prod-price" class="input-default" placeholder="prod price">
-                    </div>
+<%--                                    <br>--%>
 
-                    <br>
+<%--                                    <div class="prod-cat">--%>
+<%--                                        <label for="edit-prod-cat" class="label-default">product category</label>--%>
+<%--                                        <input type="text" name="productCategory" id="edit-prod-cat" class="input-default" value="${product.productCategory}">--%>
+<%--                                    </div>--%>
 
-                    <div class="prod-stock">
-                        <label for="prod-stock" class="label-default">the product stock</label>
-                        <input type="text" name="prod-stock" id="edit-prod-stock" class="input-default" placeholder="prod stock">
-                    </div>
+<%--                                    <br>--%>
 
-                    <br>
+<%--                                    <div class="prod-price">--%>
+<%--                                        <label for="edit-prod-price" class="label-default">product price</label>--%>
+<%--                                        <input type="text" name="productPrice" id="edit-prod-price" class="input-default" value="${product.productPrice}">--%>
+<%--                                    </div>--%>
 
-                    <form action="/upload" method="POST" enctype="multipart/form-data">
+<%--                                    <br>--%>
 
-                        <div class="prod-image">
-                            <label for="prod-image" class="label-default">the product image</label>
-                            <br>
-                            <img src="img/cart-plant-6.png" width="80px" alt="">
-                            <br>
-                            Select Product Image : <input type="file" name="prod-image" />
-                            <br>
+<%--                                    <div class="prod-stock">--%>
+<%--                                        <label for="edit-prod-stock" class="label-default">product stock</label>--%>
+<%--                                        <input type="text" name="productStock" id="edit-prod-stock" class="input-default" value="${product.productStock}">--%>
+<%--                                    </div>--%>
 
-                        </div>
-                        <br>
-                        <div class="prod-thumb">
-                            <label for="prod-thumb" class="label-default">the product thumbnail</label>
-                            <br>
-                            <img src="img/cart-plant-9.png" width="80px" alt="">
-                            <br>
-                            Select Product Thumbnail : <input type="file" name="prod-thumb" />
-                            <br>
+<%--                                    <br>--%>
 
-                        </div>
-                        <br>
+<%--                                                        <form action="/upload" method="POST" enctype="multipart/form-data">--%>
 
-                    </form>
+<%--                                                            <div class="prod-image">--%>
+<%--                                                               <span>the product image:</span>--%>
+<%--                                                                <img src ="${product.productImage}" alt="plant 1" id="add-prod-img">--%>
+<%--                                                                <br>--%>
+<%--                                                                Select Product Image : <input type="file" name="prod-image" />--%>
+<%--                                                                <br>--%>
 
-                    <div class="prod-descrip">
-                        <label for="prod-descrip" class="label-default">the product descrip</label>
-                        <br>
-                        <textarea name="prod-descrip" id="edit-prod-descrip" class="input-default" style="width:200px; height:200px;">
-                            The cat was playing in the garden.
-                            </textarea>
-                        <br>
-                    </div>
+<%--                                                            </div>--%>
+<%--                                                            <br>--%>
+<%--                                                            <div class="prod-thumb">--%>
+<%--                                                                <span>the product thumbnail:</span>--%>
+<%--                                                                <br>--%>
+<%--                                                                <img src ="${product.productImage}" alt="plant 1" id="add-prod-thumb">--%>
+<%--                                                                <br>--%>
+<%--                                                                Select Product Thumbnail : <input type="file" name="prod-thumb" />--%>
+<%--                                                                <br>--%>
 
-                </form>
-            </div>
-            <div class="modal-footer">
-                <a href="#" class="btn" id="close-edit" data-bs-dismiss="modal">Close</a>
-                <a href="#" class="btn" id="save-edit" >Save Changes</a>
-            </div>
-        </div>
-    </div>
-</div>
+<%--                                                            </div>--%>
+<%--                                                            <br>--%>
+
+<%--                                                        </form>--%>
+
+<%--                                    <div class="prod-descrip">--%>
+<%--                                        <label for="edit-prod-descrip" class="label-default">the product descrip:</label>--%>
+<%--                                        <br>--%>
+<%--                                        <input type="text" name="productDescription" id="edit-prod-descrip" class="input-default" value="${product.productDescription}">--%>
+<%--                                        <br>--%>
+<%--                                    </div>--%>
+
+<%--                                </form>--%>
+
+<%--                            </div>--%>
+<%--                            <div class="modal-footer">--%>
+<%--                                <a href="#" class="btn" id="close-edit" data-bs-dismiss="modal">Close</a>--%>
+<%--                                <button type="submit" class="btn" form="editProduct">Save Product</button>--%>
+<%--                            </div>--%>
+
+<%--                        </div>--%>
+
+<%--                    </div>--%>
+<%--                </div>--%>
+
+<!--Delete Product Modal -->
 
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="delete-product" aria-hidden="true">
     <div class="modal-dialog">
@@ -247,8 +264,9 @@
                 <td>$ ${product.productPrice}</td>
                 <td>${product.productStock}</td>
                 <td>
-                    <a href="#" class="edit" title="Edit" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="/admin/productEdit/{productID}" class="edit" title="Edit" data-toggle="tooltip" data-placement="bottom"><i class="fa-solid fa-pen-to-square"></i></a>
                     <a href="#" class="delete" title="Delete" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa-solid fa-circle-minus"></i></a>
+<%--                    <a href="#" class="delete" title="Delete" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa-solid fa-circle-minus"></i></a>--%>
                 </td>
             </tr>
             </jstlC:forEach>
@@ -260,7 +278,46 @@
 </section>
 
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<%--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>--%>
+<%--<script>--%>
+<%--    $(document).on('shown.bs.modal','#editCustomerModal', function () {--%>
 
+<%--        var product = this.dataset.productID;--%>
+<%--        var id = $('#productID').val(productID);--%>
+<%--        var productName= $('#productName').val();--%>
+<%--        var productPrice= $('#productPrice').val();--%>
+<%--        var productStock= $('#productStock').val();--%>
+<%--        var productDescription= $('#productDescription').val();--%>
+<%--        var productCategory= $('#productCategory').val();--%>
+
+
+<%--        $.ajax({--%>
+<%--            type: "post",--%>
+<%--            url: "/http://localhost:8080/admin/productlisting/edit/?id="--%>
+<%--            cache: false,--%>
+<%--            contentType:'application/json',--%>
+<%--            dataType: 'json',--%>
+<%--            data:"customerName="+ customerName + "&contactName=" + contactName +  "&street=" + street +--%>
+<%--                "&state=" + state + "&zipCode=" + zipCode + "&country=" + country +"&email=" + email ,--%>
+<%--            success: function(response){--%>
+<%--                alert("inside edit modal");--%>
+<%--                var obj = JSON.parse(response);--%>
+<%--                $('#customerName').val(obj.userName);--%>
+<%--                $('#contactName').val(obj.userName);--%>
+<%--                $('#email').val(obj.userName);--%>
+<%--                $('#street').val(obj.userName);--%>
+<%--                $('#zipCode').val(obj.userName);--%>
+<%--                $('#state').val(obj.userName);--%>
+<%--                $('#country').val(obj.userName);--%>
+<%--            },--%>
+<%--            error: function(){--%>
+<%--                alert('Error while edit request..');--%>
+<%--            }--%>
+<%--        });--%>
+<%--?productName=&productCategory=&productPrice=&productStock=&productDescription=--%>
+
+<%--    });--%>
+<%--</script>--%>
 </body>
 </html>

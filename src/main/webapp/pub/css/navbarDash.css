@@ -103,6 +103,11 @@ h1{
     padding-top: 186px;
     display: flex;
 }
+
+.user-account{
+    padding-top: 186px;
+    display: flex;
+}
 .table-title{
     background-color: var(--lochinvar);
     color: var(--white);

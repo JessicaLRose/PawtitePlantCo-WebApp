@@ -19,7 +19,7 @@ public class HomeController {
     @Autowired
     private UserDAO userDAO;
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    @RequestMapping(value = {"/" ,"/home"}, method = RequestMethod.GET)
     public ModelAndView create(HttpSession session) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("home");
@@ -27,7 +27,7 @@ public class HomeController {
 //        RegistrationFormBean form = new RegistrationFormBean();
 //        response.addObject("form", form);
         Integer id = (Integer) session.getAttribute("user_id");
-        User u = userDAO.findUserByUserID(id);
+        User u = userDAO.findByUserID(id);
         response.addObject("user", u);
         return response;
     }

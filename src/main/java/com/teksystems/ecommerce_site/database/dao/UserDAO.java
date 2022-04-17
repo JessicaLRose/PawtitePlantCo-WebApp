@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface  UserDAO  extends JpaRepository<User, Long> {
 
-    public User findUserByUserID(@Param("userID") Integer userID);
+    public User findByUserID(@Param("userID") Integer userID);
 
     // there is 3 ways to execute a query
     // 1) via @Query with JPA / JQL / HQL

@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -60,5 +61,62 @@ public class AdminController {
         productDAO.save(product);
 
         return new ModelAndView("redirect:/admin/productlisting");
+    }
+
+//    @GetMapping("/admin/productlisting/edit/{productID}")
+//    public ModelAndView productEdit(@PathVariable("productID") Integer productID) throws Exception {
+//        ModelAndView response = new ModelAndView();
+//        response.setViewName("admin/productlisting/edit/");
+//
+//        Product product = productDAO.findByProductID(productID);
+//
+//        ProductFormBean productFormBean = new ProductFormBean();
+//
+////        productService.getProductDetails( productFormBean, product);
+//
+//        productFormBean.setProductID(productID);
+//        productFormBean.setProductName(product.getProductName());
+//        productFormBean.setProductPrice(product.getProductPrice());
+//        productFormBean.setProductStock(product.getProductStock());
+//        productFormBean.setProductImage(product.getProductImage());
+//        productFormBean.setProductThumbnail(product.getProductThumbnail());
+//        productFormBean.setProductDescription(product.getProductDescription());
+//        productFormBean.setProductCategory(product.getProductCategory());
+//        productFormBean.setCreateDate(new Date());
+//
+//
+//        // in this case we are adding the RegisterFormBean to the model
+//        response.addObject("productFormBean", productFormBean);
+//
+//        return response;
+//    }
+
+
+        @GetMapping("/admin/productEdit/{productID}")
+    public ModelAndView productEdit(@PathVariable("productID") Integer productID) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("admin/productEdit/");
+
+        Product product = productDAO.findByProductID(productID);
+
+        ProductFormBean productFormBean = new ProductFormBean();
+
+//        productService.getProductDetails( productFormBean, product);
+
+        productFormBean.setProductID(product.getProductID());
+        productFormBean.setProductName(product.getProductName());
+        productFormBean.setProductPrice(product.getProductPrice());
+        productFormBean.setProductStock(product.getProductStock());
+        productFormBean.setProductImage(product.getProductImage());
+        productFormBean.setProductThumbnail(product.getProductThumbnail());
+        productFormBean.setProductDescription(product.getProductDescription());
+        productFormBean.setProductCategory(product.getProductCategory());
+        productFormBean.setCreateDate(new Date());
+
+
+        // in this case we are adding the RegisterFormBean to the model
+        response.addObject("productFormBean", productFormBean);
+
+        return response;
     }
 }

@@ -2,18 +2,23 @@ package com.teksystems.ecommerce_site.controller;
 
 import com.teksystems.ecommerce_site.database.dao.UserDAO;
 import com.teksystems.ecommerce_site.database.dao.UserRoleDAO;
+import com.teksystems.ecommerce_site.database.entity.Product;
 import com.teksystems.ecommerce_site.database.entity.User;
 import com.teksystems.ecommerce_site.database.entity.UserRole;
+import com.teksystems.ecommerce_site.formbean.ProductFormBean;
 import com.teksystems.ecommerce_site.formbean.RegistrationFormBean;
 import com.teksystems.ecommerce_site.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -98,6 +103,37 @@ public class UserController {
         log.info(form.toString());
 
         response.setViewName("redirect:/home");
+
+        return response;
+    }
+
+    @RequestMapping(value = "/user/account", method = RequestMethod.GET)
+    public ModelAndView user() throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/account");
+        return response;
+    }
+
+    @GetMapping("/user/account/{userID}")
+    //public ModelAndView editUser(@RequestParam("userId") Integer userId) throws Exception {
+    public ModelAndView editAccount(@PathVariable("userID") Integer userID) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/account/");
+
+        User user = userDAO.findByUserID(userID);
+
+        RegistrationFormBean registrationFormBean = new RegistrationFormBean();
+
+        registrationFormBean.setUserID(user.getUserID());
+        registrationFormBean.setEmail(user.getEmail());
+        registrationFormBean.setFirstName(user.getFirstName());
+        registrationFormBean.setLastName(user.getLastName());
+        registrationFormBean.setPhone(user.getPhone());
+        registrationFormBean.setPassword(user.getPassword());
+        registrationFormBean.setConfirmPassword(user.getPassword());
+
+        // in this case we are adding the RegisterFormBean to the model
+        response.addObject("registrationFormBean", registrationFormBean);
 
         return response;
     }
