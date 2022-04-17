@@ -14,13 +14,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -92,12 +90,22 @@ public class AdminController {
 //    }
 
 
-        @GetMapping("/admin/productEdit/{productID}")
-    public ModelAndView productEdit(@PathVariable("productID") Integer productID) throws Exception {
+
+
+
+
+//        @GetMapping("/admin/productEdit/{productID}")
+//        public ModelAndView productEdit(@PathVariable("productID") Integer productID) throws Exception {
+
+
+
+        @RequestMapping(value = "/admin/productEdit/{productID}", method = RequestMethod.GET)
+        public ModelAndView productEdit(@RequestParam (value="productID", required = false) Integer productID) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("admin/productEdit/");
 
-        Product product = productDAO.findByProductID(productID);
+
+        Product product = productDAO.findProductByProductID(productID);
 
         ProductFormBean productFormBean = new ProductFormBean();
 
@@ -118,5 +126,27 @@ public class AdminController {
         response.addObject("productFormBean", productFormBean);
 
         return response;
+//          return new ModelAndView("redirect:/admin/productlisting");
+    }
+
+    @RequestMapping(value = "/admin/productlisting/delete{productID}", method = {RequestMethod.GET, RequestMethod.POST})
+    public ModelAndView productDelete(@PathParam("productID") Integer productID) throws Exception {
+        ModelAndView response= new ModelAndView();
+        response.setViewName("admin/productlisting");
+
+        Product product = productDAO.findProductByProductID( productID );
+        if ( product == null ) {
+            // this is an error
+        } else {
+            productDAO.delete(product);
+        }
+
+
+
+
+
+
+//        return response;
+        return new ModelAndView("redirect:/admin/productlisting");
     }
 }

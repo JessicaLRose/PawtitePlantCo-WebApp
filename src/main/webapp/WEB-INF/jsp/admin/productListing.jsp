@@ -23,6 +23,30 @@
             </div>
             <div class="modal-body">
 
+                                    <form action="/upload" method="POST" enctype="multipart/form-data">
+
+                                        <div class="prod-image">
+                                           <span>the product image:</span>
+                                            <img src ="${product.productImage}" alt="plant 1" id="add-prod-img">
+                                            <br>
+                                            Select Product Image : <input type="file" name="prod-image" />
+                                            <br>
+
+                                        </div>
+                                        <br>
+                                        <div class="prod-thumb">
+                                            <span>the product thumbnail:</span>
+                                            <br>
+                                            <img src ="${product.productImage}" alt="plant 1" id="add-prod-thumb">
+                                            <br>
+                                            Select Product Thumbnail : <input type="file" name="prod-thumb" />
+                                            <br>
+
+                                        </div>
+                                        <br>
+
+                                    </form>
+
                 <form action="/admin/productlisting/productSubmit" method="post" id="addProduct">
 
                     <div class="prod-name">
@@ -52,30 +76,6 @@
                     </div>
 
                     <br>
-
-<%--                    <form action="/upload" method="POST" enctype="multipart/form-data">--%>
-
-<%--                        <div class="prod-image">--%>
-<%--                           <span>the product image:</span>--%>
-<%--                            <img src ="${product.productImage}" alt="plant 1" id="add-prod-img">--%>
-<%--                            <br>--%>
-<%--                            Select Product Image : <input type="file" name="prod-image" />--%>
-<%--                            <br>--%>
-
-<%--                        </div>--%>
-<%--                        <br>--%>
-<%--                        <div class="prod-thumb">--%>
-<%--                            <span>the product thumbnail:</span>--%>
-<%--                            <br>--%>
-<%--                            <img src ="${product.productImage}" alt="plant 1" id="add-prod-thumb">--%>
-<%--                            <br>--%>
-<%--                            Select Product Thumbnail : <input type="file" name="prod-thumb" />--%>
-<%--                            <br>--%>
-
-<%--                        </div>--%>
-<%--                        <br>--%>
-
-<%--                    </form>--%>
 
                     <div class="prod-descrip">
                         <label for="add-prod-descrip" class="label-default">the product descrip:</label>
@@ -203,12 +203,17 @@
             </div>
             <div class="modal-body">
                 <br>
+
                 <center>Are you sure you want to delete this product?</center>
+
+                </form>
                 <br>
             </div>
             <div class="modal-footer">
                 <a href="#" class="btn" id="close-delete-product" data-bs-dismiss="modal">Close</a>
-                <a href="#" class="btn" id="edit-delete-product" >Delete Product</a>
+<%--                <button type="submit" class="btn" form="deleteProduct">Delete Product</button>--%>
+                <form action="/admin/productlisting/delete${product.productID}" method="post" id="deleteProduct"> <button type="submit" class="btn" form="deleteProduct">Delete Product</button></form>
+<%--                <a href="/admin/productlisting/delete${product.productID}" class="btn" form="deleteProduct" id="edit-delete-product" >Delete Product</a>--%>
             </div>
         </div>
     </div>
@@ -264,8 +269,8 @@
                 <td>$ ${product.productPrice}</td>
                 <td>${product.productStock}</td>
                 <td>
-                    <a href="/admin/productEdit/{productID}" class="edit" title="Edit" data-toggle="tooltip" data-placement="bottom"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="#" class="delete" title="Delete" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa-solid fa-circle-minus"></i></a>
+                    <a href="/admin/productEdit/${product.productID}" class="edit" title="Edit" data-toggle="tooltip" data-placement="bottom"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="/admin/productlisting/delete${product.productID}" class="delete" title="Delete" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa-solid fa-circle-minus"></i></a>
 <%--                    <a href="#" class="delete" title="Delete" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa-solid fa-circle-minus"></i></a>--%>
                 </td>
             </tr>

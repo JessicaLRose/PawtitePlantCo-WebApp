@@ -107,12 +107,12 @@ public class UserController {
         return response;
     }
 
-    @RequestMapping(value = "/user/account", method = RequestMethod.GET)
-    public ModelAndView user() throws Exception {
-        ModelAndView response = new ModelAndView();
-        response.setViewName("user/account");
-        return response;
-    }
+//    @RequestMapping(value = "/user/account", method = RequestMethod.GET)
+//    public ModelAndView user() throws Exception {
+//        ModelAndView response = new ModelAndView();
+//        response.setViewName("user/account");
+//        return response;
+//    }
 
     @GetMapping("/user/account/{userID}")
     //public ModelAndView editUser(@RequestParam("userId") Integer userId) throws Exception {

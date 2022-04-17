@@ -17,48 +17,50 @@
             <div class="card">
                 <div class="card-body shadow-lg">
                     <h1 class="card-title">Registration Form</h1>
-                    <form action="/user/account/${userID}" method="get" >
+
+                    <jstlC:forEach items = "${registrationFormBean}" var = "user">
+                    <form action="/user/account/${userID}" method="get" id="editAccount">
                         <div class="row ">
                             <div class="col-8 col-sm-8 mx-auto my-auto">
 
-                                <jstlC:forEach items = "${registrationFormBean}" var = "user">
                                 <div class="mb-3">
 
-                                    <input type="hidden" name="userID" value="${user.userID}">
 
-                                    <label for="InputFirstName" class="form-label">First Name</label>
-                                    <input type="text" class="form-control form-control-lg" name="firstName" value= "${user.firstName}" id="InputFirstName" pattern="^[a-zA-Z ]*$" required>
+                                    <input type="number" name="userID" id="userID" class="form-control" style="visibility:hidden;" value="${user.userID}"/>
+
+                                    <label for="editFirstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control form-control-lg" name="firstName" value= "${user.firstName}" id="editFirstName" pattern="^[a-zA-Z ]*$" required>
                                     <div class="invalid-feedback">
                                         Please enter a valid name without numbers or special characters
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="InputLastName" class="form-label">Last Name</label>
-                                    <input type="text" class="form-control form-control-lg" name="lastName" value= "${user.lastName}" id="InputLastName" pattern="^[a-zA-Z ]*$" required>
+                                    <label for="editLastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control form-control-lg" name="lastName" value= "${user.lastName}" id="editLastName" pattern="^[a-zA-Z ]*$" required>
                                     <div class="invalid-feedback">
                                         Please enter a valid name without numbers or special characters
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="InputEmail" class="form-label">Email address</label>
-                                    <input type="email" class="form-control form-control-lg" name="email" value= "${user.email}" id="InputEmail" required>
+                                    <label for="editEmail" class="form-label">Email address</label>
+                                    <input type="email" class="form-control form-control-lg" name="email" value= "${user.email}" id="editEmail" required>
                                     <div class= "invalid-feedback">Please provide a valid email
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="InputNumber" class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-control form-control-lg" name="phone" value= "${user.phone}"  id="InputNumber"
+                                    <label for="editNumber" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control form-control-lg" name="phone" value= "${user.phone}"  id="editNumber"
                                            pattern= "[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                                     <div class= "invalid-feedback">Please provide a valid phone number.
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="InputPassword" class="form-label">Password</label>
-                                    <input type="password" class="form-control form-control-lg" name="password" value= "${user.password}" id="InputPassword"
+                                    <label for="editPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control form-control-lg" name="password" value= "${user.password}" id="editPassword"
                                            pattern="^\S{6,}$"
                                            onchange= "this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.ConfirmPassword.pattern = this.value;"
                                            required>
@@ -67,8 +69,8 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="ConfirmPassword" class="form-label"> Confirm Password</label>
-                                    <input type="password" class="form-control form-control-lg" name="confirmPassword" value= "${user.confirmPassword}" id="ConfirmPassword"
+                                    <label for="editConfirmPassword" class="form-label"> Confirm Password</label>
+                                    <input type="password" class="form-control form-control-lg" name="confirmPassword" value= "${user.confirmPassword}" id="editConfirmPassword"
                                            pattern="^\S{6,}$"
                                            onchange= "this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : '');"
                                            required>
@@ -82,6 +84,7 @@
                             </div>
                         </div>
                     </form>
+                        </jstlC:forEach>
 
                 </div>
             </div>
