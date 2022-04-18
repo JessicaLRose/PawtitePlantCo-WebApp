@@ -12,10 +12,10 @@ import java.util.List;
 @Repository
 public interface ProductDAO extends JpaRepository<Product, Long> {
 
-//        public Product findByProductID(@Param("productID") Integer productID); //returns one product, useful to add to cart
+        public Product findByProductID(@Param("productID") Integer productID); //returns one product, useful to add to cart
 
         public List<Product> findProductsByProductCategory(String productCategory);
 
-        public Product findProductByProductID(@Param("ProductID") Integer productID);
+//        public Product findProductByProductID(@Param("productID") Integer productID);
 
         }

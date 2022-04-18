@@ -23,29 +23,29 @@
             </div>
             <div class="modal-body">
 
-                                    <form action="/upload" method="POST" enctype="multipart/form-data">
+<%--                                    <form action="/upload" method="POST" enctype="multipart/form-data">--%>
 
-                                        <div class="prod-image">
-                                           <span>the product image:</span>
-                                            <img src ="${product.productImage}" alt="plant 1" id="add-prod-img">
-                                            <br>
-                                            Select Product Image : <input type="file" name="prod-image" />
-                                            <br>
+<%--                                        <div class="prod-image">--%>
+<%--                                           <span>the product image:</span>--%>
+<%--                                            <img src ="${product.productImage}" alt="plant 1" id="add-prod-img">--%>
+<%--                                            <br>--%>
+<%--                                            Select Product Image : <input type="file" name="prod-image" />--%>
+<%--                                            <br>--%>
 
-                                        </div>
-                                        <br>
-                                        <div class="prod-thumb">
-                                            <span>the product thumbnail:</span>
-                                            <br>
-                                            <img src ="${product.productImage}" alt="plant 1" id="add-prod-thumb">
-                                            <br>
-                                            Select Product Thumbnail : <input type="file" name="prod-thumb" />
-                                            <br>
+<%--                                        </div>--%>
+<%--                                        <br>--%>
+<%--                                        <div class="prod-thumb">--%>
+<%--                                            <span>the product thumbnail:</span>--%>
+<%--                                            <br>--%>
+<%--                                            <img src ="${product.productImage}" alt="plant 1" id="add-prod-thumb">--%>
+<%--                                            <br>--%>
+<%--                                            Select Product Thumbnail : <input type="file" name="prod-thumb" />--%>
+<%--                                            <br>--%>
 
-                                        </div>
-                                        <br>
+<%--                                        </div>--%>
+<%--                                        <br>--%>
 
-                                    </form>
+<%--                                    </form>--%>
 
                 <form action="/admin/productlisting/productSubmit" method="post" id="addProduct">
 
@@ -206,13 +206,15 @@
 
                 <center>Are you sure you want to delete this product?</center>
 
-                </form>
+
                 <br>
             </div>
             <div class="modal-footer">
                 <a href="#" class="btn" id="close-delete-product" data-bs-dismiss="modal">Close</a>
 <%--                <button type="submit" class="btn" form="deleteProduct">Delete Product</button>--%>
-                <form action="/admin/productlisting/delete${product.productID}" method="post" id="deleteProduct"> <button type="submit" class="btn" form="deleteProduct">Delete Product</button></form>
+<%--                        <jstlC:forEach items="${selectedProduct}" var="selectedProduct">--%>
+                <form action="/admin/productlisting/delete/" method="get" id="deleteProduct"><input type="hidden" name = "productID" > <button type="submit" class="btn" form="deleteProduct">Delete Product</button></form>
+<%--                        </jstlC:forEach>--%>
 <%--                <a href="/admin/productlisting/delete${product.productID}" class="btn" form="deleteProduct" id="edit-delete-product" >Delete Product</a>--%>
             </div>
         </div>
@@ -270,7 +272,7 @@
                 <td>${product.productStock}</td>
                 <td>
                     <a href="/admin/productEdit/${product.productID}" class="edit" title="Edit" data-toggle="tooltip" data-placement="bottom"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="/admin/productlisting/delete${product.productID}" class="delete" title="Delete" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa-solid fa-circle-minus"></i></a>
+                    <a href="/admin/productlisting/delete/${product.productID}" class="delete" title="Delete" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-whatever="${product.productID}"><i class="fa-solid fa-circle-minus"></i></a>
 <%--                    <a href="#" class="delete" title="Delete" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa-solid fa-circle-minus"></i></a>--%>
                 </td>
             </tr>
@@ -284,6 +286,26 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script>
+var deleteModal = document.getElementById('#deleteModal')
+deleteModal.addEventListener('show.bs.modal', function (event) {
+// Button that triggered the modal
+var button = event.relatedTarget
+// Extract info from data-bs-* attributes
+
+var selectedProductID = button.getAttribute('data-bs-whatever')
+    alert("hug me im upsetti" + selectedProductID);
+// If necessary, you could initiate an AJAX request here
+// and then do the updating in a callback.
+//
+// Update the modal's content.
+
+var modalBodyInput = deleteModal.querySelector('.modal-body input')
+    alert("hug me im scared" + selectedProductID);
+
+modalBodyInput.value = selectedProductID;
+})
+</script>
 <%--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>--%>
 <%--<script>--%>
 <%--    $(document).on('shown.bs.modal','#editCustomerModal', function () {--%>

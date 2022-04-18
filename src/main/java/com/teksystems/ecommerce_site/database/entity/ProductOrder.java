@@ -14,13 +14,31 @@ import javax.persistence.*;
 @Table(name = "productorder")
 public class ProductOrder {
 
+//    @Id
+//    @ManyToOne
+//    @JoinColumn(name = "product_ID")
+//    private Product productID;
+//
+//    @Id
+//    @ManyToOne
+//    @JoinColumn(name = "order_ID")
+//    private Order orderID;
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_ID")
-    private Integer productID;
+    @Column(name = "productorder_ID")
+    private Integer productorderID;
 
-    @Column(name = "order_ID")
-    private Integer orderID;
+
+    @ManyToOne
+    @JoinColumn(name = "product_ID")
+    private Product productID;
+
+
+    @ManyToOne
+    @JoinColumn(name = "order_ID")
+    private Order orderID;
 
     @Column(name = "quantity")
     private Integer quantity;

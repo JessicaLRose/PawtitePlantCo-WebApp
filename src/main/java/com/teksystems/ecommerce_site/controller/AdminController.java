@@ -90,24 +90,20 @@ public class AdminController {
 //    }
 
 
-
-
-
-
 //        @GetMapping("/admin/productEdit/{productID}")
 //        public ModelAndView productEdit(@PathVariable("productID") Integer productID) throws Exception {
 
-
-
-        @RequestMapping(value = "/admin/productEdit/{productID}", method = RequestMethod.GET)
-        public ModelAndView productEdit(@RequestParam (value="productID", required = false) Integer productID) throws Exception {
+        @RequestMapping(value = "/admin/productEdit/", method = {RequestMethod.POST})
+        public ModelAndView productEdit(@RequestParam("productID") Integer productID) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("admin/productEdit/");
 
-
-        Product product = productDAO.findProductByProductID(productID);
-
         ProductFormBean productFormBean = new ProductFormBean();
+
+        Product product = productDAO.findByProductID(productID);
+//            Integer selectedProductID = (Integer) .getAttribute("productID");
+
+
 
 //        productService.getProductDetails( productFormBean, product);
 
@@ -129,20 +125,28 @@ public class AdminController {
 //          return new ModelAndView("redirect:/admin/productlisting");
     }
 
-    @RequestMapping(value = "/admin/productlisting/delete{productID}", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView productDelete(@PathParam("productID") Integer productID) throws Exception {
+//    @RequestMapping(value = "/admin/productlisting/delete{productID}", method = {RequestMethod.GET, RequestMethod.POST})
+//    public ModelAndView productDelete(@PathParam("productID") Integer productID) throws Exception {
+
+//        @RequestMapping(value = "/admin/productlisting/delete", method = RequestMethod.POST)
+//        public ModelAndView productDelete(@RequestParam("productID") Integer productID) throws Exception {
+
+//        @GetMapping(value = "/admin/productlisting/delete/{productID}", method = RequestMethod.GET)
+//        public ModelAndView productDelete(@PathVariable("productID") Integer productID) throws Exception {
+
+        @RequestMapping(value = "/admin/productlisting/delete", method = RequestMethod.GET)
+        public ModelAndView productDelete(@RequestParam("productID") Integer productID) throws Exception {
         ModelAndView response= new ModelAndView();
         response.setViewName("admin/productlisting");
-
-        Product product = productDAO.findProductByProductID( productID );
-        if ( product == null ) {
+            log.info("this is inside the delete method");
+        Product selectedProduct = productDAO.findByProductID( productID );
+        if ( selectedProduct == null ) {
+            log.info("product is null");
             // this is an error
         } else {
-            productDAO.delete(product);
+            response.addObject("selectedProduct", selectedProduct);
+            productDAO.delete(selectedProduct);
         }
-
-
-
 
 
 

@@ -22,7 +22,7 @@
 <%--            </div>--%>
 <%--            <div class="modal-body">--%>
 <jstlC:forEach items="${productFormBean}" var="product">
-                <form action="/admin/productEdit/${product.productID}" id="editProduct">
+                <form action="/admin/productEdit/" id="editProduct">
 
 <%--                    <input type="number" name="productID" id="productID" class="form-control" style="visibility:hidden;" value="${product.productID}"/>--%>
                     <input type="hidden" name="productID" value="${product.productID}"/>
@@ -92,8 +92,8 @@
 
 <%--            </div>--%>
 <%--            <div class="modal-footer">--%>
-<%--                <a href="#" class="btn" id="close-edit" data-bs-dismiss="modal">Close</a>--%>
-<%--                <button type="submit" class="btn" form="editProduct">Save Product</button>--%>
+                <a href="#" class="btn" id="close-edit" data-bs-dismiss="modal">Close</a>
+                <button type="submit" class="btn" form="editProduct">Save Product</button>
 <%--            </div>--%>
 
 <%--        </div>--%>

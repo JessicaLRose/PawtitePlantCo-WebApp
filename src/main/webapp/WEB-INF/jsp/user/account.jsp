@@ -4,6 +4,7 @@
 <jsp:include page="../include/head.jsp"/>
 
 <link href="<c:url value="../pub/css/navbarDash.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="../pub/css/account.css"/>" rel="stylesheet" type="text/css"/>
 
 <title>Pawt&iuml;te Plant Co | My Account</title>
 </head>
@@ -18,8 +19,8 @@
                 <div class="card-body shadow-lg">
                     <h1 class="card-title">Registration Form</h1>
 
-                    <jstlC:forEach items = "${registrationFormBean}" var = "user">
-                    <form action="/user/account/${userID}" method="get" id="editAccount">
+
+                    <form action="/user/account/edit" method="post" modelAttribute="registrationFormBean" id="editAccount">
                         <div class="row ">
                             <div class="col-8 col-sm-8 mx-auto my-auto">
 
@@ -84,7 +85,7 @@
                             </div>
                         </div>
                     </form>
-                        </jstlC:forEach>
+
 
                 </div>
             </div>

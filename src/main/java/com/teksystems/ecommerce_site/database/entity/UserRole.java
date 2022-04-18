@@ -20,6 +20,7 @@ public class UserRole {
     @Column(name = "roles_ID")
     private Integer id;
 
+
     @Column(name = "user_ID_FK")
     private Integer userRoleID;
 
