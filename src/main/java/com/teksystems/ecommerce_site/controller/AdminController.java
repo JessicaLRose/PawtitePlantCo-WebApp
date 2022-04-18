@@ -93,17 +93,20 @@ public class AdminController {
 //        @GetMapping("/admin/productEdit/{productID}")
 //        public ModelAndView productEdit(@PathVariable("productID") Integer productID) throws Exception {
 
-        @RequestMapping(value = "/admin/productEdit/", method = {RequestMethod.POST})
-        public ModelAndView productEdit(@RequestParam("productID") Integer productID) throws Exception {
-        ModelAndView response = new ModelAndView();
-        response.setViewName("admin/productEdit/");
+//        @RequestMapping(value = "/admin/productEdit/", method = {RequestMethod.POST})
+//        public ModelAndView productEdit(@RequestParam("productID") Integer productID) throws Exception {
 
+        @GetMapping("/admin/productEdit/{productID}")
+        public ModelAndView productEdit(@PathVariable("productID") Integer productID) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("admin/productEdit");
+            System.out.println(productID);
         ProductFormBean productFormBean = new ProductFormBean();
 
         Product product = productDAO.findByProductID(productID);
 //            Integer selectedProductID = (Integer) .getAttribute("productID");
 
-
+            System.out.println(product);
 
 //        productService.getProductDetails( productFormBean, product);
 
@@ -117,13 +120,26 @@ public class AdminController {
         productFormBean.setProductCategory(product.getProductCategory());
         productFormBean.setCreateDate(new Date());
 
-
         // in this case we are adding the RegisterFormBean to the model
         response.addObject("productFormBean", productFormBean);
 
         return response;
 //          return new ModelAndView("redirect:/admin/productlisting");
     }
+
+        @PostMapping("/admin/productEdit/")
+        public ModelAndView productEditConfirm(@Valid ProductFormBean productFormBean) throws Exception {
+            ModelAndView response = new ModelAndView();
+            response.setViewName("admin/productEdit/");
+
+            Product product = productDAO.findByProductID(productFormBean.getProductID());
+
+            productService.getProductDetails( productFormBean, product);
+
+            productDAO.save(product);
+
+            return new ModelAndView("redirect:/admin/productlisting");
+        }
 
 //    @RequestMapping(value = "/admin/productlisting/delete{productID}", method = {RequestMethod.GET, RequestMethod.POST})
 //    public ModelAndView productDelete(@PathParam("productID") Integer productID) throws Exception {
@@ -136,16 +152,18 @@ public class AdminController {
 
         @RequestMapping(value = "/admin/productlisting/delete", method = RequestMethod.GET)
         public ModelAndView productDelete(@RequestParam("productID") Integer productID) throws Exception {
-        ModelAndView response= new ModelAndView();
-        response.setViewName("admin/productlisting");
-            log.info("this is inside the delete method");
-        Product selectedProduct = productDAO.findByProductID( productID );
+//        ModelAndView response= new ModelAndView();
+//        response.setViewName("admin/productlisting");
+
+        Product selectedProduct = productDAO.findByProductID(productID );
+
         if ( selectedProduct == null ) {
             log.info("product is null");
             // this is an error
         } else {
-            response.addObject("selectedProduct", selectedProduct);
+
             productDAO.delete(selectedProduct);
+            System.out.println("product deleted");
         }
 
 

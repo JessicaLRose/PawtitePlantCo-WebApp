@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<jsp:include page="../include/navbarAdmin.jsp"/>
+<%--<jsp:include page="../include/navbarAdmin.jsp"/>--%>
 
 
 <%--<div class="modal" id="editModal" tabindex="-1" aria-labelledby="edit-product">--%>
@@ -21,36 +21,37 @@
 <%--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--%>
 <%--            </div>--%>
 <%--            <div class="modal-body">--%>
-<jstlC:forEach items="${productFormBean}" var="product">
-                <form action="/admin/productEdit/" id="editProduct">
+
+                <form action="/admin/productEdit/" method="post" id="editProduct">
+
 
 <%--                    <input type="number" name="productID" id="productID" class="form-control" style="visibility:hidden;" value="${product.productID}"/>--%>
-                    <input type="hidden" name="productID" value="${product.productID}"/>
+                    <input type="hidden" name="productID" value="${productFormBean.productID}"/>
 
                     <div class="prod-name">
                         <label for="edit-prod-name" class="label-default">product name</label>
-                        <input type="text" name="productName" id="edit-prod-name" class="input-default" value="${product.productName}">
+                        <input type="text" name="productName" id="edit-prod-name" class="input-default" value="${productFormBean.productName}">
                     </div>
 
                     <br>
 
                     <div class="prod-cat">
                         <label for="edit-prod-cat" class="label-default">product category</label>
-                        <input type="text" name="productCategory" id="edit-prod-cat" class="input-default" value="${product.productCategory}">
+                        <input type="text" name="productCategory" id="edit-prod-cat" class="input-default" value="${productFormBean.productCategory}">
                     </div>
 
                     <br>
 
                     <div class="prod-price">
                         <label for="edit-prod-price" class="label-default">product price</label>
-                        <input type="text" name="productPrice" id="edit-prod-price" class="input-default" value="${product.productPrice}">
+                        <input type="text" name="productPrice" id="edit-prod-price" class="input-default" value="${productFormBean.productPrice}">
                     </div>
 
                     <br>
 
                     <div class="prod-stock">
                         <label for="edit-prod-stock" class="label-default">product stock</label>
-                        <input type="text" name="productStock" id="edit-prod-stock" class="input-default" value="${product.productStock}">
+                        <input type="text" name="productStock" id="edit-prod-stock" class="input-default" value="${productFormBean.productStock}">
                     </div>
 
                     <br>
@@ -82,13 +83,13 @@
                     <div class="prod-descrip">
                         <label for="edit-prod-descrip" class="label-default">the product descrip:</label>
                         <br>
-                        <input type="text" name="productDescription" id="edit-prod-descrip" class="input-default" value="${product.productDescription}">
+                        <input type="text" name="productDescription" id="edit-prod-descrip" class="input-default" value="${productFormBean.productDescription}">
 
                         <br>
                     </div>
 
                 </form>
-</jstlC:forEach>
+
 
 <%--            </div>--%>
 <%--            <div class="modal-footer">--%>

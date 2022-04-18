@@ -213,7 +213,7 @@
                 <a href="#" class="btn" id="close-delete-product" data-bs-dismiss="modal">Close</a>
 <%--                <button type="submit" class="btn" form="deleteProduct">Delete Product</button>--%>
 <%--                        <jstlC:forEach items="${selectedProduct}" var="selectedProduct">--%>
-                <form action="/admin/productlisting/delete/" method="get" id="deleteProduct"><input type="hidden" name = "productID" > <button type="submit" class="btn" form="deleteProduct">Delete Product</button></form>
+                <form action="/admin/productlisting/delete" method="get" id="deleteProduct"><input type="hidden" name ="productID" id="finalDelete" value=""> <button type="submit" class="btn" form="deleteProduct">Delete Product</button></form>
 <%--                        </jstlC:forEach>--%>
 <%--                <a href="/admin/productlisting/delete${product.productID}" class="btn" form="deleteProduct" id="edit-delete-product" >Delete Product</a>--%>
             </div>
@@ -287,23 +287,24 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script>
-var deleteModal = document.getElementById('#deleteModal')
+var deleteModal = document.getElementById('deleteModal')
 deleteModal.addEventListener('show.bs.modal', function (event) {
 // Button that triggered the modal
 var button = event.relatedTarget
 // Extract info from data-bs-* attributes
 
 var selectedProductID = button.getAttribute('data-bs-whatever')
-    alert("hug me im upsetti" + selectedProductID);
+    console.log("hug me im upsetti" + selectedProductID);
+    console.log("hug me im upsetti");
 // If necessary, you could initiate an AJAX request here
 // and then do the updating in a callback.
 //
 // Update the modal's content.
 
 var modalBodyInput = deleteModal.querySelector('.modal-body input')
-    alert("hug me im scared" + selectedProductID);
+var deleteProduct = document.getElementById("finalDelete");
+    deleteProduct.value= selectedProductID;
 
-modalBodyInput.value = selectedProductID;
 })
 </script>
 <%--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>--%>
