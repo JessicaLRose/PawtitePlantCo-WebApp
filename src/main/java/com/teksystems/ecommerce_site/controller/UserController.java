@@ -5,8 +5,10 @@ import com.teksystems.ecommerce_site.database.dao.UserRoleDAO;
 import com.teksystems.ecommerce_site.database.entity.Product;
 import com.teksystems.ecommerce_site.database.entity.User;
 import com.teksystems.ecommerce_site.database.entity.UserRole;
+import com.teksystems.ecommerce_site.formbean.AccountFormBean;
 import com.teksystems.ecommerce_site.formbean.ProductFormBean;
 import com.teksystems.ecommerce_site.formbean.RegistrationFormBean;
+import com.teksystems.ecommerce_site.security.AuthenticatedUserService;
 import com.teksystems.ecommerce_site.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -114,47 +113,64 @@ public class UserController {
 //        return response;
 //    }
 
-    @RequestMapping(value = "/user/account", method = RequestMethod.GET)
-    public ModelAndView userAccount(RegistrationFormBean registrationFormBean, HttpSession session) throws Exception {
+//    @GetMapping(value = "/user/account/{userID}")
+
+    @RequestMapping(value = "/user/account/{userID}")
+        public ModelAndView userAccount(@PathVariable("userID") Integer userID)  throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/account");
+
+        AccountFormBean accountFormBean = new AccountFormBean();
+
+            User user = userDAO.findByUserID(userID);
+            log.info(String.valueOf(user));
+            accountFormBean.setUserID(user.getUserID());
+            accountFormBean.setEmail(user.getEmail());
+            accountFormBean.setFirstName(user.getFirstName());
+            accountFormBean.setLastName(user.getLastName());
+            accountFormBean.setPhone(user.getPhone());
+
+
+        response.addObject("accountFormBean", accountFormBean);
+        return response;
+    }
+
+//    @PostMapping("/user/account/")
+
+    @PostMapping(value = "/user/account/saved")
+    public ModelAndView userAccountEdit(@Valid AccountFormBean accountFormBean) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("user/account/");
 
+        User user = userDAO.findByUserID(accountFormBean.getUserID());
 
-//        User user = userService.getCurrentUser();
-        Integer id = (Integer) session.getAttribute("user_id");
-        User user = userDAO.findByUserID(id);
-        response.addObject("user", user);
+        userService.getUserDetails( accountFormBean, user);
 
-        registrationFormBean.setUserID(user.getUserID());
-        registrationFormBean.setEmail(user.getEmail());
-        registrationFormBean.setFirstName(user.getFirstName());
-        registrationFormBean.setLastName(user.getLastName());
-        registrationFormBean.setPhone(user.getPhone());
-        registrationFormBean.setPassword(user.getPassword());
-
-        // in this case we are adding the RegisterFormBean to the model
-        response.addObject("registrationFormBean", registrationFormBean);
-
-        return new ModelAndView("/user/account/");
+        userDAO.save(user);
+//        Integer userID = user.getUserID();
+//        log.info(String.valueOf(userID));
+        response.setViewName("redirect:/user/account/"+user.getUserID());
+//        return new ModelAndView("redirect:/user/account/{userID}");
+        return response;
     }
 
-    @RequestMapping(value = "/user/account/edit", method = RequestMethod.POST)
-    public ModelAndView editAccount(RegistrationFormBean registrationFormBean) throws Exception {
-        ModelAndView response = new ModelAndView();
-        response.setViewName("user/account/");
-
-        User user = userService.getCurrentUser();
-
-        user.setEmail(registrationFormBean.getEmail());
-        user.setFirstName(registrationFormBean.getFirstName());
-        user.setLastName(registrationFormBean.getLastName());
-        user.setPhone(registrationFormBean.getPhone());
-        user.setPassword(registrationFormBean.getPassword());
-
-        // in this case we are adding the RegisterFormBean to the model
-        userService.save(user);
-
-        return new ModelAndView("redirect:/user/account/");
-    }
+//    @RequestMapping(value = "/user/account/edit", method = RequestMethod.POST)
+//    public ModelAndView editAccount(RegistrationFormBean registrationFormBean) throws Exception {
+//        ModelAndView response = new ModelAndView();
+//        response.setViewName("user/account/");
+//
+//        User user = AuthenticatedUserService.getCurrentUser();
+//
+//        user.setEmail(registrationFormBean.getEmail());
+//        user.setFirstName(registrationFormBean.getFirstName());
+//        user.setLastName(registrationFormBean.getLastName());
+//        user.setPhone(registrationFormBean.getPhone());
+//        user.setPassword(registrationFormBean.getPassword());
+//
+//        // in this case we are adding the RegisterFormBean to the model
+//        userService.save(user);
+//
+//        return new ModelAndView("redirect:/user/account/");
+//    }
 }
 

@@ -96,17 +96,19 @@ public class AdminController {
 //        @RequestMapping(value = "/admin/productEdit/", method = {RequestMethod.POST})
 //        public ModelAndView productEdit(@RequestParam("productID") Integer productID) throws Exception {
 
-        @GetMapping("/admin/productEdit/{productID}")
-        public ModelAndView productEdit(@PathVariable("productID") Integer productID) throws Exception {
+
+
+    @GetMapping("/admin/productEdit/{productID}")
+    public ModelAndView productEdit(@PathVariable("productID") Integer productID) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("admin/productEdit");
-            System.out.println(productID);
+        System.out.println(productID);
         ProductFormBean productFormBean = new ProductFormBean();
 
         Product product = productDAO.findByProductID(productID);
 //            Integer selectedProductID = (Integer) .getAttribute("productID");
 
-            System.out.println(product);
+        System.out.println(product);
 
 //        productService.getProductDetails( productFormBean, product);
 
@@ -127,19 +129,20 @@ public class AdminController {
 //          return new ModelAndView("redirect:/admin/productlisting");
     }
 
-        @PostMapping("/admin/productEdit/")
-        public ModelAndView productEditConfirm(@Valid ProductFormBean productFormBean) throws Exception {
-            ModelAndView response = new ModelAndView();
-            response.setViewName("admin/productEdit/");
+    @PostMapping("/admin/productEdit/")
+    public ModelAndView productEditConfirm(@Valid ProductFormBean productFormBean) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("admin/productEdit/");
 
-            Product product = productDAO.findByProductID(productFormBean.getProductID());
+        Product product = productDAO.findByProductID(productFormBean.getProductID());
 
-            productService.getProductDetails( productFormBean, product);
+        productService.getProductDetails( productFormBean, product);
 
-            productDAO.save(product);
+        productDAO.save(product);
 
-            return new ModelAndView("redirect:/admin/productlisting");
-        }
+        return new ModelAndView("redirect:/admin/productlisting");
+    }
+
 
 //    @RequestMapping(value = "/admin/productlisting/delete{productID}", method = {RequestMethod.GET, RequestMethod.POST})
 //    public ModelAndView productDelete(@PathParam("productID") Integer productID) throws Exception {

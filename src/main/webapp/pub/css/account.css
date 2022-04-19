@@ -4,6 +4,10 @@
     }
 }
 
+body, html{
+    width: 100vw;
+    background-color: var(--smoke);
+}
 
 
 input{
@@ -12,19 +16,17 @@ input{
 
 .section{
     height: 80vh;
-    display: flex;
     display: block;
+    position: relative;
+
 }
 
-.registrationform{
+.editform{
     width: 100%;
     display: flex;
     justify-content: space-around;
 }
 
-.register-body{
-    width: 80vw;
-}
 
 .invalid-feedback{
     font-size:small;

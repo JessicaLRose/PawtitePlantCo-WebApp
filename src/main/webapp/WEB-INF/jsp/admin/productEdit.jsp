@@ -13,94 +13,85 @@
 <%--<jsp:include page="../include/navbarAdmin.jsp"/>--%>
 
 
-<%--<div class="modal" id="editModal" tabindex="-1" aria-labelledby="edit-product">--%>
-
-<%--        <div class="modal-content">--%>
-<%--            <div class="modal-header">--%>
-<%--                <h5 class="modal-title" id="edit-product">Edit Product</h5>--%>
-<%--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--%>
-<%--            </div>--%>
-<%--            <div class="modal-body">--%>
-
-                <form action="/admin/productEdit/" method="post" id="editProduct">
 
 
-<%--                    <input type="number" name="productID" id="productID" class="form-control" style="visibility:hidden;" value="${product.productID}"/>--%>
-                    <input type="hidden" name="productID" value="${productFormBean.productID}"/>
+<form action="/admin/productEdit/" method="post" id="editProduct">
 
-                    <div class="prod-name">
-                        <label for="edit-prod-name" class="label-default">product name</label>
-                        <input type="text" name="productName" id="edit-prod-name" class="input-default" value="${productFormBean.productName}">
-                    </div>
 
-                    <br>
+    <%--                    <input type="number" name="productID" id="productID" class="form-control" style="visibility:hidden;" value="${product.productID}"/>--%>
+    <input type="hidden" name="productID" value="${productFormBean.productID}"/>
 
-                    <div class="prod-cat">
-                        <label for="edit-prod-cat" class="label-default">product category</label>
-                        <input type="text" name="productCategory" id="edit-prod-cat" class="input-default" value="${productFormBean.productCategory}">
-                    </div>
+    <div class="prod-name">
+        <label for="edit-prod-name" class="label-default">product name</label>
+        <input type="text" name="productName" id="edit-prod-name" class="input-default" value="${productFormBean.productName}">
+    </div>
 
-                    <br>
+    <br>
 
-                    <div class="prod-price">
-                        <label for="edit-prod-price" class="label-default">product price</label>
-                        <input type="text" name="productPrice" id="edit-prod-price" class="input-default" value="${productFormBean.productPrice}">
-                    </div>
+    <div class="prod-cat">
+        <label for="edit-prod-cat" class="label-default">product category</label>
+        <input type="text" name="productCategory" id="edit-prod-cat" class="input-default" value="${productFormBean.productCategory}">
+    </div>
 
-                    <br>
+    <br>
 
-                    <div class="prod-stock">
-                        <label for="edit-prod-stock" class="label-default">product stock</label>
-                        <input type="text" name="productStock" id="edit-prod-stock" class="input-default" value="${productFormBean.productStock}">
-                    </div>
+    <div class="prod-price">
+        <label for="edit-prod-price" class="label-default">product price</label>
+        <input type="text" name="productPrice" id="edit-prod-price" class="input-default" value="${productFormBean.productPrice}">
+    </div>
 
-                    <br>
+    <br>
 
-                    <%--                    <form action="/upload" method="POST" enctype="multipart/form-data">--%>
+    <div class="prod-stock">
+        <label for="edit-prod-stock" class="label-default">product stock</label>
+        <input type="text" name="productStock" id="edit-prod-stock" class="input-default" value="${productFormBean.productStock}">
+    </div>
 
-                    <%--                        <div class="prod-image">--%>
-                    <%--                           <span>the product image:</span>--%>
-                    <%--                            <img src ="${product.productImage}" alt="plant 1" id="add-prod-img">--%>
-                    <%--                            <br>--%>
-                    <%--                            Select Product Image : <input type="file" name="prod-image" />--%>
-                    <%--                            <br>--%>
+    <br>
 
-                    <%--                        </div>--%>
-                    <%--                        <br>--%>
-                    <%--                        <div class="prod-thumb">--%>
-                    <%--                            <span>the product thumbnail:</span>--%>
-                    <%--                            <br>--%>
-                    <%--                            <img src ="${product.productImage}" alt="plant 1" id="add-prod-thumb">--%>
-                    <%--                            <br>--%>
-                    <%--                            Select Product Thumbnail : <input type="file" name="prod-thumb" />--%>
-                    <%--                            <br>--%>
+    <%--                    <form action="/upload" method="POST" enctype="multipart/form-data">--%>
 
-                    <%--                        </div>--%>
-                    <%--                        <br>--%>
+    <%--                        <div class="prod-image">--%>
+    <%--                           <span>the product image:</span>--%>
+    <%--                            <img src ="${product.productImage}" alt="plant 1" id="add-prod-img">--%>
+    <%--                            <br>--%>
+    <%--                            Select Product Image : <input type="file" name="prod-image" />--%>
+    <%--                            <br>--%>
 
-                    <%--                    </form>--%>
+    <%--                        </div>--%>
+    <%--                        <br>--%>
+    <%--                        <div class="prod-thumb">--%>
+    <%--                            <span>the product thumbnail:</span>--%>
+    <%--                            <br>--%>
+    <%--                            <img src ="${product.productImage}" alt="plant 1" id="add-prod-thumb">--%>
+    <%--                            <br>--%>
+    <%--                            Select Product Thumbnail : <input type="file" name="prod-thumb" />--%>
+    <%--                            <br>--%>
 
-                    <div class="prod-descrip">
-                        <label for="edit-prod-descrip" class="label-default">the product descrip:</label>
-                        <br>
-                        <input type="text" name="productDescription" id="edit-prod-descrip" class="input-default" value="${productFormBean.productDescription}">
+    <%--                        </div>--%>
+    <%--                        <br>--%>
 
-                        <br>
-                    </div>
+    <%--                    </form>--%>
 
-                </form>
+    <div class="prod-descrip">
+        <label for="edit-prod-descrip" class="label-default">the product descrip:</label>
+        <br>
+        <input type="text" name="productDescription" id="edit-prod-descrip" class="input-default" value="${productFormBean.productDescription}">
+
+        <br>
+    </div>
+
+</form>
 
 
 <%--            </div>--%>
 <%--            <div class="modal-footer">--%>
-                <a href="#" class="btn" id="close-edit" data-bs-dismiss="modal">Close</a>
-                <button type="submit" class="btn" form="editProduct">Save Product</button>
+<a href="#" class="btn" id="close-edit" data-bs-dismiss="modal">Close</a>
+<button type="submit" class="btn" form="editProduct">Save Product</button>
 <%--            </div>--%>
 
 <%--        </div>--%>
 
-
-<%--</div>--%>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

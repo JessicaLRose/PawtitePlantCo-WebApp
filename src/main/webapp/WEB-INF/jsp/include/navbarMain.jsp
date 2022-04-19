@@ -120,7 +120,7 @@
             <center><i class="fa-solid fa-circle-user"></i></center>
             <h3>Welcome<br><span><jstlC:out value="${user.getFirstName()}" /></span></h3>
 
-            <a href="/user/account/" class="btn" id="account-btn">My Account</a>
+            <a href="/user/account/${user.getUserID()}" class="btn" id="account-btn">My Account</a>
             <a href="/logout" class="btn" id="logout-profile">Logout</a>
             <br>
 

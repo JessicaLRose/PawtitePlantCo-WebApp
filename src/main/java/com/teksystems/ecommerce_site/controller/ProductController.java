@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -52,6 +53,37 @@ public class ProductController {
 
         return response;
     }
+
+    @GetMapping("/shop/products/details/{productID}")
+    public ModelAndView productEdit(@PathVariable("productID") Integer productID) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("/shop/products/details");
+
+        ProductFormBean productFormBean = new ProductFormBean();
+
+        Product product = productDAO.findByProductID(productID);
+//            Integer selectedProductID = (Integer) .getAttribute("productID");
+
+        System.out.println(product);
+
+//        productService.getProductDetails( productFormBean, product);
+
+        productFormBean.setProductID(product.getProductID());
+        productFormBean.setProductName(product.getProductName());
+        productFormBean.setProductPrice(product.getProductPrice());
+        productFormBean.setProductStock(product.getProductStock());
+        productFormBean.setProductImage(product.getProductImage());
+        productFormBean.setProductThumbnail(product.getProductThumbnail());
+        productFormBean.setProductDescription(product.getProductDescription());
+
+
+        // in this case we are adding the RegisterFormBean to the model
+        response.addObject("productFormBean", productFormBean);
+
+        return response;
+    }
+
+
 
 //    @RequestMapping(value = "/shop/products/view", method = {RequestMethod.GET})
 //    public ModelAndView product(@Valid ProductFormBean productFormBean) throws Exception {

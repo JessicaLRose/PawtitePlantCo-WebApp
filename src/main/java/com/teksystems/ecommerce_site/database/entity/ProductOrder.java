@@ -24,17 +24,14 @@ public class ProductOrder {
 //    @JoinColumn(name = "order_ID")
 //    private Order orderID;
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "productorder_ID")
-    private Integer productorderID;
-
+    private Integer productOrderID;
 
     @ManyToOne
     @JoinColumn(name = "product_ID")
     private Product productID;
-
 
     @ManyToOne
     @JoinColumn(name = "order_ID")

@@ -14,11 +14,11 @@
 <jsp:include page="../include/navbarMain.jsp"/>
 
 <!-- Vertically centered modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="product-details" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl modal-md">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <h5 class="modal-title" id="product-details"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -109,7 +109,7 @@
                                     <jstlC:forEach items = "${allProducts}" var = "product">
                                     <div class = "col-md-6 col-lg-4 col-xl-3 p-2 all">
                                         <div class = "collection-img position-relative">
-                                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button type="button" data-bs-toggle="modal" data-bs-target="#productModal">
                                                 <img src ="${product.productImage}" class = "w-100" alt="plant 1">
                                                 <img src ="${product.productThumbnail}" class = "secondary-img w-100" alt="plant 1">
                                             </button>
@@ -132,7 +132,7 @@
                                     <jstlC:forEach items = "${softProducts}" var = "product">
                                         <div class = "col-md-6 col-lg-4 col-xl-3 p-2 all">
                                             <div class = "collection-img position-relative">
-                                                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#productModal">
                                                     <img src ="${product.productImage}" class = "w-100" alt="plant 1">
                                                     <img src ="${product.productThumbnail}" class = "secondary-img w-100" alt="plant 1">
                                                 </button>
@@ -153,7 +153,7 @@
                                     <jstlC:forEach items = "${hardyProducts}" var = "product">
                                         <div class = "col-md-6 col-lg-4 col-xl-3 p-2 all">
                                             <div class = "collection-img position-relative">
-                                                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#productModal">
                                                     <img src ="${product.productImage}" class = "w-100" alt="plant 1">
                                                     <img src ="${product.productThumbnail}" class = "secondary-img w-100" alt="plant 1">
                                                 </button>
@@ -175,7 +175,7 @@
                                     <jstlC:forEach items = "${accessoriesProducts}" var = "product">
                                         <div class = "col-md-6 col-lg-4 col-xl-3 p-2 all">
                                             <div class = "collection-img position-relative">
-                                                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#productModal">
                                                     <img src ="${product.productImage}" class = "w-100" alt="plant 1">
                                                     <img src ="${product.productThumbnail}" class = "secondary-img w-100" alt="plant 1">
                                                 </button>
@@ -199,4 +199,55 @@
 
 </section>
 
-<jsp:include page="../include/footer.jsp" />
+<footer class="footer">
+
+    <div class="share">
+        <a href="#" class="fab fa-facebook-f"></a>
+        <a href="#" class="fab fa-twitter"></a>
+        <a href="#" class="fab fa-instagram"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+        <a href="#" class="fab fa-pinterest"></a>
+    </div>
+
+    <div class="links">
+        <a href="#">home</a>
+        <a href="#featured">featured</a>
+        <a href="product.html">shop</a>
+        <a href="#about">about</a>
+        <a href="#review">reviews</a>
+        <a href="#contact">contact</a>
+        <a href="#cart">cart</a>
+    </div>
+
+    <div class="credit">created by <span>jessica fatim</span> | all rights reserved</div>
+
+</footer>
+
+<!-- footer section ends -->
+
+<!-- custom js file link  -->
+<script>
+    var productModal = document.getElementById('productModal')
+    productModal.addEventListener('show.bs.modal', function (event) {
+// Button that triggered the modal
+        var button = event.relatedTarget
+// Extract info from data-bs-* attributes
+
+        var getDetails  = button.getAttribute('data-bs-whatever')
+
+// If necessary, you could initiate an AJAX request here
+// and then do the updating in a callback.
+//
+// Update the modal's content.
+
+        var getProductID = document.getElementById("showproduct");
+        getProductID.value= getDetails;
+
+    })
+
+
+</script>
+<script type="text/javascript" src="../../../pub/js/script.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

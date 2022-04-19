@@ -8,8 +8,6 @@ import com.teksystems.ecommerce_site.database.dao.UserDAO;
 import com.teksystems.ecommerce_site.database.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
@@ -49,10 +47,11 @@ public class AuthenticatedUserService {
         return false;
     }
 
-    public User getCurrentUser() {
+    public static User getCurrentUser(Integer userID) {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpSession session = attr.getRequest().getSession(true); // true == allow create
         User user = (User) session.getAttribute("user");
+
         return user;
     }
 

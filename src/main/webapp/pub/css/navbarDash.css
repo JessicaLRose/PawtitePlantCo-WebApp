@@ -9,6 +9,7 @@
     --main-text: #3f5855;
     --lochinvar: #3c413d;
     --horizon: #c3d7d2;
+    --smoke: #dedad4;
     --border:.1rem solid rgba(255,255,255,.3);
 }
 
@@ -72,8 +73,8 @@ h1{
 }
 
 .header{
+
     display: flex;
-    position: fixed;
     top: 0;
     z-index: 1000;
     height: 4rem;

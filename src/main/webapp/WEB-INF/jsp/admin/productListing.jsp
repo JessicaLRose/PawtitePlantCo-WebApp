@@ -98,15 +98,6 @@
 
 <!--Edit Product Modal -->
 
-<%--<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="edit-product" aria-hidden="true">--%>
-<%--    <div class="modal-dialog">--%>
-<%--        <div class="modal-content">--%>
-<%--            <div class="modal-header">--%>
-<%--                <h5 class="modal-title" id="edit-product">Edit Product</h5>--%>
-<%--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--%>
-<%--            </div>--%>
-<%--            <div class="modal-body">--%>
-
 <%--                <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="edit-product" aria-hidden="true">--%>
 <%--                    <div class="modal-dialog">--%>
 <%--                        <div class="modal-content">--%>
@@ -116,66 +107,67 @@
 <%--                            </div>--%>
 <%--                            <div class="modal-body">--%>
 
-<%--                                <form action="/admin/productlisting/edit/${product.productID}" id="editProduct">--%>
+<%--                                <form action="/admin/productlisting/edit/{productID}" method="get" id="editProduct">--%>
 
-<%--                                    <input type="number" name="productID" id="productID" class="form-control" style="visibility:hidden;" value="${product.productID}"/>--%>
+<%--                                    <input type="hidden" name="productID" id="finalEdit" value=""/>--%>
 
 <%--                                    <div class="prod-name">--%>
 <%--                                        <label for="edit-prod-name" class="label-default">product name</label>--%>
-<%--                                        <input type="text" name="productName" id="edit-prod-name" class="input-default" value="${product.productName}">--%>
+<%--                                        <input type="text" name="productName" id="edit-prod-name" class="input-default" value="${productFormBean.productName}">--%>
 <%--                                    </div>--%>
 
 <%--                                    <br>--%>
 
 <%--                                    <div class="prod-cat">--%>
 <%--                                        <label for="edit-prod-cat" class="label-default">product category</label>--%>
-<%--                                        <input type="text" name="productCategory" id="edit-prod-cat" class="input-default" value="${product.productCategory}">--%>
+<%--                                        <input type="text" name="productCategory" id="edit-prod-cat" class="input-default" value="${productFormBean.productCategory}">--%>
 <%--                                    </div>--%>
 
 <%--                                    <br>--%>
 
 <%--                                    <div class="prod-price">--%>
 <%--                                        <label for="edit-prod-price" class="label-default">product price</label>--%>
-<%--                                        <input type="text" name="productPrice" id="edit-prod-price" class="input-default" value="${product.productPrice}">--%>
+<%--                                        <input type="text" name="productPrice" id="edit-prod-price" class="input-default" value="${productFormBean.productPrice}">--%>
 <%--                                    </div>--%>
 
 <%--                                    <br>--%>
 
 <%--                                    <div class="prod-stock">--%>
 <%--                                        <label for="edit-prod-stock" class="label-default">product stock</label>--%>
-<%--                                        <input type="text" name="productStock" id="edit-prod-stock" class="input-default" value="${product.productStock}">--%>
+<%--                                        <input type="text" name="productStock" id="edit-prod-stock" class="input-default" value="${productFormBean.productStock}">--%>
 <%--                                    </div>--%>
 
 <%--                                    <br>--%>
 
-<%--                                                        <form action="/upload" method="POST" enctype="multipart/form-data">--%>
+<%--                                    &lt;%&ndash;                    <form action="/upload" method="POST" enctype="multipart/form-data">&ndash;%&gt;--%>
 
-<%--                                                            <div class="prod-image">--%>
-<%--                                                               <span>the product image:</span>--%>
-<%--                                                                <img src ="${product.productImage}" alt="plant 1" id="add-prod-img">--%>
-<%--                                                                <br>--%>
-<%--                                                                Select Product Image : <input type="file" name="prod-image" />--%>
-<%--                                                                <br>--%>
+<%--                                    &lt;%&ndash;                        <div class="prod-image">&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;                           <span>the product image:</span>&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;                            <img src ="${product.productImage}" alt="plant 1" id="add-prod-img">&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;                            <br>&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;                            Select Product Image : <input type="file" name="prod-image" />&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;                            <br>&ndash;%&gt;--%>
 
-<%--                                                            </div>--%>
-<%--                                                            <br>--%>
-<%--                                                            <div class="prod-thumb">--%>
-<%--                                                                <span>the product thumbnail:</span>--%>
-<%--                                                                <br>--%>
-<%--                                                                <img src ="${product.productImage}" alt="plant 1" id="add-prod-thumb">--%>
-<%--                                                                <br>--%>
-<%--                                                                Select Product Thumbnail : <input type="file" name="prod-thumb" />--%>
-<%--                                                                <br>--%>
+<%--                                    &lt;%&ndash;                        </div>&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;                        <br>&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;                        <div class="prod-thumb">&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;                            <span>the product thumbnail:</span>&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;                            <br>&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;                            <img src ="${product.productImage}" alt="plant 1" id="add-prod-thumb">&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;                            <br>&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;                            Select Product Thumbnail : <input type="file" name="prod-thumb" />&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;                            <br>&ndash;%&gt;--%>
 
-<%--                                                            </div>--%>
-<%--                                                            <br>--%>
+<%--                                    &lt;%&ndash;                        </div>&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;                        <br>&ndash;%&gt;--%>
 
-<%--                                                        </form>--%>
+<%--                                    &lt;%&ndash;                    </form>&ndash;%&gt;--%>
 
 <%--                                    <div class="prod-descrip">--%>
 <%--                                        <label for="edit-prod-descrip" class="label-default">the product descrip:</label>--%>
 <%--                                        <br>--%>
-<%--                                        <input type="text" name="productDescription" id="edit-prod-descrip" class="input-default" value="${product.productDescription}">--%>
+<%--                                        <input type="text" name="productDescription" id="edit-prod-descrip" class="input-default" value="${productFormBean.productDescription}">--%>
+
 <%--                                        <br>--%>
 <%--                                    </div>--%>
 
@@ -184,7 +176,9 @@
 <%--                            </div>--%>
 <%--                            <div class="modal-footer">--%>
 <%--                                <a href="#" class="btn" id="close-edit" data-bs-dismiss="modal">Close</a>--%>
-<%--                                <button type="submit" class="btn" form="editProduct">Save Product</button>--%>
+<%--                                <form action="/admin/productlisting/edit/savechanges" method="post" id="editProductSubmit"><button type="submit" class="btn" form="editProductSubmit">Save Product</button></form>--%>
+<%--&lt;%&ndash;                                <button type="submit" class="btn" form="editProduct">Save Product</button>&ndash;%&gt;--%>
+
 <%--                            </div>--%>
 
 <%--                        </div>--%>
@@ -272,6 +266,7 @@
                 <td>${product.productStock}</td>
                 <td>
                     <a href="/admin/productEdit/${product.productID}" class="edit" title="Edit" data-toggle="tooltip" data-placement="bottom"><i class="fa-solid fa-pen-to-square"></i></a>
+<%--                    <a href="/admin/productlisting/edit/${product.productID}" class="edit" title="Edit" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="${product.productID}"><i class="fa-solid fa-pen-to-square"></i></a>--%>
                     <a href="/admin/productlisting/delete/${product.productID}" class="delete" title="Delete" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-whatever="${product.productID}"><i class="fa-solid fa-circle-minus"></i></a>
 <%--                    <a href="#" class="delete" title="Delete" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa-solid fa-circle-minus"></i></a>--%>
                 </td>
@@ -286,6 +281,28 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<%--<script>--%>
+<%--                var editModal = document.getElementById('editModal')--%>
+<%--                editModal.addEventListener('show.bs.modal', function (event) {--%>
+<%--                // Button that triggered the modal--%>
+<%--                var editbutton = event.relatedTarget--%>
+<%--                // Extract info from data-bs-* attributes--%>
+
+<%--                var editedProductID = editbutton.getAttribute('data-bs-whatever')--%>
+<%--                console.log("hug me im upsetti" + editedProductID);--%>
+<%--                console.log("hug me im upsetti");--%>
+<%--                // If necessary, you could initiate an AJAX request here--%>
+<%--                // and then do the updating in a callback.--%>
+<%--                //--%>
+<%--                // Update the modal's content.--%>
+
+<%--                // var modalBodyInput = editModal.querySelector('.modal-body input')--%>
+<%--                var editProduct = document.getElementById("finalEdit");--%>
+<%--                editProduct.value= editedProductID;--%>
+
+<%--                })--%>
+<%--                </script>--%>
+
 <script>
 var deleteModal = document.getElementById('deleteModal')
 deleteModal.addEventListener('show.bs.modal', function (event) {

@@ -1,7 +1,6 @@
 package com.teksystems.ecommerce_site.service;
 
 import com.teksystems.ecommerce_site.database.dao.ProductDAO;
-import com.teksystems.ecommerce_site.database.dao.UserDAO;
 import com.teksystems.ecommerce_site.database.entity.Product;
 import com.teksystems.ecommerce_site.formbean.ProductFormBean;
 import org.springframework.beans.factory.annotation.Autowired;
