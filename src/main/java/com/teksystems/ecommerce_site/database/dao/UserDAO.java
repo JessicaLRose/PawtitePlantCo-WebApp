@@ -4,6 +4,9 @@ import com.teksystems.ecommerce_site.database.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,7 +14,8 @@ import java.util.List;
 @Repository
 public interface  UserDAO  extends JpaRepository<User, Long> {
 
-    public User findByUserID(@Param("userID") Integer userID);
+    public User findById(@Param("id") Integer id);
+
 
     // there is 3 ways to execute a query
     // 1) via @Query with JPA / JQL / HQL

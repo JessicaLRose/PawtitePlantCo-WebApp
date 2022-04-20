@@ -26,7 +26,7 @@
 
                                 <div class="mb-3">
 
-                                    <input type="hidden" name="userID" value="${accountFormBean.userID}"/>
+                                    <input type="hidden" name="id" value="${accountFormBean.id}"/>
 
 
                                     <label for="editFirstName" class="form-label">First Name</label>

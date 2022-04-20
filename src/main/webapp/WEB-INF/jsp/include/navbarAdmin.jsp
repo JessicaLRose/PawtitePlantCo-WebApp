@@ -14,6 +14,9 @@
                 <div class="position-absolute top-0 end-0">
                     <a href="/logout" class="btn" id="logout-admin">Logout</a>
                 </div>
+                <div class="position-absolute top-0 start-0">
+                    <a href="/home" class="btn">Home</a>
+                </div>
 
                 <hr>
 
@@ -25,6 +28,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </nav>
 
 </header>

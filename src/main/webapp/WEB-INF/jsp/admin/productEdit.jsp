@@ -19,7 +19,7 @@
 
 
     <%--                    <input type="number" name="productID" id="productID" class="form-control" style="visibility:hidden;" value="${product.productID}"/>--%>
-    <input type="hidden" name="productID" value="${productFormBean.productID}"/>
+    <input type="hidden" name="productID" value="${productFormBean.id}"/>
 
     <div class="prod-name">
         <label for="edit-prod-name" class="label-default">product name</label>

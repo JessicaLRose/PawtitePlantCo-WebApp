@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface UserRoleDAO extends JpaRepository<UserRole, Long> {
 
-    List<UserRole> findByUserRoleID(@Param("UserRoleID") Integer userID);
+    List<UserRole> findById(@Param("Id") Integer userID);
 }

@@ -98,21 +98,21 @@ public class AdminController {
 
 
 
-    @GetMapping("/admin/productEdit/{productID}")
-    public ModelAndView productEdit(@PathVariable("productID") Integer productID) throws Exception {
+    @GetMapping("/admin/productEdit/{id}")
+    public ModelAndView productEdit(@PathVariable("id") Integer id) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("admin/productEdit");
-        System.out.println(productID);
+        System.out.println(id);
         ProductFormBean productFormBean = new ProductFormBean();
 
-        Product product = productDAO.findByProductID(productID);
+        Product product = productDAO.findById(id);
 //            Integer selectedProductID = (Integer) .getAttribute("productID");
 
         System.out.println(product);
 
 //        productService.getProductDetails( productFormBean, product);
 
-        productFormBean.setProductID(product.getProductID());
+        productFormBean.setId(product.getId());
         productFormBean.setProductName(product.getProductName());
         productFormBean.setProductPrice(product.getProductPrice());
         productFormBean.setProductStock(product.getProductStock());
@@ -134,7 +134,7 @@ public class AdminController {
         ModelAndView response = new ModelAndView();
         response.setViewName("admin/productEdit/");
 
-        Product product = productDAO.findByProductID(productFormBean.getProductID());
+        Product product = productDAO.findById(productFormBean.getId());
 
         productService.getProductDetails( productFormBean, product);
 
@@ -154,11 +154,11 @@ public class AdminController {
 //        public ModelAndView productDelete(@PathVariable("productID") Integer productID) throws Exception {
 
         @RequestMapping(value = "/admin/productlisting/delete", method = RequestMethod.GET)
-        public ModelAndView productDelete(@RequestParam("productID") Integer productID) throws Exception {
+        public ModelAndView productDelete(@RequestParam("id") Integer id) throws Exception {
 //        ModelAndView response= new ModelAndView();
 //        response.setViewName("admin/productlisting");
 
-        Product selectedProduct = productDAO.findByProductID(productID );
+        Product selectedProduct = productDAO.findById(id);
 
         if ( selectedProduct == null ) {
             log.info("product is null");

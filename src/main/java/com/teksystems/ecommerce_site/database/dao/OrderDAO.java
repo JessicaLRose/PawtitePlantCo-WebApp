@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface OrderDAO extends JpaRepository<Order, Long> {
-    public Order findOrderByUser_UserIDAndAndCartStatus(@Param("user_id") Integer customerID, @Param("PENDING") String cartStatus);
+
+    public Order findOrderByUserAndCartStatus(@Param("user") User user, @Param("PENDING") String cartStatus);
 
 }

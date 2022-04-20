@@ -55,20 +55,20 @@ public class ProductController {
         return response;
     }
 
-    @GetMapping("/shop/products/details/{productID}")
-    public ModelAndView productEdit(@PathVariable("productID") Integer productID) throws Exception {
+    @GetMapping("/shop/products/details/{id}")
+    public ModelAndView productEdit(@PathVariable("id") Integer id) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("/shop/products/details");
 
         ProductFormBean productFormBean = new ProductFormBean();
 
-        Product product = productDAO.findByProductID(productID);
+        Product product = productDAO.findById(id);
 
-            log.info(String.valueOf(productID));
+            log.info(String.valueOf(id));
 
 //        productService.getProductDetails( productFormBean, product);
 
-        productFormBean.setProductID(product.getProductID());
+        productFormBean.setId(product.getId());
         productFormBean.setProductName(product.getProductName());
         productFormBean.setProductPrice(product.getProductPrice());
         productFormBean.setProductStock(product.getProductStock());

@@ -56,11 +56,19 @@ loginLink.addEventListener('click', () =>{
 // If toggles cart menu with cart icon and closes search bar if open.
 
 let cartItem = document.querySelector('.cart-items-container');
+// let cartLogin = document.querySelector('#cart-loginLink');
 
 document.querySelector('#cart-btn').onclick = () =>{
     cartItem.classList.toggle('active');
     navbar.classList.remove('active');
     searchBar.classList.remove('active');
+}
+
+document.querySelector('#cart-loginLink').onclick = () =>{
+    cartItem.classList.remove('active');
+    navbar.classList.remove('active');
+    searchBar.classList.remove('active');
+    loginForm.classList.add('active');
 }
 
 /* nav bar ends */
@@ -128,18 +136,18 @@ function decreaseCount(a, b) {
 
 /* Code for changing active
 link on clicking */
-var btns =
-    $("#admin-bar .navbar-nav .nav-link");
-
-for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click",
-        function () {
-            var current = document
-                .getElementsByClassName("active");
-
-            current[0].className = current[0]
-                .className.replace(" active", "");
-
-            this.className += " active";
-        });
-}
+// var btns =
+//     $("#admin-bar .navbar-nav .nav-link");
+//
+// for (var i = 0; i < btns.length; i++) {
+//     btns[i].addEventListener("click",
+//         function () {
+//             var current = document
+//                 .getElementsByClassName("active");
+//
+//             current[0].className = current[0]
+//                 .className.replace(" active", "");
+//
+//             this.className += " active";
+//         });
+// }

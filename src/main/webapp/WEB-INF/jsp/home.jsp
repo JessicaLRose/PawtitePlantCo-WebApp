@@ -108,8 +108,8 @@
             <h3>Sempervivum Red Lion</h3>
             <div class="price">$7.99 <span>9.99</span></div>
             <form action="/products/addToCart" method="POST">
-                <input type="hidden" value="${user.getUserID()}" name="user_id" />
-                <input type="hidden" value="${product.getProductId()}" />
+                <input type="hidden" value="${user.getId()}" name="id" />
+                <input type="hidden" value="${product.getId()}" />
                 <input type="submit" value="Add to Cart" class="btn">
             </form>
         </div>

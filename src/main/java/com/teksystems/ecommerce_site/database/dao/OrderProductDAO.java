@@ -2,7 +2,7 @@ package com.teksystems.ecommerce_site.database.dao;
 
 import com.teksystems.ecommerce_site.database.entity.Order;
 import com.teksystems.ecommerce_site.database.entity.Product;
-import com.teksystems.ecommerce_site.database.entity.ProductOrder;
+import com.teksystems.ecommerce_site.database.entity.OrderProduct;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -11,10 +11,12 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public interface ProductOrderDAO extends JpaRepository<ProductOrder, Long> {
+public interface OrderProductDAO extends JpaRepository<OrderProduct, Long> {
 
 
-    public ProductOrder findProductOrderByOrderAndProduct(@Param("order") Order o, @Param("product")Product p);
+    public OrderProduct findProductOrderByOrderAndProduct(@Param("order") Order o, @Param("product")Product p);
+
+//    public OrderProduct savedCartItem(@Param("id") Integer id, @Param("product")Product product);
 
     // this is not necessarily in scope for the case study
     @Query(value= "select product_ID, quantity(*) as quant, prod.name from productorder po, products prod where po.product_ID = prod.product_ID group by product_ID",

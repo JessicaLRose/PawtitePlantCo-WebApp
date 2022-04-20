@@ -2,18 +2,14 @@ package com.teksystems.ecommerce_site.controller;
 
 import com.teksystems.ecommerce_site.database.dao.UserDAO;
 import com.teksystems.ecommerce_site.database.dao.UserRoleDAO;
-import com.teksystems.ecommerce_site.database.entity.Product;
 import com.teksystems.ecommerce_site.database.entity.User;
 import com.teksystems.ecommerce_site.database.entity.UserRole;
 import com.teksystems.ecommerce_site.formbean.AccountFormBean;
-import com.teksystems.ecommerce_site.formbean.ProductFormBean;
 import com.teksystems.ecommerce_site.formbean.RegistrationFormBean;
 import com.teksystems.ecommerce_site.security.AuthenticatedUserService;
 import com.teksystems.ecommerce_site.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -21,12 +17,9 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Slf4j
 @Controller
@@ -90,12 +83,12 @@ public class UserController {
 
         // create and save the user role object
         UserRole userRole = new UserRole();
-        userRole.setUserRoleID(newUser.getUserID());
+        userRole.setId(newUser.getId());
         userRole.setUserRole("USER");
 
         userRoleDAO.save(userRole);
 
-        session.setAttribute("user_id", newUser.getUserID()); // save the user_id in session
+        session.setAttribute("id", newUser.getId()); // save the user_id in session
 
         log.info(form.toString());
 
@@ -115,16 +108,16 @@ public class UserController {
 
 //    @GetMapping(value = "/user/account/{userID}")
 
-    @RequestMapping(value = "/user/account/{userID}")
-        public ModelAndView userAccount(@PathVariable("userID") Integer userID)  throws Exception {
+    @RequestMapping(value = "/user/account/{id}")
+        public ModelAndView userAccount(@PathVariable("id") Integer id)  throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("user/account");
 
         AccountFormBean accountFormBean = new AccountFormBean();
 
-            User user = userDAO.findByUserID(userID);
+            User user = userDAO.findById(id);
             log.info(String.valueOf(user));
-            accountFormBean.setUserID(user.getUserID());
+            accountFormBean.setId(user.getId());
             accountFormBean.setEmail(user.getEmail());
             accountFormBean.setFirstName(user.getFirstName());
             accountFormBean.setLastName(user.getLastName());
@@ -142,15 +135,14 @@ public class UserController {
         ModelAndView response = new ModelAndView();
         response.setViewName("user/account/");
 
-        User user = userDAO.findByUserID(accountFormBean.getUserID());
+        User user = userDAO.findById(accountFormBean.getId());
 
         userService.getUserDetails( accountFormBean, user);
 
         userDAO.save(user);
-//        Integer userID = user.getUserID();
-//        log.info(String.valueOf(userID));
-        response.setViewName("redirect:/user/account/"+user.getUserID());
-//        return new ModelAndView("redirect:/user/account/{userID}");
+
+        response.setViewName("redirect:/user/account/"+user.getId());
+
         return response;
     }
 

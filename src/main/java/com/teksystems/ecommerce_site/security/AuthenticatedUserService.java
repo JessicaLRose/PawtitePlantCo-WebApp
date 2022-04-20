@@ -21,7 +21,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 public class AuthenticatedUserService {
 
     @Autowired
-    private UserDAO userDao;
+    private UserDAO userDAO;
 
     public String getCurrentUsername() {
         SecurityContext context = SecurityContextHolder.getContext();
@@ -47,11 +47,10 @@ public class AuthenticatedUserService {
         return false;
     }
 
-    public static User getCurrentUser(Integer userID) {
+    public User getCurrentUser() {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpSession session = attr.getRequest().getSession(true); // true == allow create
         User user = (User) session.getAttribute("user");
-
         return user;
     }
 

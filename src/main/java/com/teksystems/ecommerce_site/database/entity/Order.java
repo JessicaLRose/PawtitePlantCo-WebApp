@@ -17,8 +17,8 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_ID")
-    private Integer orderID;
+    @Column(name = "id")
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="user_id") //pointing to primary from 'users' table
@@ -29,6 +29,9 @@ public class Order {
 
     @Column(name = "cardholder_name")
     private String cardholderName;
+
+    @Column(name = "payment_method")
+    private String paymentMethod;
 
     @Column(name = "cc_number")
     private String ccNumber;

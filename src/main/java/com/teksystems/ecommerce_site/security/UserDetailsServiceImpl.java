@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+
 @Component
 public class UserDetailsServiceImpl implements UserDetailsService {
 
@@ -37,7 +38,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("Username '" + username + "' not found in database");
         }
 
-        List<UserRole> userRoles = userRoleDAO.findByUserRoleID(user.getUserID());
+        List<UserRole> userRoles = userRoleDAO.findById(user.getId());
 
         // check the account status
         boolean accountIsEnabled = true;

@@ -18,7 +18,7 @@ public class ProductService {
     ProductDAO productDAO;
 
     public void getProductDetails(@Valid ProductFormBean productFormBean, Product product) {
-        product.setProductID(productFormBean.getProductID());
+        product.setId(productFormBean.getId());
         product.setProductName(productFormBean.getProductName());
         product.setProductPrice(productFormBean.getProductPrice());
         product.setProductStock(productFormBean.getProductStock());

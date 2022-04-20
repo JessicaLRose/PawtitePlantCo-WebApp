@@ -17,18 +17,14 @@ public class UserRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "roles_ID")
+    @Column(name = "id")
     private Integer id;
 
 //    @ManyToOne(fetch = FetchType.LAZY, optional = false)
 //    @JoinColumn(name = "user_ID", nullable = false)
-//    private User user;
 
-
-    @Column(name = "user_ID_FK", nullable = false)
-    private Integer userRoleID;
-
-
+    @Column(name = "user_ID", nullable = false)
+    private Integer userID;
 
     @Column(name = "role_name")
     private String userRole;

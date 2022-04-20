@@ -7,6 +7,7 @@ import lombok.ToString;
 import javax.persistence.Column;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Getter
@@ -15,13 +16,13 @@ import java.util.Date;
 public class ProductFormBean {
 
 
-    private Integer productID;
+    private Integer Id;
 
 
     private String productName;
 
 
-    private Double productPrice;
+    private BigDecimal productPrice;
 
 
     private Integer productStock;

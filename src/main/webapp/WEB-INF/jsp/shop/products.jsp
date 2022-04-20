@@ -109,11 +109,11 @@
 
                                     <jstlC:forEach items = "${allProducts}" var = "product">
 
-                                        <div class="modal fade" id="all${product.productID}" tabindex="-1" aria-labelledby="product-details" aria-hidden="true">
+                                        <div class="modal fade" id="all${product.id}" tabindex="-1" aria-labelledby="product-details-all" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-xl modal-md">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="product-details"></h5>
+                                                        <h5 class="modal-title" id="product-details-all"></h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
@@ -139,7 +139,7 @@
                                                                     </div>
                                                                     <br>
                                                                     <div>
-                                                                        <a href="/cart/addItem/${product.productID}" class="btn position-absolute bottom-0 end-0" class="cart-add"><i class="fa fa-shopping-cart"></i><span> Add to Cart</span></a>
+                                                                        <a href="/cart/addItem/${product.id}" class="btn position-absolute bottom-0 end-0" class="cart-add"><i class="fa fa-shopping-cart"></i><span> Add to Cart</span></a>
                                                                     </div>
                                                                 </div>
 
@@ -154,7 +154,7 @@
 
                                     <div class = "col-md-6 col-lg-4 col-xl-3 p-2 all">
                                         <div class = "collection-img position-relative">
-                                            <button type="button" data-bs-toggle="modal" data-bs-target="#all${product.productID}">
+                                            <button type="button" data-bs-toggle="modal" data-bs-target="#all${product.id}">
                                                 <img src ="${product.productImage}" class = "w-100" alt="plant 1">
                                                 <img src ="${product.productThumbnail}" class = "secondary-img w-100" alt="plant 1">
                                             </button>
@@ -176,11 +176,11 @@
                                 <div class = "collection-list mt-4 row gx-0 gy-3">
 
                                     <jstlC:forEach items = "${softProducts}" var = "product">
-                                        <div class="modal fade" id="soft${product.productID}" tabindex="-1" aria-labelledby="product-details" aria-hidden="true">
+                                        <div class="modal fade" id="soft${product.id}" tabindex="-1" aria-labelledby="product-details-soft" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-xl modal-md">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="product-details"></h5>
+                                                        <h5 class="modal-title" id="product-details-soft"></h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
@@ -220,7 +220,7 @@
                                         </div>
                                         <div class = "col-md-6 col-lg-4 col-xl-3 p-2 all">
                                             <div class = "collection-img position-relative">
-                                                <button type="button" data-bs-toggle="modal" data-bs-target="#soft${product.productID}">
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#soft${product.id}">
                                                     <img src ="${product.productImage}" class = "w-100" alt="plant 1">
                                                     <img src ="${product.productThumbnail}" class = "secondary-img w-100" alt="plant 1">
                                                 </button>
@@ -239,11 +239,11 @@
                                 <div class = "collection-list mt-4 row gx-0 gy-3">
 
                                     <jstlC:forEach items = "${hardyProducts}" var = "product">
-                                        <div class="modal fade" id="hardy${product.productID}" tabindex="-1" aria-labelledby="product-details" aria-hidden="true">
+                                        <div class="modal fade" id="hardy${product.id}" tabindex="-1" aria-labelledby="product-details-hardy" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-xl modal-md">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="product-details"></h5>
+                                                        <h5 class="modal-title" id="product-details-hardy"></h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
@@ -283,7 +283,7 @@
                                         </div>
                                         <div class = "col-md-6 col-lg-4 col-xl-3 p-2 all">
                                             <div class = "collection-img position-relative">
-                                                <button type="button" data-bs-toggle="modal" data-bs-target="#hardy${product.productID}" >
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#hardy${product.id}" >
                                                     <img src ="${product.productImage}" class = "w-100" alt="plant 1">
                                                     <img src ="${product.productThumbnail}" class = "secondary-img w-100" alt="plant 1">
                                                 </button>
@@ -304,11 +304,11 @@
 
                                     <jstlC:forEach items = "${accessoriesProducts}" var = "product">
                                     <%--  beginning form--%>
-                                        <div class="modal fade" id="accessories${product.productID}" tabindex="-1" aria-labelledby="product-details" aria-hidden="true">
+                                        <div class="modal fade" id="accessories${product.id}" tabindex="-1" aria-labelledby="product-details-acc" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-xl modal-md">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="product-details"></h5>
+                                                        <h5 class="modal-title" id="product-details-acc"></h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
@@ -334,7 +334,7 @@
                                                                     </div>
                                                                     <br>
                                                                     <div>
-                                                                        <a href="/cart/addItem/${product.productID}" class="btn position-absolute bottom-0 end-0" class="cart-add"><i class="fa fa-shopping-cart"></i><span> Add to Cart</span></a>
+                                                                        <a href="/cart/addItem/${product.id}" class="btn position-absolute bottom-0 end-0" class="cart-add"><i class="fa fa-shopping-cart"></i><span> Add to Cart</span></a>
                                                                     </div>
                                                                 </div>
 
@@ -349,7 +349,7 @@
                                         <%--Ending form--%>
                                         <div class = "col-md-6 col-lg-4 col-xl-3 p-2 all">
                                             <div class = "collection-img position-relative">
-                                                <button type="button" data-bs-toggle="modal" data-bs-target="#accessories${product.productID}">
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#accessories${product.id}">
                                                     <img src ="${product.productImage}" class = "w-100" alt="plant 1">
                                                     <img src ="${product.productThumbnail}" class = "secondary-img w-100" alt="plant 1">
                                                 </button>

@@ -2,6 +2,7 @@ package com.teksystems.ecommerce_site.database.entity;
 
 import lombok.*;
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
@@ -17,14 +18,14 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_ID")
-    private Integer productID;
+    @Column(name = "id")
+    private Integer id;
 
     @Column(name = "product_name")
     private String productName;
 
     @Column(name = "product_price")
-    private Double productPrice;
+    private BigDecimal productPrice;
 
     @Column(name = "product_stock")
     private Integer productStock;

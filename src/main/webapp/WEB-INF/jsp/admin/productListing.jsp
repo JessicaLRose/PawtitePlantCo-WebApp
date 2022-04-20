@@ -207,7 +207,7 @@
                 <a href="#" class="btn" id="close-delete-product" data-bs-dismiss="modal">Close</a>
 <%--                <button type="submit" class="btn" form="deleteProduct">Delete Product</button>--%>
 <%--                        <jstlC:forEach items="${selectedProduct}" var="selectedProduct">--%>
-                <form action="/admin/productlisting/delete" method="get" id="deleteProduct"><input type="hidden" name ="productID" id="finalDelete" value=""> <button type="submit" class="btn" form="deleteProduct">Delete Product</button></form>
+                <form action="/admin/productlisting/delete" method="get" id="deleteProduct"><input type="hidden" name ="id" id="finalDelete" value=""> <button type="submit" class="btn" form="deleteProduct">Delete Product</button></form>
 <%--                        </jstlC:forEach>--%>
 <%--                <a href="/admin/productlisting/delete${product.productID}" class="btn" form="deleteProduct" id="edit-delete-product" >Delete Product</a>--%>
             </div>
@@ -256,7 +256,7 @@
             <jstlC:forEach items = "${allProducts}" var = "product">
             <tr>
 
-                <td>${product.productID}</td>
+                <td>${product.id}</td>
                 <td><img src ="${product.productImage}" alt="plant 1" id="show-prod-img"></td>
                 <td><img src ="${product.productThumbnail}" alt="plant 1" id="show-prod-thumb"></td>
                 <td>${product.productName}</td>
@@ -265,9 +265,9 @@
                 <td>$ ${product.productPrice}</td>
                 <td>${product.productStock}</td>
                 <td>
-                    <a href="/admin/productEdit/${product.productID}" class="edit" title="Edit" data-toggle="tooltip" data-placement="bottom"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="/admin/productEdit/${product.id}" class="edit" title="Edit" data-toggle="tooltip" data-placement="bottom"><i class="fa-solid fa-pen-to-square"></i></a>
 <%--                    <a href="/admin/productlisting/edit/${product.productID}" class="edit" title="Edit" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="${product.productID}"><i class="fa-solid fa-pen-to-square"></i></a>--%>
-                    <a href="/admin/productlisting/delete/${product.productID}" class="delete" title="Delete" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-whatever="${product.productID}"><i class="fa-solid fa-circle-minus"></i></a>
+                    <a href="/admin/productlisting/delete/${product.id}" class="delete" title="Delete" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-whatever="${product.id}"><i class="fa-solid fa-circle-minus"></i></a>
 <%--                    <a href="#" class="delete" title="Delete" data-toggle="tooltip" data-placement="bottom" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa-solid fa-circle-minus"></i></a>--%>
                 </td>
             </tr>

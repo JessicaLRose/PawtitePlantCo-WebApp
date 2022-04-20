@@ -13,11 +13,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Date;
 
-
+@Component
 @Service
 public class UserService {
 
@@ -25,15 +27,24 @@ public class UserService {
     UserDAO userDAO;
 
     public void getUserDetails(@Valid AccountFormBean accountFormBean, User user) {
-        user.setUserID(accountFormBean.getUserID());
+        user.setId(accountFormBean.getId());
         user.setFirstName(accountFormBean.getFirstName());
         user.setLastName(accountFormBean.getLastName());
         user.setEmail(accountFormBean.getEmail());
         user.setPhone(accountFormBean.getPhone());
         user.setCreateDate(new Date());
     }
-
-
-
+//    public boolean isAuthenticated(HttpSession session, @RequestParam String email, @RequestParam String password) {
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        String loggedUserEmail = authentication.getName();
+//
+//        User user = userDAO.findByEmail(loggedUserEmail);
+//
+//        if (user != null) {
+//            authentication.isAuthenticated();
+//        }
+//            return false;
+//
+//    }
 
 }
