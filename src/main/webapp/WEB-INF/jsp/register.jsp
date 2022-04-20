@@ -1,7 +1,7 @@
 
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 
-<jsp:include page="../include/head.jsp"/>
+<jsp:include page="include/head.jsp"/>
 
 <link href="<c:url value="../pub/css/navbarMain.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="../pub/css/registration.css"/>" rel="stylesheet" type="text/css"/>
@@ -10,7 +10,7 @@
 
 <body>
 
-<jsp:include page="../include/navbarMain.jsp"/>
+<jsp:include page="include/navbarMain.jsp"/>
 
 
 <section class="section registrationform">
@@ -19,7 +19,7 @@
             <div class="card">
                 <div class="card-body shadow-lg">
                     <h1 class="card-title">Registration Form</h1>
-                    <form class="needs-validation" action="/user/registerSubmit" method="POST" novalidate>
+                    <form class="needs-validation" action="/registerSubmit" method="POST" novalidate>
                         <div class="row ">
                             <div class="col-8 col-sm-8 mx-auto my-auto">
 
@@ -88,4 +88,4 @@
     </div>
 </section>
 
-<jsp:include page="../include/footer.jsp" />
+<jsp:include page="include/footer.jsp" />

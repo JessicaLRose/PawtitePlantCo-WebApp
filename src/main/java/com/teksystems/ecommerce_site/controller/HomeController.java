@@ -5,6 +5,7 @@ import com.teksystems.ecommerce_site.database.entity.User;
 import com.teksystems.ecommerce_site.formbean.RegistrationFormBean;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,19 +22,23 @@ public class HomeController {
     private UserDAO userDAO;
 
     @RequestMapping(value = {"/" ,"/home"}, method = RequestMethod.GET)
-    public ModelAndView create(HttpSession session) throws Exception {
+    public ModelAndView home() throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("home");
 
 //        RegistrationFormBean form = new RegistrationFormBean();
 //        response.addObject("form", form);
-        Integer id = (Integer) session.getAttribute("user_id");
-        User u = userDAO.findByUserID(id);
-
-        if (u != null)log.info(u.toString());
-        u = userDAO.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
-        if (u != null)log.info(u.toString());
-        response.addObject("user", u);
+//        In the parantheses, is the input of the method, the paramater
+//        you can use Http session here manually
+//        Integer id = (Integer) session.getAttribute("user_id");
+//        User u = userDAO.findByUserID(id);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String loggedUserEmail = authentication.getName();
+        User u = userDAO.findByEmail(loggedUserEmail);
+        if(u!= null){
+            log.info(u.toString());
+            response.addObject("user", u);
+        }
         return response;
     }
 }

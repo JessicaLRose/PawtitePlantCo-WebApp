@@ -4,6 +4,8 @@ import com.teksystems.ecommerce_site.database.dao.ProductDAO;
 
 import com.teksystems.ecommerce_site.database.entity.Product;
 
+import com.teksystems.ecommerce_site.database.entity.User;
+import com.teksystems.ecommerce_site.formbean.AccountFormBean;
 import com.teksystems.ecommerce_site.formbean.ProductFormBean;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +52,6 @@ public class ProductController {
         System.out.println(hardyProducts);
         System.out.println(accessoriesProducts);
 
-
         return response;
     }
 
@@ -62,9 +63,8 @@ public class ProductController {
         ProductFormBean productFormBean = new ProductFormBean();
 
         Product product = productDAO.findByProductID(productID);
-//            Integer selectedProductID = (Integer) .getAttribute("productID");
 
-        System.out.println(product);
+            log.info(String.valueOf(productID));
 
 //        productService.getProductDetails( productFormBean, product);
 
@@ -76,14 +76,13 @@ public class ProductController {
         productFormBean.setProductThumbnail(product.getProductThumbnail());
         productFormBean.setProductDescription(product.getProductDescription());
 
-
         // in this case we are adding the RegisterFormBean to the model
-        response.addObject("productFormBean", productFormBean);
+        response.addObject("product", productFormBean);
+
+        log.info(String.valueOf(productFormBean));
 
         return response;
     }
-
-
 
 //    @RequestMapping(value = "/shop/products/view", method = {RequestMethod.GET})
 //    public ModelAndView product(@Valid ProductFormBean productFormBean) throws Exception {

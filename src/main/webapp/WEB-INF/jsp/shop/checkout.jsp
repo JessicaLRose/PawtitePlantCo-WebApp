@@ -113,10 +113,6 @@
                 <span>Tax</span> <span>$ <span id="tax">0.10</span></span>
             </div>
 
-            <div class="shipping">
-                <span>Shipping</span> <span>$ <span id="shipping">0.00</span></span>
-            </div>
-
             <div class="total fs-2 fw-bold">
                 <span>Order Total</span> <span>$ <span id="total">2.15</span></span>
             </div>

@@ -20,8 +20,9 @@ public class Order {
     @Column(name = "order_ID")
     private Integer orderID;
 
-    @Column(name = "customer_ID")
-    private Integer customerID;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id") //pointing to primary from 'users' table
+    private User user;
 
     @Column(name = "cart_status")
     private String cartStatus;

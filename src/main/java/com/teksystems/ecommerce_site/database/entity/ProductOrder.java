@@ -14,28 +14,19 @@ import javax.persistence.*;
 @Table(name = "productorder")
 public class ProductOrder {
 
-//    @Id
-//    @ManyToOne
-//    @JoinColumn(name = "product_ID")
-//    private Product productID;
-//
-//    @Id
-//    @ManyToOne
-//    @JoinColumn(name = "order_ID")
-//    private Order orderID;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "productorder_ID")
-    private Integer productOrderID;
+    @Column(name = "id")
+    private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "product_ID")
-    private Product productID;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
 
-    @ManyToOne
-    @JoinColumn(name = "order_ID")
-    private Order orderID;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "order_id", nullable = false)
+    private Order order;
 
     @Column(name = "quantity")
     private Integer quantity;

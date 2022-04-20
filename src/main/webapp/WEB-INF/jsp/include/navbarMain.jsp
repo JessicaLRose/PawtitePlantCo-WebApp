@@ -108,7 +108,7 @@
             <input type="checkbox" id="remember">
             <label for="remember">remember me</label>
             <p>forget password? <a href="#" class="login-extras">click here</a></p>
-            <p>don't have an account? <a href="/user/register" class="login-extras">register now</a></p>
+            <p>don't have an account? <a href="/register" class="login-extras">register now</a></p>
 
         </form>
     </sec:authorize>

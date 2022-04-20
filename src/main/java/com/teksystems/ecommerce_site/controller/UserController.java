@@ -44,10 +44,10 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @RequestMapping(value = "user/register", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView create() throws Exception {
         ModelAndView response = new ModelAndView();
-        response.setViewName("user/register");
+        response.setViewName("register");
 
         RegistrationFormBean form = new RegistrationFormBean();
         response.addObject("form", form);
@@ -55,7 +55,7 @@ public class UserController {
         return response;
     }
 
-    @RequestMapping(value = "/user/registerSubmit", method = { RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = "/registerSubmit", method = { RequestMethod.POST, RequestMethod.GET})
     public ModelAndView registerSubmit(@Valid RegistrationFormBean form, BindingResult bindingResult, HttpSession session) throws Exception {
         ModelAndView response = new ModelAndView();
 
