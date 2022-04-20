@@ -134,7 +134,7 @@
             <h3>Welcome<br><span><jstlC:out value="${user.getFirstName()}" /></span></h3>
 
             <a href="/admin/productlisting" class="btn" id="admin-btn">Less gooooo</a>
-            <a href="/logout" class="btn" id="logout-profile">Logout</a>
+            <a href="/logout" class="btn" id="logout-admin">Logout</a>
 
             <br>
         </form>

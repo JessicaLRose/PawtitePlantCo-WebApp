@@ -3,6 +3,7 @@ html, body{
     background-color: var(--actual-white);
 }
 
+
 .btn:hover{
     letter-spacing: 0;
 }
@@ -199,15 +200,6 @@ input:focus {
     font-size: 1.5rem;
 }
 
-
-.payment-method {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin-bottom: 9rem;
-
-}
-
 .payment-method .method {
     border-radius: 1rem;
     width: 50%;
@@ -220,32 +212,69 @@ input:focus {
     background-color: var(--horizon);
 }
 
-.payment-method .selected {
-    border: .5px solid var(--soft-amber);
-    box-shadow: var(--soft-amber) 0px 2px 4px 0px, var(--soft-amber) 0px 2px 16px 0px;
+.method span{
+    font-size: 1.5em;
 }
 
-.payment-method .method i { font-size: 3rem; }
+.fa-paypal {
+    font-size: 2.8rem;
+}
 
 .fa-apple-pay, .fa-google-pay{
-    font-size: 3rem !important;
+    font-size: 3.5rem !important;
 }
 
 .fa-credit-card{
-    font-size: 2.5rem !important;
+    font-size: 2rem !important;
 }
 
-.payment-method .method .checkmark {
+.fa-credit-card span{
+    font-size: 2rem !important;
+    white-space: nowrap;
+}
+
+.payment-method {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 9rem;
+    justify-content: space-around;
+
+
+}
+
+.form-control:focus-within {
+    color: var(--button-color);
+}
+
+
+input[type="radio"] {
+    opacity: 0;
+    margin: 0;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+    /* position: fixed; */
+    width: 0;
+}
+
+
+.method .fa-circle-check{
+    font-size:2.5rem;
     margin-left: auto;
-    color: var(--highlight-color);
 }
 
-.payment-method .method .fill { color: var(--button-color);}
+.method input[type="radio"]:checked + label {
+    color: var(--button-color);
+
+}
+
 .payment-form input {
     padding: 1.5rem 2rem;
     font-size: 2rem;
     letter-spacing: 2px;
 }
+
 
 .cardholder-name,
 .card-number { margin-bottom: 20px; }
@@ -268,7 +297,7 @@ input:focus {
 
 .expire-date .input-flex input { text-align: center; }
 
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
 
     /**
      * checkout section responsive
@@ -299,6 +328,10 @@ input:focus {
 
     .discount-token { border-top: none; }
 
+    .fa-credit-card{
+        font-size: 2.0rem !important;
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -310,6 +343,10 @@ input:focus {
 
     .wrapper-flex { gap: 20px; }
 
+    .payment-method,
+    .input-flex {
+        gap: 20px;
+    }
 }
 
 @media (max-width: 567px) {

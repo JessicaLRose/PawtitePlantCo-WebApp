@@ -13,13 +13,16 @@ import java.util.Map;
 @Repository
 public interface OrderProductDAO extends JpaRepository<OrderProduct, Long> {
 
+    public OrderProduct findById(@Param("id") Integer id);
 
-    public OrderProduct findProductOrderByOrderAndProduct(@Param("order") Order o, @Param("product")Product p);
+    public List<OrderProduct> findByOrder(@Param("order") Order order);
+
+    public OrderProduct findProductOrderByOrderAndProduct(@Param("order") Order order, @Param("product")Product product);
 
 //    public OrderProduct savedCartItem(@Param("id") Integer id, @Param("product")Product product);
 
     // this is not necessarily in scope for the case study
-    @Query(value= "select product_ID, quantity(*) as quant, prod.name from productorder po, products prod where po.product_ID = prod.product_ID group by product_ID",
+    @Query(value= "select id, quantity(*) as quant, prod.name from productorder po, products prod where po.productID = prod.productID group by productID",
             nativeQuery = true)
     List<Map<String,Object>> getProductNameAndOrderCount();
 

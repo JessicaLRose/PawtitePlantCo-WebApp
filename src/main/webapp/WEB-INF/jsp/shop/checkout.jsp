@@ -130,34 +130,42 @@
 
         <div class="payment-form">
 
-            <div class="payment-method">
+            <div class="container payment-method input-flex">
 
-                <button class="method selected">
-                    <i class="fa-solid fa-credit-card" name="card"></i>
-                    <span>Credit Card</span>
-                    <ion-icon class="checkmark fill" name="checkmark-circle"></ion-icon>
-                    <i class="fa-solid fa-circle-check checkmark fill" name="checkmark-circle"></i>
-                </button>
+                <div class="row row-cols-2 row-cols-sm-4 justify-content-evenly">
+                    <div>
+                    <label class="form-control method" for="cc">
+                        <i class="fa-solid fa-credit-card" name="card"></i>
+                        <span>Credit Card</span>
+                        <input type="radio" id="cc" value="creditcard" checked="checked" />
+                        <i class="fa-regular fa-circle-check checkmark" name="checkmark-circle-outline"></i>
+                    </label>
+                    </div>
 
-                <button class="method">
-                    <i class="fa-brands fa-paypal" name="logo-paypal"></i>
-                    <span>PayPal</span>
-                    <i class="fa-regular fa-circle-check checkmark" name="checkmark-circle-outline"></i>
-                </button>
+                    <label class="form-control method" for="paypal">
+                        <i class="fa-brands fa-paypal"></i>
+                        <span>Paypal</span>
+                        <input type="radio" id="paypal" value="PayPal" />
+                        <i class="fa-regular fa-circle-check checkmark" ></i>
+                    </label>
 
-                <button class="method">
-                    <i class="fa-brands fa-apple-pay" name="logo-apple"></i>
-                    <span>Apple Pay</span>
-                    <i class="fa-regular fa-circle-check checkmark" name="checkmark-circle-outline"></i>
-                </button>
+                    <label class="form-control method"for="applepay">
+                        <i class="fa-brands fa-apple-pay" ></i>
+                        <span></span>
+                        <input type="radio" id="applepay" value="ApplePay" />
+                        <i class="fa-regular fa-circle-check checkmark" ></i>
+                    </label>
 
-                <button class="method">
-                    <i class="fa-brands fa-google-pay" name="logo-google"></i>
-                    <span>Google Pay</span>
-                    <i class="fa-regular fa-circle-check checkmark" name="checkmark-circle-outline"></i>
-                </button>
+                    <label class="form-control method"for="googlepay">
+                        <i class="fa-brands fa-google-pay" name="logo-google"></i>
+                        <span></span>
+                        <input type="radio" id="googlepay" value="GooglePay"/>
+                        <i class="fa-regular fa-circle-check checkmark" ></i>
+                    </label>
+            </div>
 
             </div>
+
 
             <form action="#">
 

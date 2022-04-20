@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Slf4j
 @Controller
 public class BasketController {
@@ -46,15 +48,20 @@ public class BasketController {
 //        //if cart not null, just add new cartline with that product quantity + 1
 //        //
 //
-    @RequestMapping(value = "/shop/products/addItem/{id}") // ex: /cart/addItem/3 (pointing to product with id of 3)
+    @RequestMapping(value = "/cart/addItem/{id}") // ex: /cart/addItem/3 (pointing to product with id of 3)
     public ModelAndView addToCart(@PathVariable("id") Integer id) {
         ModelAndView response = new ModelAndView();
-        response.setViewName("redirect:shop/products/");
+        response.setViewName("redirect:/shop/checkout/");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // ask spring security for current user
         String loggedUserEmail = authentication.getName(); // get current users email
         User user = userDAO.findByEmail(loggedUserEmail); // find user from db with this email
 
-        Order order = orderDAO.findOrderByUserAndCartStatus(user, "PENDING"); // find current users' cart
+
+//        List<Order> orderList = orderDAO.findAllByUser(user);
+//        System.out.println(orderList);
+        Order order = orderDAO.findByUserIdAndCartStatus(user.getId(), "PENDING"); // find current users' cart
+//        Order order = orders.get(0);
+
         if(order == null){ // if there are no pending orders for this user aka: no active cart
             order = new Order(); // create a new one
             order.setCartStatus("PENDING");
