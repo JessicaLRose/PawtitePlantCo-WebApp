@@ -22,6 +22,8 @@
 
         <h2 class="section-heading">Order Summary</h2>
         <div class="cart-item-box">
+
+            <jstlC:forEach items = "${allProducts}" var = "product">
             <div class="product-card">
                 <div class="card">
                     <div class="img-box">
@@ -39,42 +41,18 @@
                                 </div>
                             </div>
                             <div class="price">
-                                $ <span id="price">1.25</span>
+                                 <span id="price">$ 1.25</span>
                             </div>
                         </div>
                     </div>
-
-                    <span class="fas fa-times" id="remove-product"></span>
-
+                    <span class="remove-product-btn">
+                    <a href="#" class="fas fa-times" id="remove-product"></a>
+                    </span>
                 </div>
             </div>
+            </jstlC:forEach>
 
-            <div class="product-card">
-                <div class="card">
-                    <div class="img-box">
-                        <img src="../../../pub/img/cart-plant-6.png" alt="plant 6" class="product-img">
-                    </div>
-                    <div class="detail">
-                        <h3 class="product-name">Plant 1Plant 1Plant 1Plant 1Plant 1</h3>
-                        <div class="wrapper">
-                            <div class="product-qty">
 
-                                <div class="counter">
-                                    <span class="down" onClick='decreaseCount(event, this)'><i class="fa-solid fa-circle-minus"></i></span>
-                                    <input type="text" value="1">
-                                    <span class="up" onClick='increaseCount(event, this)'><i class="fa-solid fa-circle-plus"></i></span>
-                                </div>
-                            </div>
-                            <div class="price">
-                                $ <span id="price">1.25</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <span class="fas fa-times" id="remove-product"></span>
-
-                </div>
-            </div>
 
         </div>
     </section>
@@ -99,6 +77,7 @@
             </div>
 
         </div>
+
 
         <!-- discount end -->
         <!-- total section -->
@@ -130,17 +109,18 @@
 
         <div class="payment-form">
 
-            <div class="container payment-method input-flex">
+            <div class="payment-method">
 
-                <div class="row row-cols-2 row-cols-sm-4 justify-content-evenly">
-                    <div>
+
+
                     <label class="form-control method" for="cc">
-                        <i class="fa-solid fa-credit-card" name="card"></i>
+                        <i class="fa-solid fa-credit-card"></i>
                         <span>Credit Card</span>
                         <input type="radio" id="cc" value="creditcard" checked="checked" />
-                        <i class="fa-regular fa-circle-check checkmark" name="checkmark-circle-outline"></i>
+                        <i class="fa-regular fa-circle-check checkmark" ></i>
                     </label>
-                    </div>
+
+
 
                     <label class="form-control method" for="paypal">
                         <i class="fa-brands fa-paypal"></i>
@@ -149,20 +129,23 @@
                         <i class="fa-regular fa-circle-check checkmark" ></i>
                     </label>
 
-                    <label class="form-control method"for="applepay">
+
+                    <label class="form-control method" for="applepay">
                         <i class="fa-brands fa-apple-pay" ></i>
                         <span></span>
                         <input type="radio" id="applepay" value="ApplePay" />
                         <i class="fa-regular fa-circle-check checkmark" ></i>
                     </label>
 
-                    <label class="form-control method"for="googlepay">
-                        <i class="fa-brands fa-google-pay" name="logo-google"></i>
+
+                    <label class="form-control method" for="googlepay">
+                        <i class="fa-brands fa-google-pay" ></i>
                         <span></span>
                         <input type="radio" id="googlepay" value="GooglePay"/>
                         <i class="fa-regular fa-circle-check checkmark" ></i>
                     </label>
-            </div>
+
+
 
             </div>
 
@@ -205,6 +188,16 @@
             </form>
 
         </div>
+
+        <div>
+            <label class="terms-checkbox" for="terms">
+            By checking this box, you are agreeing to our terms of service.
+            <input type="checkbox" id="terms" >
+            <span class="check"></span>
+            </label>
+        </div>
+
+        <br>
 
         <button class="btn">
             <b>Place your Order</b>

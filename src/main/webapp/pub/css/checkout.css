@@ -3,7 +3,6 @@ html, body{
     background-color: var(--actual-white);
 }
 
-
 .btn:hover{
     letter-spacing: 0;
 }
@@ -38,6 +37,9 @@ html, body{
 
 .cart-section {
     padding: 5rem 5rem;
+    display: flex;
+    flex-direction:  column;
+    justify-content: flex-end;
 }
 
 .section-heading{
@@ -56,9 +58,16 @@ html, body{
     gap: 5rem;
     background-color: var(--actual-white);
     padding: 2rem;
-    border: 0;
-    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+    border: solid 1px var(--smoke);
 }
+
+.card:hover {
+
+    transform: scale(1.01);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+
 
 .card .product-img {
     height: 10rem;
@@ -109,11 +118,21 @@ html, body{
 
 }
 
-.card .fa-times{
+.remove-product-btn {
     position: absolute;
     top:1rem; right: 1.5rem;
-    font-size: 2rem;
     cursor: pointer;
+    color: var(--actual-white);
+}
+
+.remove-product-btn:hover {
+    color: var(--soft-amber);
+}
+
+.fa-times{
+
+    font-size: 2rem;
+
     color: var(--main-text);
 }
 
@@ -206,7 +225,7 @@ input:focus {
     display: flex;
     align-items: center;
     padding: 15px 30px;
-    gap: 20px;
+    /*gap: 20px;*/
     cursor: pointer;
     border: 1px solid var(--smoke);
     background-color: var(--horizon);
@@ -216,8 +235,15 @@ input:focus {
     font-size: 1.5em;
 }
 
+.method:hover{
+    transform: scale(1.01);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    color: var(--button-color);
+}
+
 .fa-paypal {
     font-size: 2.8rem;
+    margin-right: 1rem;
 }
 
 .fa-apple-pay, .fa-google-pay{
@@ -226,20 +252,18 @@ input:focus {
 
 .fa-credit-card{
     font-size: 2rem !important;
+    margin-right: 1rem;
 }
 
 .fa-credit-card span{
     font-size: 2rem !important;
-    white-space: nowrap;
+
 }
 
 .payment-method {
     display: flex;
-    align-items: center;
     gap: 2rem;
     margin-bottom: 9rem;
-    justify-content: space-around;
-
 
 }
 
@@ -264,9 +288,9 @@ input[type="radio"] {
     margin-left: auto;
 }
 
+
 .method input[type="radio"]:checked + label {
     color: var(--button-color);
-
 }
 
 .payment-form input {
@@ -297,7 +321,69 @@ input[type="radio"] {
 
 .expire-date .input-flex input { text-align: center; }
 
-@media (max-width: 1100px) {
+
+
+.terms-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+/* Hide the browser's default checkbox */
+.terms-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.check {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: var(--smoke);
+}
+
+/* On mouse-over, add a grey background color */
+.terms-checkbox input:hover ~ .check {
+    background-color: var(--highlight-color);
+}
+
+/* When the checkbox is checked, add a blue background */
+.terms-checkbox input:checked ~ .check {
+    background-color: var(--lochinvar);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.check:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.terms-checkbox input:checked ~ .check:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.terms-checkbox .check:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+@media (max-width: 1200px) {
 
     /**
      * checkout section responsive
@@ -314,56 +400,56 @@ input[type="radio"] {
      * cart section responsive
      */
 
-    .cart {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        width: 100%;
-    }
-
-    .cart .wrapper { margin-top: auto; }
-
-    .cart .cart-item-box {
-        margin-bottom: 0;
-    }
 
     .discount-token { border-top: none; }
 
-    .fa-credit-card{
-        font-size: 2.0rem !important;
-    }
 
 }
 
 @media (max-width: 768px) {
 
-    :root { --px: 40px; }
-
-    .cart { grid-template-columns: 1fr; }
-
-
     .wrapper-flex { gap: 20px; }
+
+    .payment-method .method {
+
+        width: 50%;
+        padding: 10px 15px !important;
+
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .payment-method .method {
+
+        width: 100%;
+        padding: 10px 15px !important;
+    }
 
     .payment-method,
     .input-flex {
+        flex-direction: column;
         gap: 20px;
+        padding: 15px 30px;
     }
+
 }
 
 @media (max-width: 567px) {
 
     :root { --px: 20px; }
 
-    .payment-method,
-    .input-flex {
-        flex-direction: column;
-        gap: 20px;
-    }
+    .card{
 
+        flex-direction: column !important;
+    }
     .payment-method .method { width: 100%; }
 
     .input-flex .expire-date,
     .input-flex .cvv { width: 100%; }
 
     .expire-date .input-flex { flex-direction: row; }
+
 
 }
