@@ -20,29 +20,29 @@
     </h1>
 
     <section class="cart-section">
-
         <h2 class="section-heading">Order Summary</h2>
+
         <div class="cart-item-box">
 
-            <jstlC:forEach items = "${savedCartItem}" var = "cartLine">
+            <jstlC:forEach items = "${cartProducts}" var = "cartList">
             <div class="product-card">
                 <div class="card">
                     <div class="img-box">
-                        <img src="${cartLine.productImage}" alt="" class="product-img">
+                        <img src="${cartList.product_image}" alt="" class="product-img">
                     </div>
                     <div class="detail">
-                        <h3 class="product-name">${cartLine.productName}</h3>
+                        <h3 class="product-name">${cartList.product_name}</h3>
                         <div class="wrapper">
                             <div class="product-qty">
 
                                 <div class="counter">
                                     <span class="down" onClick='decreaseCount(event, this)'><i class="fa-solid fa-circle-minus"></i></span>
-                                    <input type="text" id="prod-quant" name="quantity" value="${cartLine.quantity}">
+                                    <input type="text" id="prod-quant" name="quantity" value="${cartList.quantity}">
                                     <span class="up" onClick='increaseCount(event, this)'><i class="fa-solid fa-circle-plus"></i></span>
                                 </div>
                             </div>
                             <div class="price">
-                                 <span id="price">$ ${cartLine.productPrice}</span>
+                                 <span id="price">$ ${cartList.total}</span>
                             </div>
                         </div>
                     </div>
@@ -53,10 +53,11 @@
             </div>
             </jstlC:forEach>
 
-            ${savedCartList}
+
 
 
         </div>
+
     </section>
 
     <!-- cart end -->

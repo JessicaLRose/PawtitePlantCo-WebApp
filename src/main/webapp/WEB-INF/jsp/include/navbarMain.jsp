@@ -46,48 +46,53 @@
 
         <h3>basket</h3>
         <hr>
+        <sec:authorize access="!isAuthenticated()">
         <h5>Log in to see items you may have added previously</h5>
         <div class="d-flex flex-row basket-buttons">
             <a href="#" class="btn" id="cart-loginLink">Login</a>
             <a href="/register" class="btn">Create Account</a>
         </div>
-        <%--        <div class="cart-item">--%>
-        <%--            <span class="fas fa-times"></span>--%>
-        <%--            <img src="../pub/img/cart-plant-7.png" alt="">--%>
+        </sec:authorize>
 
-        <%--            <div class="content">--%>
-        <%--                <h3>cart item 01</h3>--%>
-        <%--                <div class="price">$15.99/-</div>--%>
-        <%--            </div>--%>
-        <%--        </div>--%>
-        <%--        <div class="cart-item">--%>
-        <%--            <span class="fas fa-times"></span>--%>
-        <%--            <img src="../pub/img/cart-plant-8.png" alt="">--%>
+        <sec:authorize access="isAuthenticated()">
+                <div class="cart-item">
+                    <span class="fas fa-times"></span>
+                    <img src="../pub/img/cart-plant-7.png" alt="">
 
-        <%--            <div class="content">--%>
-        <%--                <h3>cart item 02</h3>--%>
-        <%--                <div class="price">$15.99/-</div>--%>
-        <%--            </div>--%>
-        <%--        </div>--%>
-        <%--        <div class="cart-item">--%>
-        <%--            <span class="fas fa-times"></span>--%>
-        <%--            <img src="../pub/img/cart-plant-9.png" alt="">--%>
+                    <div class="content">
+                        <h3>cart item 01</h3>
+                        <div class="price">$15.99/-</div>
+                    </div>
+                </div>
+                <div class="cart-item">
+                    <span class="fas fa-times"></span>
+                    <img src="../pub/img/cart-plant-8.png" alt="">
 
-        <%--            <div class="content">--%>
-        <%--                <h3>cart item 03</h3>--%>
-        <%--                <div class="price">$15.99/-</div>--%>
-        <%--            </div>--%>
-        <%--        </div>--%>
-        <%--        <div class="cart-item">--%>
-        <%--            <span class="fas fa-times"></span>--%>
-        <%--            <img src="../pub/img/cart-plant-3.png" alt="">--%>
+                    <div class="content">
+                        <h3>cart item 02</h3>
+                        <div class="price">$15.99/-</div>
+                    </div>
+                </div>
+                <div class="cart-item">
+                    <span class="fas fa-times"></span>
+                    <img src="../pub/img/cart-plant-9.png" alt="">
 
-        <%--            <div class="content">--%>
-        <%--                <h3>cart item 04</h3>--%>
-        <%--                <div class="price">$15.99/-</div>--%>
-        <%--            </div>--%>
-        <%--        </div>--%>
-        <%--        <a href="#" class="btn">checkout now</a>--%>
+                    <div class="content">
+                        <h3>cart item 03</h3>
+                        <div class="price">$15.99/-</div>
+                    </div>
+                </div>
+                <div class="cart-item">
+                    <span class="fas fa-times"></span>
+                    <img src="../pub/img/cart-plant-3.png" alt="">
+
+                    <div class="content">
+                        <h3>cart item 04</h3>
+                        <div class="price">$15.99/-</div>
+                    </div>
+                </div>
+                <a href="#" class="btn">checkout now</a>
+            </sec:authorize>
     </div>
 
 </header>

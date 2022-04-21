@@ -46,8 +46,10 @@ public class Product {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate = new Date();
 
-//    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY,
-//            cascade = CascadeType.ALL)
-//    private Set<OrderProduct> orderProducts;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private Set<OrderProduct> orderProduct;
 
 }

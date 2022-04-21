@@ -17,9 +17,18 @@ public interface OrderProductDAO extends JpaRepository<OrderProduct, Long> {
 
     public List<OrderProduct> findByOrders(@Param("order") Orders orders);
 
-    public OrderProduct findProductOrderByOrdersAndProduct(@Param("order") Orders orders, @Param("product")Product product);
+    public OrderProduct findProductOrderByOrdersAndProduct(@Param("orders") Orders orders, @Param("product")Product product);
 
-//    public OrderProduct savedCartItem(@Param("id") Integer id, @Param("product")Product product);
+    @Query(value=" SELECT p.id AS product_id, p.product_name, p.product_price, p.product_image, op.quantity, o.id AS order_id, (product_price * quantity) AS total " +
+            " FROM product p, orderproduct op, orders o " +
+            " WHERE p.id = op.product_id AND o.id = op.order_id " +
+            " AND o.user_id = :userId AND cart_status = :cartStatus", nativeQuery = true)
+    List<Map<String,Object>> getCartProducts(@Param("userId") Integer userId, @Param("cartStatus") String cartStatus);
+
+
+
+
+
 
     // this is not necessarily in scope for the case study
     @Query(value=" select product_id, count(*) as cnt, p.name from order_products op, products p where op.product_id = p.id group by product_id",

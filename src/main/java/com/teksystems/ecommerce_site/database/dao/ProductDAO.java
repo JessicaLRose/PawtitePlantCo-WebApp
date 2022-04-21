@@ -18,11 +18,4 @@ public interface ProductDAO extends JpaRepository<Product, Long> {
 
         public List<Product> findProductsByProductCategory(String productCategory);
 
-        @Query(value =  "SELECT p FROM Product p, OrderProduct op, Orders o WHERE p = op.product AND o = op.orders AND o.user = :user AND o.cartStatus = 'PENDING'")
-                public List<Product> findProductsByProductIdAndOrdersIdAndCartStatus(@Param("user") User user);
-
-
-
-//        @Query(value = "SELECT * FROM orders WHERE user_id = :userId AND cart_status = :cartStatus", nativeQuery = true)
-//        public Orders findByUserIdAndCartStatus(@Param("userId") Integer userId, @Param("cartStatus") String cartStatus);
         }
