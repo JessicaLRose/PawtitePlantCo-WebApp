@@ -139,7 +139,7 @@
                                                                     </div>
                                                                     <br>
                                                                     <div>
-                                                                        <a href="/cart/addItem/${product.id}" class="btn position-absolute bottom-0 end-0" class="cart-add"><i class="fa fa-shopping-cart"></i><span> Add to Cart</span></a>
+                                                                        <a href="/cart/addItem/${product.id}" class="btn position-absolute bottom-0 end-0" id="cart-add"><i class="fa fa-shopping-cart"></i><span> Add to Cart</span></a>
                                                                     </div>
                                                                 </div>
 

@@ -4,7 +4,7 @@ import com.teksystems.ecommerce_site.database.dao.OrderDAO;
 import com.teksystems.ecommerce_site.database.dao.ProductDAO;
 import com.teksystems.ecommerce_site.database.dao.OrderProductDAO;
 import com.teksystems.ecommerce_site.database.dao.UserDAO;
-import com.teksystems.ecommerce_site.database.entity.Order;
+import com.teksystems.ecommerce_site.database.entity.Orders;
 import com.teksystems.ecommerce_site.database.entity.Product;
 import com.teksystems.ecommerce_site.database.entity.OrderProduct;
 import com.teksystems.ecommerce_site.database.entity.User;
@@ -59,21 +59,21 @@ public class BasketController {
 
 //        List<Order> orderList = orderDAO.findAllByUser(user);
 //        System.out.println(orderList);
-        Order order = orderDAO.findByUserIdAndCartStatus(user.getId(), "PENDING"); // find current users' cart
+        Orders orders = orderDAO.findByUserIdAndCartStatus(user.getId(), "PENDING"); // find current users' cart
 //        Order order = orders.get(0);
 
-        if(order == null){ // if there are no pending orders for this user aka: no active cart
-            order = new Order(); // create a new one
-            order.setCartStatus("PENDING");
-            order.setUser(user); // assign this cart to the current user
-            order = orderDAO.save(order); // save to db and reassign "order" variable to DB response (this ensures we have the correct id from sql auto-increment)
+        if(orders == null){ // if there are no pending orders for this user aka: no active cart
+            orders = new Orders(); // create a new one
+            orders.setCartStatus("PENDING");
+            orders.setUser(user); // assign this cart to the current user
+            orders = orderDAO.save(orders); // save to db and reassign "order" variable to DB response (this ensures we have the correct id from sql auto-increment)
         }
         // getting the user order, if null, creating one
         Product product = productDAO.findById(id);
-        OrderProduct cartItem = orderProductDAO.findProductOrderByOrderAndProduct(order, product); // is this item already in the cart?
+        OrderProduct cartItem = orderProductDAO.findProductOrderByOrdersAndProduct(orders, product); // is this item already in the cart?
         if(cartItem == null){ // if not, add it
             cartItem = new OrderProduct();
-            cartItem.setOrder(order);
+            cartItem.setOrders(orders);
             cartItem.setProduct(product);
             cartItem.setQuantity(1);
         } else {
@@ -81,8 +81,11 @@ public class BasketController {
         }
         OrderProduct savedCartItem = orderProductDAO.save(cartItem);
         log.info("added: " + cartItem.getProduct().getProductName());
-
-        response.setViewName("redirect:/home");
+        List<Product> savedCartList= productDAO.findProductsByProductIdAndOrdersIdAndCartStatus(user);
+        response.addObject("savedCartItem", savedCartList);
+        response.setViewName("redirect:/shop/checkout/");
+        for(Product p:savedCartList)
+            System.out.println(p.getProductName());
         return response;
     }
 

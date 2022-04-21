@@ -1,6 +1,6 @@
 package com.teksystems.ecommerce_site.database.dao;
 
-import com.teksystems.ecommerce_site.database.entity.Order;
+import com.teksystems.ecommerce_site.database.entity.Orders;
 import com.teksystems.ecommerce_site.database.entity.Product;
 import com.teksystems.ecommerce_site.database.entity.OrderProduct;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,14 +15,14 @@ public interface OrderProductDAO extends JpaRepository<OrderProduct, Long> {
 
     public OrderProduct findById(@Param("id") Integer id);
 
-    public List<OrderProduct> findByOrder(@Param("order") Order order);
+    public List<OrderProduct> findByOrders(@Param("order") Orders orders);
 
-    public OrderProduct findProductOrderByOrderAndProduct(@Param("order") Order order, @Param("product")Product product);
+    public OrderProduct findProductOrderByOrdersAndProduct(@Param("order") Orders orders, @Param("product")Product product);
 
 //    public OrderProduct savedCartItem(@Param("id") Integer id, @Param("product")Product product);
 
     // this is not necessarily in scope for the case study
-    @Query(value= "select id, quantity(*) as quant, prod.name from productorder po, products prod where po.productID = prod.productID group by productID",
+    @Query(value=" select product_id, count(*) as cnt, p.name from order_products op, products p where op.product_id = p.id group by product_id",
             nativeQuery = true)
     List<Map<String,Object>> getProductNameAndOrderCount();
 

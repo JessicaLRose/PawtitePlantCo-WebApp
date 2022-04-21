@@ -3,8 +3,9 @@
 
 <jsp:include page="../include/head.jsp"/>
 
-<link href="<c:url value="../pub/css/navbarMain.css"/>" rel="stylesheet" type="text/css"/>
-<link href="<c:url value="../pub/css/checkout.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/../../../pub/css/navbarMain.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/../../../pub/css/checkout.css"/>" rel="stylesheet" type="text/css"/>
+
 <title>Pawt&iuml;te Plant Co | Checkout</title>
 </head>
 
@@ -23,25 +24,25 @@
         <h2 class="section-heading">Order Summary</h2>
         <div class="cart-item-box">
 
-            <jstlC:forEach items = "${allProducts}" var = "product">
+            <jstlC:forEach items = "${savedCartItem}" var = "cartLine">
             <div class="product-card">
                 <div class="card">
                     <div class="img-box">
-                        <img src="../../../pub/img/cart-plant-5.png" alt="plant 5" class="product-img">
+                        <img src="${cartLine.productImage}" alt="" class="product-img">
                     </div>
                     <div class="detail">
-                        <h3 class="product-name">Plant 1Plant 1Plant 1Plant 1Plant 1</h3>
+                        <h3 class="product-name">${cartLine.productName}</h3>
                         <div class="wrapper">
                             <div class="product-qty">
 
                                 <div class="counter">
                                     <span class="down" onClick='decreaseCount(event, this)'><i class="fa-solid fa-circle-minus"></i></span>
-                                    <input type="text" value="1">
+                                    <input type="text" id="prod-quant" name="quantity" value="${cartLine.quantity}">
                                     <span class="up" onClick='increaseCount(event, this)'><i class="fa-solid fa-circle-plus"></i></span>
                                 </div>
                             </div>
                             <div class="price">
-                                 <span id="price">$ 1.25</span>
+                                 <span id="price">$ ${cartLine.productPrice}</span>
                             </div>
                         </div>
                     </div>
@@ -52,6 +53,7 @@
             </div>
             </jstlC:forEach>
 
+            ${savedCartList}
 
 
         </div>
@@ -165,14 +167,14 @@
                 <div class="input-flex">
 
                     <div class="expire-date">
-                        <label for="expire-date" class="label-default">Expiration date</label>
+                        <label class="label-default">Expiration date</label>
 
                         <div class="input-flex">
 
-                            <input type="text" name="day" id="expire-date" placeholder="31" min="1" max="31"
+                            <input type="text" name="day" id="expire-day" placeholder="31" min="1" max="31"
                                    class="input-default">
                             /
-                            <input type="text" name="month" id="expire-date" placeholder="12" min="1" max="12"
+                            <input type="text" name="month" id="expire-month" placeholder="12" min="1" max="12"
                                    class="input-default">
 
                         </div>
