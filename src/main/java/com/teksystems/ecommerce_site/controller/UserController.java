@@ -10,6 +10,8 @@ import com.teksystems.ecommerce_site.security.AuthenticatedUserService;
 import com.teksystems.ecommerce_site.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -17,6 +19,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Date;
@@ -48,7 +51,7 @@ public class UserController {
         return response;
     }
 
-    @RequestMapping(value = "/registerSubmit", method = { RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = "/registerSubmit", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView registerSubmit(@Valid RegistrationFormBean form, BindingResult bindingResult, HttpSession session) throws Exception {
         ModelAndView response = new ModelAndView();
 
@@ -57,7 +60,7 @@ public class UserController {
         if (bindingResult.hasErrors()) {
 
             for (ObjectError error : bindingResult.getAllErrors()) {
-                log.info( ((FieldError)error).getField() + " " +  error.getDefaultMessage());
+                log.info(((FieldError) error).getField() + " " + error.getDefaultMessage());
             }
             response.addObject("form", form);
 
@@ -109,13 +112,24 @@ public class UserController {
 //    @GetMapping(value = "/user/account/{userID}")
 
     @RequestMapping(value = "/user/account/{id}")
-        public ModelAndView userAccount(@PathVariable("id") Integer id)  throws Exception {
+    public ModelAndView userAccount(@PathVariable("id") Integer id) throws Exception {
         ModelAndView response = new ModelAndView();
-        response.setViewName("user/account");
+
 
         AccountFormBean accountFormBean = new AccountFormBean();
 
-            User user = userDAO.findById(id);
+        User user = userDAO.findById(id);
+
+//            <sec:authentication property="principal.username"/>
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // ask spring security for current user
+        String loggedUserEmail = authentication.getName(); // get current users email
+        User currentUser = userDAO.findByEmail(loggedUserEmail); // find user from db with this email
+
+
+
+        if (currentUser!= null && user.getId().equals(currentUser.getId())){
+
             log.info(String.valueOf(user));
             accountFormBean.setId(user.getId());
             accountFormBean.setEmail(user.getEmail());
@@ -123,8 +137,13 @@ public class UserController {
             accountFormBean.setLastName(user.getLastName());
             accountFormBean.setPhone(user.getPhone());
 
+            response.addObject("accountFormBean", accountFormBean);
 
-        response.addObject("accountFormBean", accountFormBean);
+            response.setViewName("user/account");
+            return response;
+
+        }
+        response.setViewName("redirect:/home");
         return response;
     }
 
@@ -137,11 +156,11 @@ public class UserController {
 
         User user = userDAO.findById(accountFormBean.getId());
 
-        userService.getUserDetails( accountFormBean, user);
+        userService.getUserDetails(accountFormBean, user);
 
         userDAO.save(user);
 
-        response.setViewName("redirect:/user/account/"+user.getId());
+        response.setViewName("redirect:/user/account/" + user.getId());
 
         return response;
     }

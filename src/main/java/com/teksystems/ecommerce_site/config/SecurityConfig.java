@@ -29,6 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/pub/**", "/error/**", "/login/**", "/index", "/admin/**", "/shop/**", "/cart/**", "/user/**").permitAll()
 //                .antMatchers("/admin/**", "/cart/**", "/user/**").authenticated()
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .and()
                 .formLogin()
                 // this is the URL of the login page

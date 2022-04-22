@@ -119,8 +119,8 @@
     </sec:authorize>
 
     <!-- logged-in user -->
-    <sec:authorize access="hasAuthority('USER')">
-        <form class="logged-in" action="">
+    <sec:authorize access="isAuthenticated() && !hasAuthority('ADMIN')">
+        <form class="logged-in" action="login/loginSubmit" method="POST">
 
             <center><i class="fa-solid fa-circle-user"></i></center>
             <h3>Welcome<br><span><jstlC:out value="${user.getFirstName()}" /></span></h3>
@@ -132,8 +132,8 @@
         </form>
     </sec:authorize>
 
-    <sec:authorize access="hasAuthority('ADMIN')">
-        <form class="adminlogged-in" action="">
+    <sec:authorize access="hasAuthority('ADMIN')" >
+        <form class="adminlogged-in" action="login/loginSubmit" method="POST">
 
             <center><i class="fa-solid fa-circle-user"></i></center>
             <h3>Welcome<br><span><jstlC:out value="${user.getFirstName()}" /></span></h3>

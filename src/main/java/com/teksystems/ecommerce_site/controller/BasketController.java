@@ -63,7 +63,7 @@ public class BasketController {
 
 //        List<Order> orderList = orderDAO.findAllByUser(user);
 //        System.out.println(orderList);
-        Orders orders = orderDAO.findByUserIdAndCartStatus(user.getId(), "PENDING"); // find current users' cart
+        Orders orders = orderDAO.findByUserIdAndCartStatus(1, "PENDING"); // find current users' cart
 //        Order order = orders.get(0);
 
         if(orders == null){ // if there are no pending orders for this user aka: no active cart
@@ -87,28 +87,8 @@ public class BasketController {
         response.addObject("savedCartItem", savedCartItem);
         log.info("added: " + cartItem.getProduct().getProductName());
 
-        // new query for producing list of all products in the cart
-//        List<Map<String,Object>> cartProducts = orderProductDAO.getCartProducts(1,"PENDING");
-//        response.addObject("cartProducts", cartProducts);
-//
-//        log.info("cart product list: " + cartProducts.toString());
 
-//        OrderFormBean orderFormBean = new OrderFormBean();
-//
-//        Orders cartProductDetails = orderDAO.findById(id);
-//
-//        log.info("cart product details: " + cartProductDetails);
-//
-//        orderFormBean.setId(cartProductDetails.getId());
-//        orderFormBean.setUser(cartProductDetails.getUser());
-//        orderFormBean.setCartStatus(cartProductDetails.getCartStatus());
-//        orderFormBean.setCardholderName(cartProductDetails.getCardholderName());
-//        orderFormBean.setPaymentMethod(cartProductDetails.getPaymentMethod());
-//        orderFormBean.setCcNumber(cartProductDetails.getCcNumber());
-//
-//        response.addObject("productDetails", cartProductDetails);
-
-        response.setViewName("redirect:shop/checkout");
+        response.setViewName("redirect:/shop/checkout");
 //        return ModelAndView("redirect:/shop/checkout/{userId}");
         return response;
     }

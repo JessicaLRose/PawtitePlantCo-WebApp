@@ -52,8 +52,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         // gets the encrypted password from the database
         String password = user.getPassword();
 
-
-        return new org.springframework.security.core.userdetails.User(username, password,
+        //replaced username and password as a test
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
                 accountIsEnabled, accountNonExpired, credentialsNonExpired, accountNonLocked,
                 springRoles);
     }

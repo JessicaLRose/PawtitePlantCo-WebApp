@@ -39,12 +39,47 @@ public class CheckoutController {
         User user = userDAO.findByEmail(loggedUserEmail); // find user from db with this email
 
         // new query for producing list of all products in the cart
-        List<Map<String,Object>> cartProducts = orderProductDAO.getCartProducts(1,"PENDING");
+        List<Map<String,Object>> cartProducts = orderProductDAO.getCartProducts(user.getId(), "PENDING");
         response.addObject("cartProducts", cartProducts);
 
         log.info("cart product list: " + cartProducts.toString());
 
         return response;
     }
+
+    
+
+//    @RequestMapping(value = "/shop/checkout", method = RequestMethod.GET)
+//    public ModelAndView checkout() throws Exception {
+//        ModelAndView response = new ModelAndView();
+//        response.setViewName("shop/checkout");
+//
+//
+//
+//        return response;
+//    }
+
+
+
+    // new query for producing list of all products in the cart
+//        List<Map<String,Object>> cartProducts = orderProductDAO.getCartProducts(1,"PENDING");
+//        response.addObject("cartProducts", cartProducts);
+//
+//        log.info("cart product list: " + cartProducts.toString());
+
+//        OrderFormBean orderFormBean = new OrderFormBean();
+//
+//        Orders cartProductDetails = orderDAO.findById(id);
+//
+//        log.info("cart product details: " + cartProductDetails);
+//
+//        orderFormBean.setId(cartProductDetails.getId());
+//        orderFormBean.setUser(cartProductDetails.getUser());
+//        orderFormBean.setCartStatus(cartProductDetails.getCartStatus());
+//        orderFormBean.setCardholderName(cartProductDetails.getCardholderName());
+//        orderFormBean.setPaymentMethod(cartProductDetails.getPaymentMethod());
+//        orderFormBean.setCcNumber(cartProductDetails.getCcNumber());
+//
+//        response.addObject("productDetails", cartProductDetails);
 
 }
