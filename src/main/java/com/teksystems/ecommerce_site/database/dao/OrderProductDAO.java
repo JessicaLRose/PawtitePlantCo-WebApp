@@ -19,7 +19,7 @@ public interface OrderProductDAO extends JpaRepository<OrderProduct, Long> {
 
     public OrderProduct findProductOrderByOrdersAndProduct(@Param("orders") Orders orders, @Param("product")Product product);
 
-    @Query(value=" SELECT p.id AS product_id, p.product_name, p.product_price, p.product_image, op.quantity, o.id AS order_id, (product_price * quantity) AS total " +
+    @Query(value=" SELECT p.id AS product_id, op.id AS row_id, p.product_name, p.product_price, p.product_image, op.quantity, o.id AS order_id, (p.product_price * op.quantity) AS total " +
             " FROM product p, orderproduct op, orders o " +
             " WHERE p.id = op.product_id AND o.id = op.order_id " +
             " AND o.user_id = :userId AND cart_status = :cartStatus", nativeQuery = true)

@@ -21,7 +21,6 @@ public class ProductService {
         product.setId(productFormBean.getId());
         product.setProductName(productFormBean.getProductName());
         product.setProductPrice(productFormBean.getProductPrice());
-        product.setProductStock(productFormBean.getProductStock());
         product.setProductImage(productFormBean.getProductImage());
         product.setProductThumbnail(productFormBean.getProductThumbnail());
         product.setProductDescription(productFormBean.getProductDescription());

@@ -17,14 +17,11 @@ public class OrderFormBean {
 
     private User user;
 
-
     private String cartStatus;
 
     private String cardholderName;
 
-
     private String paymentMethod;
-
 
     private String ccNumber;
 

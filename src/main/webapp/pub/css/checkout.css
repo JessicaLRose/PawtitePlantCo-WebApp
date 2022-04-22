@@ -288,6 +288,9 @@ input[type="radio"] {
     margin-left: auto;
 }
 
+input[type="radio"]:checked::before + label{
+    color: var(--button-color);
+}
 
 .method input[type="radio"]:checked + label {
     color: var(--button-color);

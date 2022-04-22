@@ -121,6 +121,8 @@ function increaseCount(a, b) {
     value = isNaN(value) ? 0 : value;
     value++;
     input.value = value;
+
+
 }
 
 function decreaseCount(a, b) {
@@ -132,6 +134,7 @@ function decreaseCount(a, b) {
         input.value = value;
     }
 }
+
 
 
 /* Code for changing active

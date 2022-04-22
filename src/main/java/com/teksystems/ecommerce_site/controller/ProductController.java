@@ -71,7 +71,6 @@ public class ProductController {
         productFormBean.setId(product.getId());
         productFormBean.setProductName(product.getProductName());
         productFormBean.setProductPrice(product.getProductPrice());
-        productFormBean.setProductStock(product.getProductStock());
         productFormBean.setProductImage(product.getProductImage());
         productFormBean.setProductThumbnail(product.getProductThumbnail());
         productFormBean.setProductDescription(product.getProductDescription());

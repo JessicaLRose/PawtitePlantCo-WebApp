@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="jstlC" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="jstlC" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="../include/head.jsp"/>
 
@@ -24,36 +25,37 @@
 
         <div class="cart-item-box">
 
-            <jstlC:forEach items = "${cartProducts}" var = "cartList">
-            <div class="product-card">
-                <div class="card">
-                    <div class="img-box">
-                        <img src="${cartList.product_image}" alt="" class="product-img">
-                    </div>
-                    <div class="detail">
-                        <h3 class="product-name">${cartList.product_name}</h3>
-                        <div class="wrapper">
-                            <div class="product-qty">
+            <jstlC:forEach items="${cartProducts}" var="cartList">
+                <div class="product-card">
+                    <div class="card">
+                        <div class="img-box">
+                            <img src="${cartList.product_image}" alt="" class="product-img">
+                        </div>
+                        <div class="detail">
+                            <h3 class="product-name">${cartList.product_name}</h3>
+                            <div class="wrapper">
+                                <div class="product-qty">
 
-                                <div class="counter">
-                                    <span class="down" onClick='decreaseCount(event, this)'><i class="fa-solid fa-circle-minus"></i></span>
-                                    <input type="text" id="prod-quant" name="quantity" value="${cartList.quantity}">
-                                    <span class="up" onClick='increaseCount(event, this)'><i class="fa-solid fa-circle-plus"></i></span>
+                                    <div class="counter">
+                                        <span class="down" onClick='decreaseCount(event, this)'><i
+                                                class="fa-solid fa-circle-minus"></i></span>
+                                        <input type="text" id="prod-quant" name="quantity" value="${cartList.quantity}">
+                                        <span class="up" onClick='increaseCount(event, this)'><i
+                                                class="fa-solid fa-circle-plus"></i></span>
+                                    </div>
+                                </div>
+                                <div class="price">
+                                    <span id="price">$ ${cartList.total}</span>
                                 </div>
                             </div>
-                            <div class="price">
-                                 <span id="price">$ ${cartList.total}</span>
-                            </div>
                         </div>
-                    </div>
-                    <span class="remove-product-btn">
-                    <a href="#" class="fas fa-times" id="remove-product"></a>
+                        <span class="remove-product-btn">
+<%--                            <form action="/cart/deleteItem" method="get" id="remove-product"><input type="hidden" name ="id" id="removeItem" value="${cartList.product_id}"> <button type="submit" class="btn fas fa-times" form="remove-product"></button></form>--%>
+                    <a href="/cart/deleteItem/${cartList.row_id}" class="fas fa-times" id="remove-product"></a>
                     </span>
+                    </div>
                 </div>
-            </div>
             </jstlC:forEach>
-
-
 
 
         </div>
@@ -88,15 +90,25 @@
         <div class="amount">
 
             <div class="subtotal">
-                <span>Subtotal</span> <span>$ <span id="subtotal">2.05</span></span>
+                <span>Subtotal</span>
+                <span id="subtotal">
+                    <fmt:formatNumber value="${subTotal}" type="currency"/>
+                </span>
             </div>
 
             <div class="tax">
-                <span>Tax</span> <span>$ <span id="tax">0.10</span></span>
+                <span>Tax</span>
+                <span id="tax">
+                    <fmt:formatNumber value="${salesTax}" type="currency"/>
+                </span>
             </div>
 
             <div class="total fs-2 fw-bold">
-                <span>Order Total</span> <span>$ <span id="total">2.15</span></span>
+
+                <span>Order Total</span>
+                <span id="total">
+                    <fmt:formatNumber value="${cartTotal}" type="currency"/>
+               </span>
             </div>
 
         </div>
@@ -112,57 +124,51 @@
 
         <div class="payment-form">
 
-            <div class="payment-method">
+            <form action="/shop/checkoutSubmit" method="POST">
 
 
+                <div class="payment-method">
 
                     <label class="form-control method" for="cc">
                         <i class="fa-solid fa-credit-card"></i>
                         <span>Credit Card</span>
-                        <input type="radio" id="cc" value="creditcard" checked="checked" />
-                        <i class="fa-regular fa-circle-check checkmark" ></i>
+                        <input type="radio" id="cc" value="creditcard" name="paymentMethod" checked/>
+                        <i class="fa-regular fa-circle-check checkmark"></i>
                     </label>
-
-
 
                     <label class="form-control method" for="paypal">
                         <i class="fa-brands fa-paypal"></i>
                         <span>Paypal</span>
-                        <input type="radio" id="paypal" value="PayPal" />
-                        <i class="fa-regular fa-circle-check checkmark" ></i>
+                        <input type="radio" id="paypal" value="PayPal" name="paymentMethod"/>
+                        <i class="fa-regular fa-circle-check checkmark"></i>
                     </label>
 
 
                     <label class="form-control method" for="applepay">
-                        <i class="fa-brands fa-apple-pay" ></i>
+                        <i class="fa-brands fa-apple-pay"></i>
                         <span></span>
-                        <input type="radio" id="applepay" value="ApplePay" />
-                        <i class="fa-regular fa-circle-check checkmark" ></i>
+                        <input type="radio" id="applepay" value="ApplePay" name="paymentMethod"/>
+                        <i class="fa-regular fa-circle-check checkmark"></i>
                     </label>
 
 
                     <label class="form-control method" for="googlepay">
-                        <i class="fa-brands fa-google-pay" ></i>
+                        <i class="fa-brands fa-google-pay"></i>
                         <span></span>
-                        <input type="radio" id="googlepay" value="GooglePay"/>
-                        <i class="fa-regular fa-circle-check checkmark" ></i>
+                        <input type="radio" id="googlepay" value="GooglePay" name="paymentMethod"/>
+                        <i class="fa-regular fa-circle-check checkmark"></i>
                     </label>
 
-
-
-            </div>
-
-
-            <form action="#">
+                </div>
 
                 <div class="cardholder-name">
                     <label for="cardholder-name" class="label-default">Cardholder name</label>
-                    <input type="text" name="cardholder-name" id="cardholder-name" class="input-default">
+                    <input type="text" name="cardholderName" id="cardholder-name" class="input-default" required>
                 </div>
 
                 <div class="card-number">
                     <label for="card-number" class="label-default">Card number</label>
-                    <input type="text" name="card-number" id="card-number" class="input-default">
+                    <input type="text" name="ccNumber" id="card-number" class="input-default">
                 </div>
 
                 <div class="input-flex">
@@ -188,27 +194,26 @@
 
                 </div>
 
+                <br><br><br><br><br>
+
+                <div>
+                    <label class="terms-checkbox" for="terms">
+                        By checking this box, you are agreeing to our terms of service.
+                        <input type="checkbox" id="terms" required>
+                        <span class="check"></span>
+                    </label>
+                </div>
+
+                <br>
+
+                <button class="btn" type="submit">
+                    <b>Place your Order</b>
+                </button>
+
             </form>
-
         </div>
-
-        <div>
-            <label class="terms-checkbox" for="terms">
-            By checking this box, you are agreeing to our terms of service.
-            <input type="checkbox" id="terms" >
-            <span class="check"></span>
-            </label>
-        </div>
-
-        <br>
-
-        <button class="btn">
-            <b>Place your Order</b>
-        </button>
-
-
     </section>
 
 </div>
 
-<jsp:include page="../include/footer.jsp" />
+<jsp:include page="../include/footer.jsp"/>

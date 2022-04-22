@@ -27,9 +27,6 @@ public class Product {
     @Column(name = "product_price")
     private BigDecimal productPrice;
 
-    @Column(name = "product_stock")
-    private Integer productStock;
-
     @Column(name = "product_image")
     private String productImage;
 

@@ -19,6 +19,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.persistence.criteria.Order;
@@ -63,7 +65,7 @@ public class BasketController {
 
 //        List<Order> orderList = orderDAO.findAllByUser(user);
 //        System.out.println(orderList);
-        Orders orders = orderDAO.findByUserIdAndCartStatus(1, "PENDING"); // find current users' cart
+        Orders orders = orderDAO.findByUserIdAndCartStatus(user.getId(), "PENDING"); // find current users' cart
 //        Order order = orders.get(0);
 
         if(orders == null){ // if there are no pending orders for this user aka: no active cart
@@ -93,7 +95,22 @@ public class BasketController {
         return response;
     }
 
+    @RequestMapping(value = "/cart/deleteItem/{id}", method = RequestMethod.GET)
+    public ModelAndView productRemove(@PathVariable("id") Integer id) throws Exception {
 
+        OrderProduct selectedCartLine = orderProductDAO.findById(id);
+
+        if ( selectedCartLine == null ) {
+            log.info("selectedCartLine is null");
+            // this is an error
+        } else {
+
+            orderProductDAO.delete(selectedCartLine);
+            System.out.println("product removed from cart");
+        }
+
+        return new ModelAndView("redirect:/shop/checkout");
+    }
 
 //
 //    if (order == null) {
