@@ -59,13 +59,14 @@
 
                     <div class="prod-price">
                         <label for="add-prod-price" class="label-default">Product Price :</label>
+                        <br><br>
                         <input type="text" name="productPrice" id="add-prod-price" class="input-default" value="${product.productPrice}">
                     </div>
 
                     <br>
 
                     <div class="prod-descrip">
-                        <label for="add-prod-descrip" class="label-default">Product Description:</label>
+                        <label for="add-prod-descrip" class="label-default">Product Description :</label>
                         <br><br>
                         <textarea form="addProduct" name="productDescription" id="add-prod-descrip" class="input-default" value="${product.productDescription}"></textarea>
                     </div>
