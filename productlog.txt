@@ -1,0 +1,19 @@
+Last updated: Sun Apr 24 22:05:25 CDT 2022
+ID: 1 Sempervivum Red Lion hardy 5.75 2022-04-12 16:27:47.0
+ID: 2 Sedum Donkey’s Tail soft 5.75 2022-04-12 16:27:47.0
+ID: 3 Zebra Haworthia soft 6.75 2022-04-12 16:27:47.0
+ID: 4 Echeveria Violet Queen hardy 5.75 2022-04-23 17:21:43.0
+ID: 5 Sedum Major soft 5.75 2022-04-23 17:22:28.0
+ID: 6 Echeveria Perle Von Nurnberg hardy 5.75 2022-04-24 14:54:15.0
+ID: 7 Bunny Ear Cactus hardy 6.25 2022-04-24 15:38:29.0
+ID: 8 Variegata String of Hearts soft 5.75 2022-04-24 15:38:10.0
+ID: 9 Echeveria Black Knight hardy 6.75 2022-04-24 15:38:58.0
+ID: 10 Graptosedum California Sunset soft 6.35 2022-04-24 15:39:57.0
+ID: 11 Terracotta Pot accessories 9.95 2022-04-24 15:42:57.0
+ID: 12 Minamalistic Ceramic Pot accessories 12.95 2022-04-24 15:45:45.0
+ID: 13 Bamboo Pot accessories 15.00 2022-04-24 15:45:35.0
+ID: 14 Plant Mister accessories 8.50 2022-04-24 15:46:50.0
+ID: 15 Succulent Potting Soil accessories 6.80 2022-04-24 15:46:13.0
+ID: 16 Brown Pebbles accessories 5.79 2022-04-24 15:47:20.0
+ID: 17 fef soft 1.00 2022-04-24 22:04:23.0
+ID: 27 ss soft 1.00 Sun Apr 24 22:05:25 CDT 2022

@@ -9,13 +9,12 @@
     </div>
 
     <div class="links">
-        <a href="#">home</a>
-        <a href="#featured">featured</a>
-        <a href="product.html">shop</a>
-        <a href="#about">about</a>
-        <a href="#review">reviews</a>
-        <a href="#contact">contact</a>
-        <a href="#cart">cart</a>
+        <a href="/home">home</a>
+        <a href="/shop/products">shop</a>
+        <a href="/home#about">about</a>
+        <a href="/home#contact">contact</a>
+        <a href="#" id="cart-loginLink">Login</a>
+
     </div>
 
     <div class="credit">created by <span>jessica fatim</span> | all rights reserved</div>

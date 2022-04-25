@@ -29,7 +29,7 @@
                 <div class="product-card">
                     <div class="card">
                         <div class="img-box">
-                            <img src="${cartList.product_image}" alt="" class="product-img">
+                            <img src="${cartList.product_image}" alt="image" class="product-img">
                         </div>
                         <div class="detail">
                             <h3 class="product-name">${cartList.product_name}</h3>
@@ -37,12 +37,13 @@
                                 <div class="product-qty">
 
                                     <div class="counter">
-                                        <span class="down" onClick='decreaseCount(event, this)'><i
+                                        <span class="down" onClick="decreaseCount(event, this)"><i
                                                 class="fa-solid fa-circle-minus"></i></span>
                                         <input type="text" id="prod-quant" name="quantity" value="${cartList.quantity}">
-                                        <span class="up" onClick='increaseCount(event, this)'><i
+                                        <span class="up" onClick="increaseCount(event, this)"><i
                                                 class="fa-solid fa-circle-plus"></i></span>
                                     </div>
+
                                 </div>
                                 <div class="price">
                                     <span id="price">$ ${cartList.total}</span>
@@ -50,7 +51,6 @@
                             </div>
                         </div>
                         <span class="remove-product-btn">
-<%--                            <form action="/cart/deleteItem" method="get" id="remove-product"><input type="hidden" name ="id" id="removeItem" value="${cartList.product_id}"> <button type="submit" class="btn fas fa-times" form="remove-product"></button></form>--%>
                     <a href="/cart/deleteItem/${cartList.row_id}" class="fas fa-times" id="remove-product"></a>
                     </span>
                     </div>
@@ -129,10 +129,11 @@
 
                 <div class="payment-method">
 
+
                     <label class="form-control method" for="cc">
                         <i class="fa-solid fa-credit-card"></i>
                         <span>Credit Card</span>
-                        <input type="radio" id="cc" value="creditcard" name="paymentMethod" checked/>
+                        <input type="radio" id="cc" value="CreditCard" name="paymentMethod" checked="checked"/>
                         <i class="fa-regular fa-circle-check checkmark"></i>
                     </label>
 
@@ -158,39 +159,60 @@
                         <input type="radio" id="googlepay" value="GooglePay" name="paymentMethod"/>
                         <i class="fa-regular fa-circle-check checkmark"></i>
                     </label>
+                    <jstlC:forEach items='${bindingResult.getFieldErrors("paymentMethod")}' var="error">
+                        <div style="color:#943643;">${error.getDefaultMessage()}</div>
+                    </jstlC:forEach>
 
                 </div>
 
-                <div class="cardholder-name">
-                    <label for="cardholder-name" class="label-default">Cardholder name</label>
-                    <input type="text" name="cardholderName" id="cardholder-name" class="input-default" required>
-                </div>
+                <div class="cc-form">
+                    <div class="cardholder-name">
+                        <label for="cardholder-name" class="label-default">Cardholder name</label>
+                        <input type="text" name="cardholderName" id="cardholder-name" class="input-default">
+                        <jstlC:forEach items='${bindingResult.getFieldErrors("cardholderName")}' var="error">
+                            <div style="color:#943643;">${error.getDefaultMessage()}</div>
+                        </jstlC:forEach>
+                    </div>
 
-                <div class="card-number">
-                    <label for="card-number" class="label-default">Card number</label>
-                    <input type="text" name="ccNumber" id="card-number" class="input-default">
-                </div>
+                    <div class="card-number">
+                        <label for="card-number" class="label-default">Card number</label>
+                        <input type="text" name="ccNumber" id="card-number" class="input-default">
+                        <jstlC:forEach items='${bindingResult.getFieldErrors("ccNumber")}' var="error">
+                            <div style="color:#943643;">${error.getDefaultMessage()}</div>
+                        </jstlC:forEach>
+                    </div>
 
-                <div class="input-flex">
+                    <div class="input-flex">
 
-                    <div class="expire-date">
-                        <label class="label-default">Expiration date</label>
+                        <div class="expire-date">
+                            <label class="label-default">Expiration date</label>
 
-                        <div class="input-flex">
+                            <div class="input-flex">
 
-                            <input type="text" name="day" id="expire-day" placeholder="31" min="1" max="31"
-                                   class="input-default">
-                            /
-                            <input type="text" name="month" id="expire-month" placeholder="12" min="1" max="12"
-                                   class="input-default">
+                                <input type="text" name="day" id="expire-day" placeholder="12" min="1" max="12"
+                                       class="input-default">
+                                /
+                                <input type="text" name="month" id="expire-month" placeholder="31" min="1" max="31"
+                                       class="input-default">
 
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="cvv">
-                        <label for="cvv" class="label-default">CVV</label>
-                        <input type="text" name="cvv" id="cvv" class="input-default">
+                        <div class="cvv">
+                            <label for="cvv" class="label-default">CVV</label>
+                            <input type="text" name="cvv" id="cvv" class="input-default">
+                        </div>
+
                     </div>
+                </div>
+                <div class="alternate-form">
+
+                        <br>
+                    <jstlC:if test="${bindingResult.hasErrors()}">
+                        <jstlC:forEach items="${bindingResult.getAllErrors()}" var="error">
+                            <div style="color:#943643;">${error.getDefaultMessage()}</div>
+                        </jstlC:forEach>
+                    </jstlC:if>
 
                 </div>
 

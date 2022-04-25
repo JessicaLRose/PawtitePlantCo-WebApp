@@ -1,6 +1,8 @@
 package com.teksystems.ecommerce_site.database.entity;
 
 import lombok.*;
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -12,6 +14,7 @@ import java.util.Set;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "product")
 public class Product {
@@ -27,9 +30,11 @@ public class Product {
     @Column(name = "product_price")
     private BigDecimal productPrice;
 
+    @Nullable
     @Column(name = "product_image")
     private String productImage;
 
+    @Nullable
     @Column(name = "product_thumbnail")
     private String productThumbnail;
 

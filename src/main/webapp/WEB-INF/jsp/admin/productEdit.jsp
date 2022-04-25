@@ -4,22 +4,27 @@
 
 <jsp:include page="../include/head.jsp"/>
 
-<link href="<c:url value="../pub/css/navbarDash.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/../../pub/css/navbarDash.css"/>" rel="stylesheet" type="text/css"/>
 
 <title>Pawt&iuml;te Plant Co | Admin Dashboard</title>
 </head>
 
 <body>
-<%--<jsp:include page="../include/navbarAdmin.jsp"/>--%>
+<jsp:include page="../include/navbarAdmin.jsp"/>
 
 
-
+<section class="section admin-edit">
+    <div class="row justify-content-center edit-body">
+        <div class="col-10 col-sm-8 col-md-8 col-xl-6 mx-auto my-auto">
+            <div class="card">
+                <div class="card-body shadow-lg">
+                    <h1 class="card-title">Edit Product</h1>
 
 <form action="/admin/productEdit/" method="post" id="editProduct">
 
 
     <%--                    <input type="number" name="productID" id="productID" class="form-control" style="visibility:hidden;" value="${product.productID}"/>--%>
-    <input type="hidden" name="productID" value="${productFormBean.id}"/>
+    <input type="hidden" name="id" value="${productFormBean.id}"/>
 
     <div class="prod-name">
         <label for="edit-prod-name" class="label-default">product name</label>
@@ -42,37 +47,27 @@
 
     <br>
 
-    <div class="prod-stock">
-        <label for="edit-prod-stock" class="label-default">product stock</label>
-        <input type="text" name="productStock" id="edit-prod-stock" class="input-default" value="${productFormBean.productStock}">
-    </div>
+            <div class="prod-image">
+               <span>the product image:</span>
+                <br>
+                <img src ="${productFormBean.productImage}"  class = "w-50" alt="plant 1" id="edit-prod-img">
+                <br>
+                Select Product Image URL: <input type="text" name="productImage" value="${productFormBean.productImage}">
+                <br>
 
-    <br>
+            </div>
+            <br>
+            <div class="prod-thumb">
+                <span>the product thumbnail:</span>
+                <br>
+                <img src ="${productFormBean.productThumbnail}"  class = "w-50" alt="plant 1" id="edit-prod-thumb">
+                <br>
+                Select Product Thumbnail URL: <input type="text" name="productThumbnail" value="${productFormBean.productThumbnail}">
+                <br>
 
-    <%--                    <form action="/upload" method="POST" enctype="multipart/form-data">--%>
+            </div>
 
-    <%--                        <div class="prod-image">--%>
-    <%--                           <span>the product image:</span>--%>
-    <%--                            <img src ="${product.productImage}" alt="plant 1" id="add-prod-img">--%>
-    <%--                            <br>--%>
-    <%--                            Select Product Image : <input type="file" name="prod-image" />--%>
-    <%--                            <br>--%>
-
-    <%--                        </div>--%>
-    <%--                        <br>--%>
-    <%--                        <div class="prod-thumb">--%>
-    <%--                            <span>the product thumbnail:</span>--%>
-    <%--                            <br>--%>
-    <%--                            <img src ="${product.productImage}" alt="plant 1" id="add-prod-thumb">--%>
-    <%--                            <br>--%>
-    <%--                            Select Product Thumbnail : <input type="file" name="prod-thumb" />--%>
-    <%--                            <br>--%>
-
-    <%--                        </div>--%>
-    <%--                        <br>--%>
-
-    <%--                    </form>--%>
-
+                    <br>
     <div class="prod-descrip">
         <label for="edit-prod-descrip" class="label-default">the product descrip:</label>
         <br>
@@ -81,19 +76,20 @@
         <br>
     </div>
 
+        <button type="submit" class="btn" form="editProduct">Save Product</button>
+
 </form>
 
-
-<%--            </div>--%>
-<%--            <div class="modal-footer">--%>
-<a href="#" class="btn" id="close-edit" data-bs-dismiss="modal">Close</a>
-<button type="submit" class="btn" form="editProduct">Save Product</button>
-<%--            </div>--%>
-
-<%--        </div>--%>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="../../../pub/js/script.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

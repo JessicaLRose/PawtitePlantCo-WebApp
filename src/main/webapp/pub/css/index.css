@@ -72,7 +72,6 @@
 .icons-container{
     background:var(--lochinvar);
     display: flex;
-    flex-wrap: wrap;
     gap:1.5rem;
     padding: 5rem;
 
@@ -144,10 +143,14 @@
 
 .about .row .image{
     flex:1 1 45rem;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
 }
 
 .about .row .image img{
-    width: 100%;
+    height: auto;
+    width: 80%;
 
     padding: 1.5rem;
     padding-top: 2.5rem;
@@ -156,6 +159,7 @@
 
 .about .row .content{
     flex:1 1 45rem;
+    padding: 2rem;
 }
 
 .about .row .content h3{
@@ -342,11 +346,10 @@
     padding: 5px 0;
     height: 40px;
     opacity: 0;
-    /* filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; */
     background: none transparent;
     border: 0 none;
 }
-.select-box1 {
+.contact-form {
     background: var(--white);
 }
 

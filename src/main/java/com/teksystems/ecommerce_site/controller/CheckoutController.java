@@ -13,6 +13,7 @@ import com.teksystems.ecommerce_site.formbean.RegistrationFormBean;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -23,15 +24,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-
 
 @Slf4j
 @Controller
@@ -59,7 +56,7 @@ public class CheckoutController {
         User user = userDAO.findByEmail(loggedUserEmail); // find user from db with this email
 
         // new query for producing list of all products in the cart
-        List<Map<String,Object>> cartProducts = orderProductDAO.getCartProducts(user.getId(), "PENDING");
+        List<Map<String, Object>> cartProducts = orderProductDAO.getCartProducts(user.getId(), "PENDING");
         response.addObject("cartProducts", cartProducts);
 
         log.info("cart product list: " + cartProducts.toString());
@@ -71,8 +68,8 @@ public class CheckoutController {
 
 //        BigDecimal cartTotal = BigDecimal.valueOf(getOrderTotal);
 
-        for(Map<String,Object> row: cartProducts){
-            BigDecimal price = (BigDecimal)row.get("total");
+        for (Map<String, Object> row : cartProducts) {
+            BigDecimal price = (BigDecimal) row.get("total");
             getSubTotal += price.doubleValue();
             calculateSalesTax = getSubTotal * salesTax;
             getCartTotal = getSubTotal + calculateSalesTax;
@@ -90,49 +87,39 @@ public class CheckoutController {
     public ModelAndView checkoutSubmit(@Valid OrderFormBean orderFormBean, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
 
-        if (bindingResult.hasErrors()) {
 
-            for (ObjectError error : bindingResult.getAllErrors()) {
-                log.info(((FieldError) error).getField() + " " + error.getDefaultMessage());
+        if (bindingResult.hasErrors()) {
+            // this is the error case
+            for (FieldError error : bindingResult.getFieldErrors()) {
+                log.debug(error.toString());
             }
-            response.addObject("orderFormBean", orderFormBean);
 
             response.addObject("bindingResult", bindingResult);
 
-            response.setViewName("shop/checkout");
+            response.addObject("orderFormBean", orderFormBean);
+
+        } else {
+
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // ask spring security for current user
+            String loggedUserEmail = authentication.getName(); // get current users email
+            User user = userDAO.findByEmail(loggedUserEmail); // find user from db with this email
+
+            Orders orders = orderDAO.findByUserIdAndCartStatus(user.getId(), "PENDING"); // find current users' cart
+
+            orders.setCardholderName(orderFormBean.getCardholderName());
+            orders.setPaymentMethod(orderFormBean.getPaymentMethod());
+            orders.setCcNumber(orderFormBean.getCcNumber());
+
+            orders.setCartStatus("COMPLETE");
+
+            Orders completedOrder = orderDAO.save(orders);
+
+            response.addObject("completedOrder", completedOrder);
+
+            response.setViewName("redirect:/home");
+
             return response;
         }
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // ask spring security for current user
-        String loggedUserEmail = authentication.getName(); // get current users email
-        User user = userDAO.findByEmail(loggedUserEmail); // find user from db with this email
-
-        Orders orders = orderDAO.findByUserIdAndCartStatus(user.getId(), "PENDING"); // find current users' cart
-
-        orders.setCardholderName(orderFormBean.getCardholderName());
-        orders.setPaymentMethod(orderFormBean.getPaymentMethod());
-        orders.setCcNumber(orderFormBean.getCcNumber());
-
-        orders.setCartStatus("COMPLETE");
-
-        Orders completedOrder = orderDAO.save(orders);
-
-        response.addObject("completedOrder", completedOrder);
-
-        response.setViewName("redirect:/home");
         return response;
     }
-
-    //need to validate payment details
-    // credit card shows the name, card number, dont care about other details
-    // a messages shows if selecting others saying you'll be "redirected"
-
-    //able to submit order and save the order. set cart to complete status.
-
-
-
-
-
-
-
 }

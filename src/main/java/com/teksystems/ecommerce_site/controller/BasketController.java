@@ -39,19 +39,10 @@ public class BasketController {
     @Autowired
     private OrderProductDAO orderProductDAO;
 
-
     @Autowired
     private UserDAO userDAO;
 
 
-//        //cant see cart unless logged in either in sidebar or official checkout page
-//        //show this error message on the jsp page if attempting to go there? at least in pop up
-//        //or maybe a 403 page that says you dont have access, allows redirect home
-//        //get user info from authentication to create a cart with order_ID that connects to user_ID and to session
-//        //if cart null, make new cart if adding cartline
-//        //if cart not null, just add new cartline with that product quantity + 1
-//        //
-//
     @RequestMapping(value = "/cart/addItem/{id}") // ex: /cart/addItem/3 (pointing to product with id of 3)
     public ModelAndView addToCart(@PathVariable("id") Integer id) {
         ModelAndView response = new ModelAndView();
@@ -89,9 +80,8 @@ public class BasketController {
         response.addObject("savedCartItem", savedCartItem);
         log.info("added: " + cartItem.getProduct().getProductName());
 
-
         response.setViewName("redirect:/shop/checkout");
-//        return ModelAndView("redirect:/shop/checkout/{userId}");
+
         return response;
     }
 

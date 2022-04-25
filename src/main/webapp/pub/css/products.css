@@ -66,6 +66,7 @@ body{
     top: 0;
     transition: all 0.3s ease 0.1s;
     z-index: 1;
+
 }
 .product-name{
     color:var(--main-text);
@@ -74,16 +75,54 @@ body{
     padding-top: 1rem;
     margin: 0;
 }
+
+.description-container .product-name{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size: 3rem;
+}
+
 .product-price{
     color: var(--button-color);
     font-size: 2.5em;
+    justify-content: space-between;
 }
+
+.counter {
+    width: 150px;
+    display: flex;
+    align-items: center;
+}
+.counter input {
+    width: 50px;
+    border: 0;
+    line-height: 30px;
+    font-size: 20px;
+    text-align: center;
+    color: var(--lochinvar);
+    appearance: none;
+    outline: 0;
+    box-shadow: rgb(189, 193, 196) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+.counter span {
+    display: block;
+    font-size: 3rem;
+    padding: 0 1rem;
+    cursor: pointer;
+    color: var(--button-color);
+    user-select: none;
+}
+
+.counter span:hover{
+    color: var(--highlight-color);
+    transform: scale(1.1);
+
+}
+
 .modal-content{
     border-radius: 1rem;
 }
 .container-fluid{
-    /* height:50rem;
-    width: 90rem; */
     display: flex;
 }
 .image-container{
@@ -107,8 +146,6 @@ body{
 
 
 .small-image{
-    /* height:30%;
-    width: 100%; */
     display: flex;
     object-fit: contain;
 }
@@ -116,10 +153,8 @@ body{
 .small-image img{
     height:13rem;
     width: 13rem;
-    object-fit: fill;
-    object-fit: cover;
+    object-fit: contain;
     cursor: pointer;
-
 }
 
 .description-container{
@@ -129,30 +164,76 @@ body{
 
 .text-container{
     font-size: 1.5em;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.add-to-basket{
+    display: flex;
+    justify-content: end;
+}
+
+.descrip-quantity{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.fa-basket-shopping{
+    margin-left: 1rem;
 }
 
 
+@media (max-width:992px){
+    .small-image{
+        width: 100%;
+        margin-bottom: 2rem;
+    }
 
-@media (max-width:437px){
+    .small-image img{
+        height: 7rem;
+    }
+
+}
+
+
+@media (max-width:576px){
     .description-container{
         width: 100%;
     }
 
     .small-image{
-        display: none;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
     }
 
-    .big-image{
-        height:100%;
+    .small-image img{
         width: 100%;
-        object-fit: fill;
+        height: 15rem;
+        object-fit: contain;
     }
-    /* .container-fluid{
-    justify-content: center;
-    display: flex;
-} */
+
+    .image-container{
+        width: 100%;
+    }
+    .big-image{
+        height:auto;
+    }
+    .big-image img{
+        height:auto;
+        width: 100%;
+        object-fit: contain;
+    }
+
     .modal-body .container .row{
         display: flex;
         justify-content: center;
     }
+
+    .product-price{
+        color: var(--button-color);
+        font-size: 2.5em;
+        justify-content: space-around;
+    }
+
 }

@@ -15,8 +15,11 @@ public interface OrderDAO extends JpaRepository<Orders, Long> {
     @Query(value = "SELECT * FROM orders WHERE user_id = :userId AND cart_status = :cartStatus", nativeQuery = true)
     public Orders findByUserIdAndCartStatus(@Param("userId") Integer userId, @Param("cartStatus") String cartStatus);
 
+    @Query(value="SELECT o FROM Orders o ORDER BY o.cartStatus DESC")
+    public List<Orders> findAll();
+
     public Orders findById(@Param("id") Integer id);
 
-    public List<Orders> findAllByUser(@Param("user") User user);
+    public Orders findByCardholderName(@Param("cardholderName") String cardholderName);
 
 }

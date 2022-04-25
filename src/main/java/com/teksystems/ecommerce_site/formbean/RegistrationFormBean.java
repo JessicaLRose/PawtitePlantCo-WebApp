@@ -28,8 +28,6 @@ public class RegistrationFormBean {
     @NotBlank(message = "Email is required")
     @Email(message = "Email format is invalid.")
     private String email;
-//    @Pattern(regexp = "[a-z0-9]+@[a-z]+\\.[a-z]{2,3}", message = "Email format invalid")
-//    private String email;
 
     @Length(min = 3, max = 15, message="Password must be between 3 and 15 characters")
     @NotBlank(message = "Password is required")

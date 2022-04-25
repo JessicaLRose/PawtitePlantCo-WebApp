@@ -83,7 +83,6 @@ public class UserController {
 
         User newUser = userDAO.save(user);
 
-
         // create and save the user role object
         UserRole userRole = new UserRole();
         userRole.setId(newUser.getId());
@@ -102,14 +101,6 @@ public class UserController {
         return response;
     }
 
-//    @RequestMapping(value = "/user/account", method = RequestMethod.GET)
-//    public ModelAndView user() throws Exception {
-//        ModelAndView response = new ModelAndView();
-//        response.setViewName("user/account");
-//        return response;
-//    }
-
-//    @GetMapping(value = "/user/account/{userID}")
 
     @RequestMapping(value = "/user/account/{id}")
     public ModelAndView userAccount(@PathVariable("id") Integer id) throws Exception {
@@ -125,8 +116,6 @@ public class UserController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // ask spring security for current user
         String loggedUserEmail = authentication.getName(); // get current users email
         User currentUser = userDAO.findByEmail(loggedUserEmail); // find user from db with this email
-
-
 
         if (currentUser!= null && user.getId().equals(currentUser.getId())){
 
@@ -165,23 +154,6 @@ public class UserController {
         return response;
     }
 
-//    @RequestMapping(value = "/user/account/edit", method = RequestMethod.POST)
-//    public ModelAndView editAccount(RegistrationFormBean registrationFormBean) throws Exception {
-//        ModelAndView response = new ModelAndView();
-//        response.setViewName("user/account/");
-//
-//        User user = AuthenticatedUserService.getCurrentUser();
-//
-//        user.setEmail(registrationFormBean.getEmail());
-//        user.setFirstName(registrationFormBean.getFirstName());
-//        user.setLastName(registrationFormBean.getLastName());
-//        user.setPhone(registrationFormBean.getPhone());
-//        user.setPassword(registrationFormBean.getPassword());
-//
-//        // in this case we are adding the RegisterFormBean to the model
-//        userService.save(user);
-//
-//        return new ModelAndView("redirect:/user/account/");
-//    }
+
 }
 

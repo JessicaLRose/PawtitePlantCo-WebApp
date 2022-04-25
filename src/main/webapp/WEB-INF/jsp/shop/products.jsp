@@ -110,7 +110,7 @@
                                     <jstlC:forEach items = "${allProducts}" var = "product">
 
                                         <div class="modal fade" id="all${product.id}" tabindex="-1" aria-labelledby="product-details-all" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered modal-xl modal-md">
+                                            <div class="modal-dialog modal-dialog-centered modal-xl modal-l modal-md">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="product-details-all"></h5>
@@ -120,26 +120,48 @@
                                                         <div class="container">
                                                             <div class="row">
                                                                 <div class="col-md-6 image-container">
+                                                                    <jstlC:choose>
+                                                                    <jstlC:when test="${product.productImage != '' && product.productThumbnail != ''}">
                                                                     <div class="big-image">
-                                                                        <img src ="${product.productImage}" class = "w-100" alt="plant 1">
+                                                                        <img src ="${product.productImage}" class = "w-100" alt="image">
                                                                     </div>
                                                                     <div class="small-image">
-                                                                        <img src ="${product.productThumbnail}" class = "w-100" alt="plant 1">
-                                                                        <img src ="${product.productThumbnail}" class = "w-100" alt="plant 1">
-                                                                        <img src ="${product.productThumbnail}" class = "w-100" alt="plant 1">
+                                                                        <img src ="${product.productThumbnail}" class = "w-100" alt="image">
+                                                                        <img src ="${product.productThumbnail}" class = "w-100" alt="image">
+                                                                        <img src ="${product.productThumbnail}" class = "w-100" alt="image">
                                                                     </div>
+                                                                    </jstlC:when>
+                                                                    <jstlC:otherwise>
+                                                                    <div class="big-image">
+                                                                        <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                                    </div>
+                                                                    <div class="small-image">
+                                                                        <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                                        <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                                        <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                                    </div>
+                                                                    </jstlC:otherwise>
+                                                                    </jstlC:choose>
                                                                 </div>
                                                                 <div class="col-md-6 ms-auto description-container">
                                                                     <h1 class="product-name">${product.productName}</h1>
-                                                                    <br>
+                                                                    <br><br>
                                                                     <p class="text-container">${product.productDescription}</p>
-
-                                                                    <div class="product-price fw-bold">
-                                                                        <span>$ ${product.productPrice}</span>
+                                                                    <br><br>
+                                                                    <div class="product-price descrip-quantity fw-bold">
+                                                                        <span>$ ${product.productPrice} </span>
+                                                                        <div class="counter">
+                                                                            <span class="down" onClick="decreaseCount(event, this)">
+                                                                                <i class="fa-solid fa-circle-minus"></i></span>
+                                                                            <input type="text" id="prod-quant" name="quantity" value="1">
+                                                                            <span class="up" onClick="increaseCount(event, this)">
+                                                                                <i class="fa-solid fa-circle-plus"></i></span>
+                                                                        </div>
                                                                     </div>
-                                                                    <br>
-                                                                    <div>
-                                                                        <a href="/cart/addItem/${product.id}" class="btn position-absolute bottom-0 end-0" id="cart-add"><i class="fa fa-shopping-cart"></i><span> Add to Cart</span></a>
+
+                                                                    <br><br>
+                                                                    <div class="add-to-basket">
+                                                                        <a href="/cart/addItem/${product.id}" class="btn bottom-0 end-0" id="cart-add"><span> Add to Basket</span><i class="fa-solid fa-basket-shopping"></i></a>
                                                                     </div>
                                                                 </div>
 
@@ -155,8 +177,16 @@
                                     <div class = "col-md-6 col-lg-4 col-xl-3 p-2 all">
                                         <div class = "collection-img position-relative">
                                             <button type="button" data-bs-toggle="modal" data-bs-target="#all${product.id}">
-                                                <img src ="${product.productImage}" class = "w-100" alt="plant 1">
-                                                <img src ="${product.productThumbnail}" class = "secondary-img w-100" alt="plant 1">
+                                                <jstlC:choose>
+                                                <jstlC:when test="${product.productImage != '' && product.productThumbnail != ''}">
+                                                <img src ="${product.productImage}" class = "w-100" alt="image">
+                                                <img src ="${product.productThumbnail}" class = "secondary-img w-100" alt="image">
+                                                </jstlC:when>
+                                                <jstlC:otherwise>
+                                                <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                <img src ="../../../pub/img/placeholder.png" class = "secondary-img w-100" alt="image">
+                                                </jstlC:otherwise>
+                                                </jstlC:choose>
                                             </button>
 
                                         </div>
@@ -187,26 +217,48 @@
                                                         <div class="container">
                                                             <div class="row">
                                                                 <div class="col-md-6 image-container">
-                                                                    <div class="big-image">
-                                                                        <img src ="${product.productImage}" class = "w-100" alt="plant 1">
-                                                                    </div>
-                                                                    <div class="small-image">
-                                                                        <img src ="${product.productThumbnail}" class = "w-100" alt="plant 1">
-                                                                        <img src ="${product.productThumbnail}" class = "w-100" alt="plant 1">
-                                                                        <img src ="${product.productThumbnail}" class = "w-100" alt="plant 1">
-                                                                    </div>
+                                                                    <jstlC:choose>
+                                                                        <jstlC:when test="${product.productImage != '' && product.productThumbnail != ''}">
+                                                                            <div class="big-image">
+                                                                                <img src ="${product.productImage}" class = "w-100" alt="image">
+                                                                            </div>
+                                                                            <div class="small-image">
+                                                                                <img src ="${product.productThumbnail}" class = "w-100" alt="image">
+                                                                                <img src ="${product.productThumbnail}" class = "w-100" alt="image">
+                                                                                <img src ="${product.productThumbnail}" class = "w-100" alt="image">
+                                                                            </div>
+                                                                        </jstlC:when>
+                                                                        <jstlC:otherwise>
+                                                                            <div class="big-image">
+                                                                                <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                                            </div>
+                                                                            <div class="small-image">
+                                                                                <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                                                <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                                                <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                                            </div>
+                                                                        </jstlC:otherwise>
+                                                                    </jstlC:choose>
                                                                 </div>
                                                                 <div class="col-md-6 ms-auto description-container">
                                                                     <h1 class="product-name">${product.productName}</h1>
-                                                                    <br>
+                                                                    <br><br>
                                                                     <p class="text-container">${product.productDescription}</p>
-
-                                                                    <div class="product-price fw-bold">
-                                                                        <span>$ ${product.productPrice}</span>
+                                                                    <br><br>
+                                                                    <div class="product-price descrip-quantity fw-bold">
+                                                                        <span>$ ${product.productPrice} </span>
+                                                                        <div class="counter">
+                                                                            <span class="down" onClick="decreaseCount(event, this)">
+                                                                                <i class="fa-solid fa-circle-minus"></i></span>
+                                                                            <input type="text" id="prod-quant" name="quantity" value="1">
+                                                                            <span class="up" onClick="increaseCount(event, this)">
+                                                                                <i class="fa-solid fa-circle-plus"></i></span>
+                                                                        </div>
                                                                     </div>
-                                                                    <br>
-                                                                    <div>
-                                                                        <a href="#" class="btn position-absolute bottom-0 end-0" class="cart-add"><i class="fa fa-shopping-cart"></i><span> Add to Cart</span></a>
+
+                                                                    <br><br>
+                                                                    <div class="add-to-basket">
+                                                                        <a href="/cart/addItem/${product.id}" class="btn bottom-0 end-0" id="cart-add"><span> Add to Basket</span><i class="fa-solid fa-basket-shopping"></i></a>
                                                                     </div>
                                                                 </div>
 
@@ -215,15 +267,25 @@
 
                                                     </div>
 
+
                                                 </div>
                                             </div>
                                         </div>
                                         <div class = "col-md-6 col-lg-4 col-xl-3 p-2 all">
                                             <div class = "collection-img position-relative">
                                                 <button type="button" data-bs-toggle="modal" data-bs-target="#soft${product.id}">
-                                                    <img src ="${product.productImage}" class = "w-100" alt="plant 1">
-                                                    <img src ="${product.productThumbnail}" class = "secondary-img w-100" alt="plant 1">
+                                                    <jstlC:choose>
+                                                        <jstlC:when test="${product.productImage != '' && product.productThumbnail != ''}">
+                                                            <img src ="${product.productImage}" class = "w-100" alt="image">
+                                                            <img src ="${product.productThumbnail}" class = "secondary-img w-100" alt="image">
+                                                        </jstlC:when>
+                                                        <jstlC:otherwise>
+                                                            <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                            <img src ="../../../pub/img/placeholder.png" class = "secondary-img w-100" alt="image">
+                                                        </jstlC:otherwise>
+                                                    </jstlC:choose>
                                                 </button>
+
                                             </div>
                                             <div class ="text-center">
                                                 <p class ="fw-bold product-name">${product.productName}</p>
@@ -250,26 +312,48 @@
                                                         <div class="container">
                                                             <div class="row">
                                                                 <div class="col-md-6 image-container">
-                                                                    <div class="big-image">
-                                                                        <img src ="${product.productImage}" class = "w-100" alt="plant 1">
-                                                                    </div>
-                                                                    <div class="small-image">
-                                                                        <img src ="${product.productThumbnail}" class = "w-100" alt="plant 1">
-                                                                        <img src ="${product.productThumbnail}" class = "w-100" alt="plant 1">
-                                                                        <img src ="${product.productThumbnail}" class = "w-100" alt="plant 1">
-                                                                    </div>
+                                                                    <jstlC:choose>
+                                                                        <jstlC:when test="${product.productImage != '' && product.productThumbnail != ''}">
+                                                                            <div class="big-image">
+                                                                                <img src ="${product.productImage}" class = "w-100" alt="image">
+                                                                            </div>
+                                                                            <div class="small-image">
+                                                                                <img src ="${product.productThumbnail}" class = "w-100" alt="image">
+                                                                                <img src ="${product.productThumbnail}" class = "w-100" alt="image">
+                                                                                <img src ="${product.productThumbnail}" class = "w-100" alt="image">
+                                                                            </div>
+                                                                        </jstlC:when>
+                                                                        <jstlC:otherwise>
+                                                                            <div class="big-image">
+                                                                                <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                                            </div>
+                                                                            <div class="small-image">
+                                                                                <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                                                <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                                                <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                                            </div>
+                                                                        </jstlC:otherwise>
+                                                                    </jstlC:choose>
                                                                 </div>
                                                                 <div class="col-md-6 ms-auto description-container">
                                                                     <h1 class="product-name">${product.productName}</h1>
-                                                                    <br>
+                                                                    <br><br>
                                                                     <p class="text-container">${product.productDescription}</p>
-
-                                                                    <div class="product-price fw-bold">
-                                                                        <span>$ ${product.productPrice}</span>
+                                                                    <br><br>
+                                                                    <div class="product-price descrip-quantity fw-bold">
+                                                                        <span>$ ${product.productPrice} </span>
+                                                                        <div class="counter">
+                                                                            <span class="down" onClick="decreaseCount(event, this)">
+                                                                                <i class="fa-solid fa-circle-minus"></i></span>
+                                                                            <input type="text" id="prod-quant" name="quantity" value="1">
+                                                                            <span class="up" onClick="increaseCount(event, this)">
+                                                                                <i class="fa-solid fa-circle-plus"></i></span>
+                                                                        </div>
                                                                     </div>
-                                                                    <br>
-                                                                    <div>
-                                                                        <a href="#" class="btn position-absolute bottom-0 end-0" class="cart-add"><i class="fa fa-shopping-cart"></i><span> Add to Cart</span></a>
+
+                                                                    <br><br>
+                                                                    <div class="add-to-basket">
+                                                                        <a href="/cart/addItem/${product.id}" class="btn bottom-0 end-0" id="cart-add"><span> Add to Basket</span><i class="fa-solid fa-basket-shopping"></i></a>
                                                                     </div>
                                                                 </div>
 
@@ -278,15 +362,25 @@
 
                                                     </div>
 
+
                                                 </div>
                                             </div>
                                         </div>
                                         <div class = "col-md-6 col-lg-4 col-xl-3 p-2 all">
                                             <div class = "collection-img position-relative">
-                                                <button type="button" data-bs-toggle="modal" data-bs-target="#hardy${product.id}" >
-                                                    <img src ="${product.productImage}" class = "w-100" alt="plant 1">
-                                                    <img src ="${product.productThumbnail}" class = "secondary-img w-100" alt="plant 1">
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#hardy${product.id}">
+                                                    <jstlC:choose>
+                                                        <jstlC:when test="${product.productImage != '' && product.productThumbnail != ''}">
+                                                            <img src ="${product.productImage}" class = "w-100" alt="image">
+                                                            <img src ="${product.productThumbnail}" class = "secondary-img w-100" alt="image">
+                                                        </jstlC:when>
+                                                        <jstlC:otherwise>
+                                                            <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                            <img src ="../../../pub/img/placeholder.png" class = "secondary-img w-100" alt="image">
+                                                        </jstlC:otherwise>
+                                                    </jstlC:choose>
                                                 </button>
+
                                             </div>
                                             <div class ="text-center">
                                                 <p class ="fw-bold product-name">${product.productName}</p>
@@ -315,26 +409,48 @@
                                                         <div class="container">
                                                             <div class="row">
                                                                 <div class="col-md-6 image-container">
-                                                                    <div class="big-image">
-                                                                        <img src ="${product.productImage}" class = "w-100" alt="plant 1">
-                                                                    </div>
-                                                                    <div class="small-image">
-                                                                        <img src ="${product.productThumbnail}" class = "w-100" alt="plant 1">
-                                                                        <img src ="${product.productThumbnail}" class = "w-100" alt="plant 1">
-                                                                        <img src ="${product.productThumbnail}" class = "w-100" alt="plant 1">
-                                                                    </div>
+                                                                    <jstlC:choose>
+                                                                        <jstlC:when test="${product.productImage != '' && product.productThumbnail != ''}">
+                                                                            <div class="big-image">
+                                                                                <img src ="${product.productImage}" class = "w-100" alt="image">
+                                                                            </div>
+                                                                            <div class="small-image">
+                                                                                <img src ="${product.productThumbnail}" class = "w-100" alt="image">
+                                                                                <img src ="${product.productThumbnail}" class = "w-100" alt="image">
+                                                                                <img src ="${product.productThumbnail}" class = "w-100" alt="image">
+                                                                            </div>
+                                                                        </jstlC:when>
+                                                                        <jstlC:otherwise>
+                                                                            <div class="big-image">
+                                                                                <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                                            </div>
+                                                                            <div class="small-image">
+                                                                                <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                                                <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                                                <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                                            </div>
+                                                                        </jstlC:otherwise>
+                                                                    </jstlC:choose>
                                                                 </div>
                                                                 <div class="col-md-6 ms-auto description-container">
                                                                     <h1 class="product-name">${product.productName}</h1>
-                                                                    <br>
+                                                                    <br><br>
                                                                     <p class="text-container">${product.productDescription}</p>
-
-                                                                    <div class="product-price fw-bold">
-                                                                        <span>$ ${product.productPrice}</span>
+                                                                    <br><br>
+                                                                    <div class="product-price descrip-quantity fw-bold">
+                                                                        <span>$ ${product.productPrice} </span>
+                                                                        <div class="counter">
+                                                                            <span class="down" onClick="decreaseCount(event, this)">
+                                                                                <i class="fa-solid fa-circle-minus"></i></span>
+                                                                            <input type="text" id="prod-quant" name="quantity" value="1">
+                                                                            <span class="up" onClick="increaseCount(event, this)">
+                                                                                <i class="fa-solid fa-circle-plus"></i></span>
+                                                                        </div>
                                                                     </div>
-                                                                    <br>
-                                                                    <div>
-                                                                        <a href="/cart/addItem/${product.id}" class="btn position-absolute bottom-0 end-0" class="cart-add"><i class="fa fa-shopping-cart"></i><span> Add to Cart</span></a>
+
+                                                                    <br><br>
+                                                                    <div class="add-to-basket">
+                                                                        <a href="/cart/addItem/${product.id}" class="btn bottom-0 end-0" id="cart-add"><span> Add to Basket</span><i class="fa-solid fa-basket-shopping"></i></a>
                                                                     </div>
                                                                 </div>
 
@@ -343,16 +459,26 @@
 
                                                     </div>
 
+
                                                 </div>
                                             </div>
                                         </div>
-                                        <%--Ending form--%>
+
                                         <div class = "col-md-6 col-lg-4 col-xl-3 p-2 all">
                                             <div class = "collection-img position-relative">
                                                 <button type="button" data-bs-toggle="modal" data-bs-target="#accessories${product.id}">
-                                                    <img src ="${product.productImage}" class = "w-100" alt="plant 1">
-                                                    <img src ="${product.productThumbnail}" class = "secondary-img w-100" alt="plant 1">
+                                                    <jstlC:choose>
+                                                        <jstlC:when test="${product.productImage != '' && product.productThumbnail != ''}">
+                                                            <img src ="${product.productImage}" class = "w-100" alt="image">
+                                                            <img src ="${product.productThumbnail}" class = "secondary-img w-100" alt="image">
+                                                        </jstlC:when>
+                                                        <jstlC:otherwise>
+                                                            <img src ="../../../pub/img/placeholder.png" class = "w-100" alt="image">
+                                                            <img src ="../../../pub/img/placeholder.png" class = "secondary-img w-100" alt="image">
+                                                        </jstlC:otherwise>
+                                                    </jstlC:choose>
                                                 </button>
+
                                             </div>
                                             <div class ="text-center">
                                                 <p class ="fw-bold product-name">${product.productName}</p>
@@ -386,13 +512,11 @@
     </div>
 
     <div class="links">
-        <a href="#">home</a>
-        <a href="#featured">featured</a>
-        <a href="product.html">shop</a>
-        <a href="#about">about</a>
-        <a href="#review">reviews</a>
-        <a href="#contact">contact</a>
-        <a href="#cart">cart</a>
+        <a href="/home">home</a>
+        <a href="/shop/products">shop</a>
+        <a href="/home#about">about</a>
+        <a href="/home#contact">contact</a>
+        <a href="#" id="cart-loginLink">Login</a>
     </div>
 
     <div class="credit">created by <span>jessica fatim</span> | all rights reserved</div>

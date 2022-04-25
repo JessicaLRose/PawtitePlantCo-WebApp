@@ -103,49 +103,44 @@
     <div class="box-container">
 
         <div class="box">
-
-            <img src="../../pub/img/cart-plant-1.png" alt="">
+            <img src="..\..\..\pub\img\plant-img-1.png" alt="image">
             <h3>Sempervivum Red Lion</h3>
-            <div class="price">$7.99 <span>9.99</span></div>
-            <form action="/products/addToCart" method="POST">
-                <input type="hidden" value="${user.getId()}" name="id" />
-                <input type="hidden" value="${product.getId()}" />
-                <input type="submit" value="Add to Cart" class="btn">
-            </form>
-        </div>
-
-        <div class="box">
-            <img src="../../pub/img/cart-plant-2.png" alt="">
-            <h3>sedum Donkey's Tail</h3>
-            <div class="price">$15.99 <span>20.99</span></div>
+            <div class="price">5.75 <span>6.95</span></div>
             <a href="#" class="btn">add to cart</a>
         </div>
 
         <div class="box">
-            <img src="../../pub/img/cart-plant-3.png" alt="">
-            <h3>Echeveria Violet Queen</h3>
-            <div class="price">$15.99 <span>20.99</span></div>
+            <img src="..\..\..\pub\img\plant-img-7.png" alt="image">
+            <h3>Bunny Ear Cactus</h3>
+            <div class="price">$6.25 <span>8.99</span></div>
             <a href="#" class="btn">add to cart</a>
         </div>
 
         <div class="box">
-            <img src="../../pub/img/cart-plant-4.png" alt="">
+            <img src="..\..\..\pub\img\plant-img-5.png" alt="image">
             <h3>Sedum Major</h3>
-            <div class="price">$15.99 <span>20.99</span></div>
+            <div class="price">$5.75 <span>7.99</span></div>
             <a href="#" class="btn">add to cart</a>
         </div>
 
         <div class="box">
-            <img src="../../pub/img/cart-plant-5.png" alt="">
+            <img src="..\..\..\pub\img\plant-img-8.png" alt="image">
+            <h3>Variegata String of Hearts</h3>
+            <div class="price">$5.75 <span>8.99</span></div>
+            <a href="#" class="btn">add to cart</a>
+        </div>
+
+        <div class="box">
+            <img src="..\..\..\pub\img\plant-img-3.png" alt="image">
             <h3>Haworthia Zebra</h3>
-            <div class="price">$15.99 <span>20.99</span></div>
+            <div class="price">$6.75 <span>7.99</span></div>
             <a href="#" class="btn">add to cart</a>
         </div>
 
         <div class="box">
-            <img src="../../pub/img/cart-plant-6.png" alt="">
+            <img src="..\..\..\pub\img\plant-img-6.png" alt="image">
             <h3>Echeveria Perle Von Nunberg</h3>
-            <div class="price">$15.99 <span>20.99</span></div>
+            <div class="price">$5.75 <span>7.99</span></div>
             <a href="#" class="btn">add to cart</a>
         </div>
 
@@ -236,8 +231,8 @@
             <img src="../../pub/img/quote-img.png" alt="" class="quote">
             <p>Narwhal man braid snackwave YOLO tofu viral glossier af kitsch pabst. Austin knausgaard lyft mlkshk beard
                 pop-up organic la croix franzen pok pok taxidermy bushwick stumptown mustache gochujang.</p>
-            <img src="../../pub/img/deku_link.png" class="user" alt="">
-            <h3>john deo</h3>
+            <img src="../../pub/img/deku_link.png" class="user" alt="image">
+            <h3>Link Leif</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -252,7 +247,7 @@
             <p>Keffiyeh yuccie drinking vinegar pop-up disrupt raclette banh mi. Thundercats brooklyn adaptogen XOXO
                 kogi flannel chillwave pug actually readymade art party woke. Cronut offal kinfolk 3 wolf moon deep.</p>
             <img src="../../pub/img/deku-butler.png" class="user" alt="">
-            <h3>john deo</h3>
+            <h3>Deku Dad</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -267,13 +262,13 @@
             <p>Austin knausgaard beard pop-up organic la croix franzen pok pok taxidermy bushwick stumptown mustache
                 gochujang. Goth vape art party coffee tumblr jianbing freegan hot chicken sriracha vice flannel.</p>
             <img src="../../pub/img/deku-king.jpg" class="user" alt="">
-            <h3>john deo</h3>
+            <h3>king kale</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
+                <i class="fas fa-star"></i>
             </div>
         </div>
 
@@ -309,9 +304,9 @@
             </div>
             <div class="select-box">
 
-                <label for="select-box1" class="label select-box1"><span class="label-desc">Type of Query</span>
+                <label for="contact-form" class="label contact-form"><span class="label-desc">Type of Query</span>
                 </label>
-                <select id="select-box1" class="select">
+                <select id="contact-form" class="select">
                     <option value="Choice 1">Product Questions</option>
                     <option value="Choice 2">Site Support</option>
                     <option value="Choice 3">Payments & Delivery</option>

@@ -100,7 +100,7 @@ document.querySelector('#cart-loginLink').onclick = () =>{
 
 /* contact form drop-down on index.html */
 
-let selectInput = document.getElementById("select-box1");
+let selectInput = document.getElementById("contact-form");
 
 
 selectInput.addEventListener("input", function(){
@@ -122,7 +122,6 @@ function increaseCount(a, b) {
     value++;
     input.value = value;
 
-
 }
 
 function decreaseCount(a, b) {
@@ -135,15 +134,41 @@ function decreaseCount(a, b) {
     }
 }
 
+function loginMessage() {
+    var loginEmail = document.forms["loginForm"]["email"].value;
+    if (loginEmail === "") {
+        alert("Something Went Wrong, Please Try Again");
+        return false;
+    }
+}
+
+function showPass() {
+    var loginPassword = document.getElementById("pass-field");
+    if (loginPassword.type === "password") {
+        loginPassword.type = "text";
+    } else {
+        loginPassword.type = "password";
+    }
+}
+
+// let creditCardFields = document.querySelector(".cc-form");
+// let redirectMessage = document.querySelector(".alternate-form");
+// let ccRadioButton = document.querySelector("#cc");
+//
+// document.querySelector('#cc').onclick = () =>{
+//     creditCardFields.classList.toggle('active');
+//     redirectMessage.classList.remove('active');
+// }
 
 
 /* Code for changing active
 link on clicking */
-// var btns =
-//     $("#admin-bar .navbar-nav .nav-link");
+
+// var barlinks =
+//     $("#navigation .navbar-nav .nav-link");
 //
-// for (var i = 0; i < btns.length; i++) {
-//     btns[i].addEventListener("click",
+// for (var i = 0; i < barlinks.length; i++) {
+//     barlinks[i].addEventListener("click",
 //         function () {
 //             var current = document
 //                 .getElementsByClassName("active");
@@ -154,3 +179,8 @@ link on clicking */
 //             this.className += " active";
 //         });
 // }
+
+// $( '#navigation .navbar-nav a' ).on( 'click', function () {
+//     $( '#navigation .navbar-nav' ).find( '.nav-link.active' ).removeClass( 'active' );
+//     $( this ).parent( 'nav-link' ).addClass( 'active' );
+// });

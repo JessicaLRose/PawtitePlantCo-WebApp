@@ -1,5 +1,6 @@
 package com.teksystems.ecommerce_site.database.dao;
 
+import com.teksystems.ecommerce_site.database.entity.Product;
 import com.teksystems.ecommerce_site.database.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,7 +23,7 @@ public interface  UserDAO  extends JpaRepository<User, Long> {
     // 2) via @Query with a native query
     // 3) by using a function for spring to do the query with no query
 
-
+    public List<User> findUsersById(Integer id);
 //    public List<User> findByFirstName(@Param("firstName") String firstName);
 
     // this is a native query which is SQL like you would execute in workbench
