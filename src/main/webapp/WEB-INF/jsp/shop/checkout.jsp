@@ -25,7 +25,7 @@
 
         <div class="cart-item-box">
 
-            <jstlC:forEach items="${cartProducts}" var="cartList">
+            <jstlC:forEach items="${cartProducts}" var="cartList" varStatus="loop">
                 <div class="product-card">
                     <div class="card">
                         <div class="img-box">
@@ -39,7 +39,7 @@
                                     <div class="counter">
                                         <span class="down" onClick="decreaseCount(event, this)"><i
                                                 class="fa-solid fa-circle-minus"></i></span>
-                                        <input type="text" id="prod-quant" name="quantity" value="${cartList.quantity}">
+                                        <input type="text" id="prod-quant" class="update-quantity" name="quantity" value="${cartList.quantity}">
                                         <span class="up" onClick="increaseCount(event, this)"><i
                                                 class="fa-solid fa-circle-plus"></i></span>
                                     </div>
@@ -144,7 +144,6 @@
                         <i class="fa-regular fa-circle-check checkmark"></i>
                     </label>
 
-
                     <label class="form-control method" for="applepay">
                         <i class="fa-brands fa-apple-pay"></i>
                         <span></span>
@@ -208,11 +207,6 @@
                 <div class="alternate-form">
 
                         <br>
-                    <jstlC:if test="${bindingResult.hasErrors()}">
-                        <jstlC:forEach items="${bindingResult.getAllErrors()}" var="error">
-                            <div style="color:#943643;">${error.getDefaultMessage()}</div>
-                        </jstlC:forEach>
-                    </jstlC:if>
 
                 </div>
 

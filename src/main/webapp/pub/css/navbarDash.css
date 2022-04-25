@@ -21,7 +21,7 @@
 
 /* fixes bootstrap blue links*/
 
-a, a:hover, a:focus, a:active{
+a, a:hover, a:focus, a:active, input{
     text-decoration: none;
     color: inherit;
 }
@@ -270,6 +270,10 @@ textarea::-webkit-scrollbar-thumb {
 
 .card-body label {
     font-weight: bold;
+}
+
+input[type="radio"]:checked::before {
+    color: white;
 }
 
 .footer{

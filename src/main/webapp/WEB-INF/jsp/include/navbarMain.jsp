@@ -70,13 +70,17 @@
                     </div>
                 </div>
                 <hr>
-                <div class="nav-cart-text fw-bold" id="nav-subtotal">
-                    <span>Subtotal:</span>
-                    <span>$${subTotal}</span>
 
-                </div>
+<%--                <div class="nav-cart-text fw-bold" id="nav-subtotal">--%>
+<%--                    <span>Subtotal:</span>--%>
+<%--                    <span>$${subTotal}</span>--%>
+<%--                </div>--%>
+
             </jstlC:forEach>
-
+            <div class="nav-cart-text fw-bold" id="nav-subtotal">
+                <span>Subtotal:</span>
+                <span>$${subTotal}</span>
+            </div>
                 <a href="/shop/checkout" class="btn">checkout now</a>
 
             </sec:authorize>

@@ -98,6 +98,8 @@ public class CheckoutController {
 
             response.addObject("orderFormBean", orderFormBean);
 
+            response.setViewName("shop/checkout");
+
         } else {
 
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // ask spring security for current user

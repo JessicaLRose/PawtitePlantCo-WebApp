@@ -30,11 +30,10 @@ public class Product {
     @Column(name = "product_price")
     private BigDecimal productPrice;
 
-    @Nullable
+
     @Column(name = "product_image")
     private String productImage;
 
-    @Nullable
     @Column(name = "product_thumbnail")
     private String productThumbnail;
 

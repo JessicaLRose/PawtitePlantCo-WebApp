@@ -62,6 +62,9 @@ public class BasketController {
         if(orders == null){ // if there are no pending orders for this user aka: no active cart
             orders = new Orders(); // create a new one
             orders.setCartStatus("PENDING");
+            orders.setCardholderName("waiting for details");
+            orders.setCcNumber("waiting for details");
+            orders.setPaymentMethod("waiting for details");
             orders.setUser(user); // assign this cart to the current user
             orders = orderDAO.save(orders); // save to db and reassign "order" variable to DB response (this ensures we have the correct id from sql auto-increment)
         }
@@ -83,6 +86,24 @@ public class BasketController {
         response.setViewName("redirect:/shop/checkout");
 
         return response;
+    }
+
+    @RequestMapping(value = "/cart/updateQuantity/{id}", method = RequestMethod.GET)
+    public ModelAndView quantityUpdate(@PathVariable("id") Integer id) throws Exception {
+        ModelAndView response = new ModelAndView();
+
+        OrderProduct selectedCartLine = orderProductDAO.findById(id);
+
+        if ( selectedCartLine == null ) {
+            log.info("selectedCartLine is null");
+            // this is an error
+        } else {
+
+            orderProductDAO.delete(selectedCartLine);
+            System.out.println("product removed from cart");
+        }
+
+        return new ModelAndView("redirect:/shop/checkout");
     }
 
     @RequestMapping(value = "/cart/deleteItem/{id}", method = RequestMethod.GET)

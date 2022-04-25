@@ -134,6 +134,23 @@ function decreaseCount(a, b) {
     }
 }
 
+let buttons = document.getElementsByClassName('update-quantity');
+for (let i=0; i<buttons.length; i++) {
+    buttons[i].addEventListener("click", clickHandler);
+}
+function clickHandler(e) {
+    let buttonId = e.target.getAttribute('id');
+    let rowId = buttonId.split("_")[1];
+    let currentQuantity= document.querySelector(`${cartList.quantity}`).textContent
+    $.ajax({
+        url: "/user/deleteuser",
+        data: {id: rowId },
+        success: setTimeout(function(){
+            window.location.reload();
+        }, 2000)
+    })
+}
+
 function loginMessage() {
     var loginEmail = document.forms["loginForm"]["email"].value;
     if (loginEmail === "") {

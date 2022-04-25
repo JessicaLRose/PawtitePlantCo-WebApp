@@ -186,8 +186,6 @@ input:focus {
     box-shadow: rgb(196, 189, 189) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
 
-
-
 .amount {
     padding: 5rem 5rem;
     font-size: 1.7rem;
@@ -202,7 +200,6 @@ input:focus {
 .amount > div:not(:last-child) {
     margin-bottom: 2rem;
 }
-
 
 /**
  * checkout section style
@@ -270,7 +267,9 @@ input:focus {
 .form-control:focus-within {
     color: var(--button-color);
 }
-
+/*#cc{*/
+/*    color: var(--button-color);*/
+/*}*/
 
 input[type="radio"] {
     opacity: 0;
@@ -281,7 +280,6 @@ input[type="radio"] {
     /* position: fixed; */
     width: 0;
 }
-
 
 .method .fa-circle-check{
     font-size:2.5rem;
@@ -301,7 +299,6 @@ input[type="radio"]:checked::before + label{
     font-size: 2rem;
     letter-spacing: 2px;
 }
-
 
 .cardholder-name,
 .card-number { margin-bottom: 20px; }
