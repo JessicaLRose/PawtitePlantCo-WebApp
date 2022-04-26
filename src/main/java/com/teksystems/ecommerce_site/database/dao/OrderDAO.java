@@ -1,7 +1,6 @@
 package com.teksystems.ecommerce_site.database.dao;
 
 import com.teksystems.ecommerce_site.database.entity.Orders;
-import com.teksystems.ecommerce_site.database.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

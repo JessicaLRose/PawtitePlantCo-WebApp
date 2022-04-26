@@ -25,7 +25,7 @@
 
         <div class="cart-item-box">
 
-            <jstlC:forEach items="${cartProducts}" var="cartList" varStatus="loop">
+            <jstlC:forEach items="${cartProducts}" var="cartList">
                 <div class="product-card">
                     <div class="card">
                         <div class="img-box">

@@ -57,16 +57,48 @@
 - Admins may create, edit and delete products in the product listing.
 
 Responsive Pages:
-![Responsive-Home](src/main/webapp/pub/img/er-diagram.png)
-![Responsive-Shop](src/main/webapp/pub/img/er-diagram.png)
+
+<div align="center">
+
+![Responsive-Home](src/main/webapp/pub/img/responsive-home.png)
+
+![Responsive-Shop](src/main/webapp/pub/img/responsive-shop.png)
+
+</div>
 
 Shop Page:
 
+<div align="center">
 
+![Shop-Page](src/main/webapp/pub/img/shop-page.png)
 
-  ## Future Development
+</div>
+
+Checkout Page and Open Basket Sidebar:
+
+<div align="center">
+
+![Checkout-Page](src/main/webapp/pub/img/checkout-page.png)
+
+</div>
+
+Admin Page:
+
+<div align="center">
+
+![Admin-Page](src/main/webapp/pub/img/admin-page.png)
+
+</div>
+
+## Future Development
+
+- Add search functionality within admin pages and main navbar.
+- Complete contact form functionality
+- Finish 100% unit test coverage.
+- Success messages upon completed forms.
+- Populate User's order history.
   
-  ## Contact
+## Contact
 
 Email: [JessicaLF17@yahoo.com]
 
