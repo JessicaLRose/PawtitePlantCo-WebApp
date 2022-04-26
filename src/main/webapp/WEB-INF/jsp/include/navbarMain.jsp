@@ -1,5 +1,6 @@
 <%@ taglib prefix="jstlC" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <header class="header">
 
@@ -46,7 +47,7 @@
 
     <div class="cart-items-container">
 
-        <h3 id="basket-title">basket</h3>
+        <h3 id="basket-title"><i class="fa-solid fa-basket-shopping"></i> basket</h3>
         <hr>
         <sec:authorize access="!isAuthenticated()">
         <h5>Log in to see items you may have added previously</h5>
@@ -70,12 +71,6 @@
                     </div>
                 </div>
                 <hr>
-
-<%--                <div class="nav-cart-text fw-bold" id="nav-subtotal">--%>
-<%--                    <span>Subtotal:</span>--%>
-<%--                    <span>$${subTotal}</span>--%>
-<%--                </div>--%>
-
             </jstlC:forEach>
             <div class="nav-cart-text fw-bold" id="nav-subtotal">
                 <span>Subtotal:</span>

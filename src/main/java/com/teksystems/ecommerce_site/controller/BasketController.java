@@ -88,23 +88,23 @@ public class BasketController {
         return response;
     }
 
-    @RequestMapping(value = "/cart/updateQuantity/{id}", method = RequestMethod.GET)
-    public ModelAndView quantityUpdate(@PathVariable("id") Integer id) throws Exception {
-        ModelAndView response = new ModelAndView();
-
-        OrderProduct selectedCartLine = orderProductDAO.findById(id);
-
-        if ( selectedCartLine == null ) {
-            log.info("selectedCartLine is null");
-            // this is an error
-        } else {
-
-            orderProductDAO.delete(selectedCartLine);
-            System.out.println("product removed from cart");
-        }
-
-        return new ModelAndView("redirect:/shop/checkout");
-    }
+//    @RequestMapping(value = "/cart/updateQuantity/{id}", method = RequestMethod.GET)
+//    public ModelAndView quantityUpdate(@PathVariable("id") Integer id) throws Exception {
+//        ModelAndView response = new ModelAndView();
+//
+//        OrderProduct selectedCartLine = orderProductDAO.findById(id);
+//
+//        if ( selectedCartLine == null ) {
+//            log.info("selectedCartLine is null");
+//            // this is an error
+//        } else {
+//
+//            orderProductDAO.delete(selectedCartLine);
+//            System.out.println("product removed from cart");
+//        }
+//
+//        return new ModelAndView("redirect:/shop/checkout");
+//    }
 
     @RequestMapping(value = "/cart/deleteItem/{id}", method = RequestMethod.GET)
     public ModelAndView productRemove(@PathVariable("id") Integer id) throws Exception {
