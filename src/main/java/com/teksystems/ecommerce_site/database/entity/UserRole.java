@@ -20,9 +20,6 @@ public class UserRole {
     @Column(name = "id")
     private Integer id;
 
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "user_ID", nullable = false)
-
     @Column(name = "user_id", nullable = false)
     private Integer userId;
 

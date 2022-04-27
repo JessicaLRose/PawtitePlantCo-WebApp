@@ -244,12 +244,12 @@ textarea::-webkit-scrollbar-thumb {
 
 #edit-prod-img img{
     height: auto;
-    width: 5rem;
+    width: 3rem;
 }
 
 #edit-prod-thumb img{
     height: auto;
-    width: 5rem;
+    width: 3rem;
 }
 
 #edit-prod-descrip{

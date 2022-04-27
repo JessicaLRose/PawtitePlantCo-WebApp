@@ -5,11 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
-
-import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 
 @Getter
 @Setter
@@ -38,6 +35,4 @@ public class RegistrationFormBean {
 
     @NotBlank(message = "Phone Number is required")
     private String phone;
-
-
 }

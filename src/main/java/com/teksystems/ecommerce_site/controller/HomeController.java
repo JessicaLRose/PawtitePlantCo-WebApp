@@ -26,12 +26,6 @@ public class HomeController {
         ModelAndView response = new ModelAndView();
         response.setViewName("home");
 
-//        RegistrationFormBean form = new RegistrationFormBean();
-//        response.addObject("form", form);
-//        In the parentheses, is the input of the method, the parameter
-//        you can use Http session here manually
-//        Integer id = (Integer) session.getAttribute("user_id");
-//        User u = userDAO.findByUserID(id);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String loggedUserEmail = authentication.getName();
         User user = userDAO.findByEmail(loggedUserEmail);
@@ -41,6 +35,4 @@ public class HomeController {
         }
         return response;
     }
-
-
 }

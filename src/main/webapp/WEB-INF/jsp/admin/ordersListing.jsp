@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="jstlC" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
 <jsp:include page="../include/head.jsp"/>
 
 <link href="<c:url value="../pub/css/navbarDash.css"/>" rel="stylesheet" type="text/css"/>
@@ -10,8 +9,8 @@
 </head>
 
 <body>
-<jsp:include page="../include/navbarAdmin.jsp"/>
 
+<jsp:include page="../include/navbarAdmin.jsp"/>
 
 <section class="admin-listing d-flex justify-content-center">
 
@@ -49,7 +48,6 @@
             <tbody>
             <jstlC:forEach items = "${allOrders}" var = "order">
                 <tr>
-
                     <td>${order.id}</td>
                     <td>${order.cardholderName}</td>
                     <td>${order.cartStatus}</td>
@@ -57,13 +55,10 @@
                     <td>${order.orderDate}</td>
                     <td>
                         <a href="#" class="edit" title="Edit" data-toggle="tooltip" data-placement="bottom"><i class="fa-solid fa-pen-to-square"></i></a>
-
                         <a href="#" class="delete" title="Delete" data-toggle="tooltip" data-placement="bottom"><i class="fa-solid fa-circle-minus"></i></a>
-
                     </td>
                 </tr>
             </jstlC:forEach>
-
             </tbody>
         </table>
     </div>

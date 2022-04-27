@@ -22,7 +22,7 @@ public class Orders {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name="user_id", referencedColumnName = "id") //pointing to primary from 'users' table
+    @JoinColumn(name="user_id", referencedColumnName = "id")
     private User user;
 
     @Column(name = "cart_status")

@@ -24,6 +24,8 @@
 
                         <input type="hidden" name="id" value="${productFormBean.id}"/>
 
+                <jstlC:choose>
+                    <jstlC:when test="${productFormBean.productImage != '' && productFormBean.productThumbnail != ''}">
                         <div class="prod-image">
                             <label>Current Product Image:</label>
                             <br>
@@ -45,6 +47,31 @@
                             <br><br>
                             <input type="text" name="productThumbnail" id="edit-prod-thumb" value="${productFormBean.productThumbnail}">
                         </div>
+                    </jstlC:when>
+                    <jstlC:otherwise>
+                        <div class="prod-image">
+                        <label>Current Product Image:</label>
+                        <br>
+                            <img src ="../../../pub/img/placeholder.png" class="w-50" alt="image" id="current-prod-img">
+                        <br><br>
+                        <label for="edit-prod-img" class="label-default">Select Product Image URL :</label>
+                        <br><br>
+                        <input type="text" name="productImage" id="edit-prod-img" value="${productFormBean.productImage}">
+                        </div>
+
+                        <br>
+
+                        <div class="prod-thumb">
+                        <label>Current Product Thumbnail :</label>
+                        <br><br>
+                            <img src ="../../../pub/img/placeholder.png" class="w-50" alt="image" id="current-prod-thumb">
+                        <br><br>
+                        <label for="edit-prod-thumb" class="label-default">Select Product Thumbnail URL:</label>
+                        <br><br>
+                        <input type="text" name="productThumbnail" id="edit-prod-thumb" value="${productFormBean.productThumbnail}">
+                        </div>
+                    </jstlC:otherwise>
+                </jstlC:choose>
 
                         <br>
 

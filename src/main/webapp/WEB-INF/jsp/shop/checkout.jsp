@@ -22,9 +22,7 @@
 
     <section class="cart-section">
         <h2 class="section-heading">Order Summary</h2>
-
         <div class="cart-item-box">
-
             <jstlC:forEach items="${cartProducts}" var="cartList">
                 <div class="product-card">
                     <div class="card">
@@ -35,15 +33,13 @@
                             <h3 class="product-name">${cartList.product_name}</h3>
                             <div class="wrapper">
                                 <div class="product-qty">
-
                                     <div class="counter">
                                         <span class="down" onClick="decreaseCount(event, this)"><i
                                                 class="fa-solid fa-circle-minus"></i></span>
                                         <input type="text" id="prod-quant" class="update-quantity" name="quantity" value="${cartList.quantity}">
                                         <span class="up" onClick="increaseCount(event, this)"><i
-                                                class="fa-solid fa-circle-plus"></i></span>
+                                              class="fa-solid fa-circle-plus"></i></span>
                                     </div>
-
                                 </div>
                                 <div class="price">
                                     <span id="price">$ ${cartList.total}</span>
@@ -51,44 +47,24 @@
                             </div>
                         </div>
                         <span class="remove-product-btn">
-                    <a href="/cart/deleteItem/${cartList.row_id}" class="fas fa-times" id="remove-product"></a>
-                    </span>
+                            <a href="/cart/deleteItem/${cartList.row_id}" class="fas fa-times" id="remove-product"></a>
+                        </span>
                     </div>
                 </div>
             </jstlC:forEach>
-
-
         </div>
-
     </section>
 
-    <!-- cart end -->
-
-
     <div class="wrapper">
-
-        <!-- discount -->
-
         <div class="discount-token">
-
             <label for="discount-token" class="label-default">Promo/Reward code</label>
-
             <div class="code-box">
-
                 <input type="text" name="discount-token" id="discount-token" class="input-default">
-
                 <button class="btn apply-btn">Apply</button>
-
             </div>
-
         </div>
 
-
-        <!-- discount end -->
-        <!-- total section -->
-
         <div class="amount">
-
             <div class="subtotal">
                 <span>Subtotal</span>
                 <span id="subtotal">
@@ -104,36 +80,28 @@
             </div>
 
             <div class="total fs-2 fw-bold">
-
                 <span>Order Total</span>
                 <span id="total">
                     <fmt:formatNumber value="${cartTotal}" type="currency"/>
                </span>
             </div>
-
         </div>
-
     </div>
-    <!-- total end -->
-
-    <!--checkout section-->
 
     <section class="checkout-section">
-
         <h2 class="section-heading">Payment Details</h2>
-
         <div class="payment-form">
-
             <form action="/shop/checkoutSubmit" method="POST">
-
-
+                <br>
+                <p>Please select payment method below:</p>
+                <jstlC:forEach items='${bindingResult.getFieldErrors("paymentMethod")}' var="error">
+                    <div style="color:#943643;">${error.getDefaultMessage()}</div>
+                </jstlC:forEach>
                 <div class="payment-method">
-
-
                     <label class="form-control method" for="cc">
                         <i class="fa-solid fa-credit-card"></i>
                         <span>Credit Card</span>
-                        <input type="radio" id="cc" value="CreditCard" name="paymentMethod" checked="checked"/>
+                        <input type="radio" id="cc" value="CreditCard" name="paymentMethod"/>
                         <i class="fa-regular fa-circle-check checkmark"></i>
                     </label>
 
@@ -151,17 +119,12 @@
                         <i class="fa-regular fa-circle-check checkmark"></i>
                     </label>
 
-
                     <label class="form-control method" for="googlepay">
                         <i class="fa-brands fa-google-pay"></i>
                         <span></span>
                         <input type="radio" id="googlepay" value="GooglePay" name="paymentMethod"/>
                         <i class="fa-regular fa-circle-check checkmark"></i>
                     </label>
-                    <jstlC:forEach items='${bindingResult.getFieldErrors("paymentMethod")}' var="error">
-                        <div style="color:#943643;">${error.getDefaultMessage()}</div>
-                    </jstlC:forEach>
-
                 </div>
 
                 <div class="cc-form">
@@ -182,36 +145,26 @@
                     </div>
 
                     <div class="input-flex">
-
                         <div class="expire-date">
                             <label class="label-default">Expiration date</label>
-
                             <div class="input-flex">
-
                                 <input type="text" name="day" id="expire-day" placeholder="12" min="1" max="12"
                                        class="input-default">
                                 /
                                 <input type="text" name="month" id="expire-month" placeholder="31" min="1" max="31"
                                        class="input-default">
-
                             </div>
                         </div>
-
                         <div class="cvv">
                             <label for="cvv" class="label-default">CVV</label>
                             <input type="text" name="cvv" id="cvv" class="input-default">
                         </div>
-
                     </div>
                 </div>
                 <div class="alternate-form">
-
-                        <br>
-
+                <br>
                 </div>
-
-                <br><br><br><br><br>
-
+                <br><br><br>
                 <div>
                     <label class="terms-checkbox" for="terms">
                         By checking this box, you are agreeing to our terms of service.
@@ -219,17 +172,13 @@
                         <span class="check"></span>
                     </label>
                 </div>
-
                 <br>
-
                 <button class="btn" type="submit">
                     <b>Place your Order</b>
                 </button>
-
             </form>
         </div>
     </section>
-
 </div>
 
 <jsp:include page="../include/footer.jsp"/>

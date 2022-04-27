@@ -68,7 +68,6 @@ html, body{
 
 }
 
-
 .card .product-img {
     height: 10rem;
     width: 10rem;
@@ -98,7 +97,7 @@ html, body{
     line-height: 30px;
     font-size: 20px;
     text-align: center;
-    color: var(--lochvinar);
+    color: var(--lochinvar);
     appearance: none;
     outline: 0;
     box-shadow: rgb(189, 193, 196) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
@@ -222,7 +221,6 @@ input:focus {
     display: flex;
     align-items: center;
     padding: 15px 30px;
-    /*gap: 20px;*/
     cursor: pointer;
     border: 1px solid var(--smoke);
     background-color: var(--horizon);
@@ -261,15 +259,11 @@ input:focus {
     display: flex;
     gap: 2rem;
     margin-bottom: 9rem;
-
 }
 
 .form-control:focus-within {
     color: var(--button-color);
 }
-/*#cc{*/
-/*    color: var(--button-color);*/
-/*}*/
 
 input[type="radio"] {
     opacity: 0;
@@ -277,7 +271,6 @@ input[type="radio"] {
     transform: translateY(-0.075em);
     display: grid;
     place-content: center;
-    /* position: fixed; */
     width: 0;
 }
 

@@ -32,17 +32,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .and()
                 .formLogin()
-                // this is the URL of the login page
                 .loginPage("/home")
-                // this is the URL where the login page will submit
                 .loginProcessingUrl("/login/loginSubmit")
                 .defaultSuccessUrl("/home")
                 .and()
                 .logout()
                 .invalidateHttpSession(true)
-                // this is the URL to log the user out
                 .logoutUrl("/logout")
-                // the URL that the user goes to after they logout
                 .logoutSuccessUrl("/home")
                 .and()
                 .exceptionHandling()
@@ -67,5 +63,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 }

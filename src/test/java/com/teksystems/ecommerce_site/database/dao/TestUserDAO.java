@@ -16,9 +16,6 @@ import org.springframework.test.annotation.Rollback;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-
 @Slf4j
 @DataJpaTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -28,7 +25,6 @@ public class TestUserDAO {
     @Autowired
     private UserDAO userDAO;
 
-    //create user
     @Test
     @Order(1)
     @Rollback(value = false)
@@ -39,11 +35,8 @@ public class TestUserDAO {
         userDAO.save(user2);
 
         log.info(String.valueOf(user));
-
         Assertions.assertTrue(user.getId() > 0);
     }
-
-    //read users
     @ParameterizedTest
     @Order(2)
     @ValueSource(strings = {"ImTheBest@2NE1.com", "am@dog.com"})
@@ -51,7 +44,6 @@ public class TestUserDAO {
         User user = userDAO.findByEmail(email);
         Assertions.assertNotNull(user);
     }
-
     @Test
     @Order(3)
     public void getUserTest() {

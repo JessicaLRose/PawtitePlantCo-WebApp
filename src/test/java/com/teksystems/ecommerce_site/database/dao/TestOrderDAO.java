@@ -12,10 +12,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.data.repository.query.Param;
 import org.springframework.test.annotation.Rollback;
-
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,11 +36,9 @@ public class TestOrderDAO {
         orderDAO.save(order2);
 
         log.info(String.valueOf(order));
-
         Assertions.assertTrue(order.getId() > 0);
     }
 
-    //read order
     @ParameterizedTest
     @Order(2)
     @ValueSource(strings = {"Yogi", "Bear"})

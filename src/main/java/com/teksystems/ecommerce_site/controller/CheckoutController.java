@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -41,9 +42,6 @@ public class CheckoutController {
     private OrderDAO orderDAO;
 
     @Autowired
-    private ProductDAO productDAO;
-
-    @Autowired
     private UserDAO userDAO;
 
     @RequestMapping(value = "/shop/checkout", method = RequestMethod.GET)
@@ -51,11 +49,10 @@ public class CheckoutController {
         ModelAndView response = new ModelAndView();
         response.setViewName("shop/checkout");
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // ask spring security for current user
-        String loggedUserEmail = authentication.getName(); // get current users email
-        User user = userDAO.findByEmail(loggedUserEmail); // find user from db with this email
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String loggedUserEmail = authentication.getName();
+        User user = userDAO.findByEmail(loggedUserEmail);
 
-        // new query for producing list of all products in the cart
         List<Map<String, Object>> cartProducts = orderProductDAO.getCartProducts(user.getId(), "PENDING");
         response.addObject("cartProducts", cartProducts);
 
@@ -66,46 +63,34 @@ public class CheckoutController {
         double calculateSalesTax = 0.0;
         double getCartTotal = 0.0;
 
-//        BigDecimal cartTotal = BigDecimal.valueOf(getOrderTotal);
-
         for (Map<String, Object> row : cartProducts) {
             BigDecimal price = (BigDecimal) row.get("total");
             getSubTotal += price.doubleValue();
             calculateSalesTax = getSubTotal * salesTax;
             getCartTotal = getSubTotal + calculateSalesTax;
         }
-
         response.addObject("subTotal", getSubTotal);
         response.addObject("salesTax", calculateSalesTax);
         response.addObject("cartTotal", getCartTotal);
-
         return response;
     }
-
 
     @RequestMapping(value = "/shop/checkoutSubmit", method = {RequestMethod.POST})
     public ModelAndView checkoutSubmit(@Valid OrderFormBean orderFormBean, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
 
-
         if (bindingResult.hasErrors()) {
-            // this is the error case
             for (FieldError error : bindingResult.getFieldErrors()) {
                 log.debug(error.toString());
             }
-
             response.addObject("bindingResult", bindingResult);
-
             response.addObject("orderFormBean", orderFormBean);
-
             response.setViewName("shop/checkout");
-
         } else {
 
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // ask spring security for current user
             String loggedUserEmail = authentication.getName(); // get current users email
             User user = userDAO.findByEmail(loggedUserEmail); // find user from db with this email
-
             Orders orders = orderDAO.findByUserIdAndCartStatus(user.getId(), "PENDING"); // find current users' cart
 
             orders.setCardholderName(orderFormBean.getCardholderName());
@@ -113,11 +98,9 @@ public class CheckoutController {
             orders.setCcNumber(orderFormBean.getCcNumber());
 
             orders.setCartStatus("COMPLETE");
-
             Orders completedOrder = orderDAO.save(orders);
 
             response.addObject("completedOrder", completedOrder);
-
             response.setViewName("redirect:/home");
 
             return response;

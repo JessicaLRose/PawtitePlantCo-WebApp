@@ -30,7 +30,6 @@ public class Product {
     @Column(name = "product_price")
     private BigDecimal productPrice;
 
-
     @Column(name = "product_image")
     private String productImage;
 
@@ -52,5 +51,4 @@ public class Product {
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private Set<OrderProduct> orderProduct;
-
 }

@@ -3,9 +3,6 @@ package com.teksystems.ecommerce_site.formbean;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
-
-import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -13,7 +10,6 @@ import java.util.Date;
 @Setter
 @ToString
 public class ProductFormBean {
-
 
     private Integer id;
 

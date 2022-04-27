@@ -102,31 +102,79 @@
     font-size: 1.3rem;
 }
 
-.diy{
-    padding: 20%;
-    background-image: url(../img/plantbg.jpg);
+@media (max-width:760px){
+
+    .card {
+        width: 100% !important;
+        margin-top: 5rem !important;
+        margin-bottom: 5rem !important;
+    }
+
+    #home{
+        padding-top:80.17px;
+    }
+    .banner{
+        padding-top:80.17px;
+    }
+
+}
+
+.types .cards{
+    display: flex;
+}
+
+.card{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+
+.soft{
+    max-width: 70rem;
+    margin-bottom: 45rem;
+}
+
+.hardy{
+    max-width: 70rem;
+    margin-top: 45rem;
+}
+
+.card h3{
+    text-transform: none;
+    font-size: 3rem;
+    margin: 2rem;
+    color: var(--lochinvar);
+}
+
+.card p{
+    text-transform: none;
+    font-size: 2rem;
+    margin: 2rem;
+    color: var(--main-text);
+}
+
+.types{
+    background-image: url(../img/varietybg.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
 
-.diy span{
+.types span{
     color: var(--button-color);
-    /* background-color: var(--white); */
-
 }
 
-.diy h1{
+.types h1{
     color: var(--main-text);
     background-color: var(--white);
     padding-bottom: 0 !important;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 
-.table{
-    font-size: 2rem;
-}
-
-.about, .featured, .review, .contact{
+.about, .featured, .types, .review, .contact{
     padding:2rem 7%;
 }
 

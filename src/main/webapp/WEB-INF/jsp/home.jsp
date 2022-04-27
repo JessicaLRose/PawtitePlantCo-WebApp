@@ -11,8 +11,6 @@
 <body>
 <jsp:include page="./include/navbarMain.jsp" />
 
-<!-- carousel section starts -->
-
 <section class="home" id="home">
     <section id="carouselHero" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -43,7 +41,6 @@
                     <h1>make an arrangement</h1>
                     <p>Knausgaard tofu VHS, organic trust fund lo-fi bushwick neutra. Raw denim man braid pop-up vice,
                         celiac ramps tote bag banjo.</p>
-
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselHero" data-bs-slide="prev">
@@ -58,7 +55,6 @@
     </section>
 </section>
 
-<!-- info bar starts -->
 <section class="icons-container">
 
     <div class="icons">
@@ -92,14 +88,10 @@
             <span>no root rot upon arrival</span>
         </div>
     </div>
-
 </section>
-<!-- featured product section starts -->
 
 <section class="featured" id="featured">
-
     <h1 class="heading"> featured <span>succulents</span></h1>
-
     <div class="box-container">
 
         <div class="box">
@@ -143,70 +135,39 @@
             <div class="price">$5.75 <span>7.99</span></div>
             <a href="#" class="btn">add to cart</a>
         </div>
-
     </div>
-
 </section>
 
-<!-- diy starts -->
-
-<section class="diy" id="diy">
-
-    <h1 class="heading shadow"><span>succulent</span> kits </h1>
-
-    <div class="row">
-
-        <div><br></div>
-
-        <table class="table table-success table-striped shadow">
-            <thead>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col">basic</th>
-                <th scope="col">premium</th>
-                <th scope="col">VIP</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">cost</th>
-                <td>$5.99</td>
-                <td>$7.99</td>
-                <td>$9.99</td>
-            </tr>
-            <tr>
-                <th scope="row">perks</th>
-                <td>Random</td>
-                <td>Coupon</td>
-                <td>Freebies</td>
-            </tr>
-            <tr>
-                <th scope="row">points</th>
-                <td>500</td>
-                <td>1000</td>
-                <td>2000</td>
-            </tr>
-            </tbody>
-        </table>
-
-
+<section class="types" id="types">
+    <h1 class="heading shadow"><span>succulent</span> types </h1>
+    <div class="row cards">
+        <div class="col-sm-6 wrapper">
+            <div class="card soft">
+                <div class="card-body">
+                    <h3 class="soft-title">Soft Succulents</h3>
+                    <p class="card-text">The term "soft succulents" covers a broad spectrum of varieties from warm climates. They make great indoor plants, but can also grow outdoors in frost-free weather. Soft succulents display a wide range of forms and colors from vibrant to pastel tones. But they do all have one thing in common: low water needs. Be sure to plant in well-draining pots / soil, grow in sunny locations, and only water when completely dry.</p>
+                    <a href="/shop/products" class="btn">Explore</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 wrapper">
+            <div class="card hardy">
+                <div class="card-body">
+                    <h3 class="hardy-title">Hardy Succulents</h3>
+                    <p class="card-text">Hardy Succulents make it easy to grow colorful rosettes and lush groundcover outdoors in most regions. Many thrive in colder climates and will tolerate extended drought. These low-maintenance plants are easy growers and bring vibrant colors and winter interest to rock gardens, ground cover, living walls, container arrangements, and so much more!</p>
+                    <a href="/shop/products" class="btn">Explore</a>
+                </div>
+            </div>
+        </div>
     </div>
-
 </section>
-
-<!-- about section starts -->
 
 <section class="about" id="about">
-
     <h1 class="heading"><span>about</span> us </h1>
-
     <div class="row shadow">
-
         <div class="column image">
             <img src="../../pub/img/plant-stack.jpg" alt="holding-plants">
-
         </div>
-
         <div class="column content">
             <h3>Why choose us?</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus qui ea ullam, enim tempora ipsum
@@ -215,16 +176,11 @@
                 culpa! Neque consectetur obcaecati sapiente?</p>
             <a href="#" class="btn">learn more</a>
         </div>
-
     </div>
-
 </section>
 
-<!-- review section starts -->
 <section class="review" id="review">
-
     <h1 class="heading"> customer <span>reviews</span></h1>
-
     <div class="box-container">
 
         <div class="box">
@@ -256,7 +212,6 @@
                 <i class="fas fa-star-half-alt"></i>
             </div>
         </div>
-
         <div class="box">
             <img src="../../pub/img/quote-img.png" alt="" class="quote">
             <p>Austin knausgaard beard pop-up organic la croix franzen pok pok taxidermy bushwick stumptown mustache
@@ -271,23 +226,15 @@
                 <i class="fas fa-star"></i>
             </div>
         </div>
-
     </div>
-
 </section>
 
-<!-- contact section starts -->
-
 <section class="contact" id="contact">
-
     <h1 class="heading"><span>contact</span> us </h1>
-
     <div class="row shadow">
-
         <iframe class="map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2826.628617853403!2d-93.41750474839296!3d44.89020627947641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87f621e12e33a9df%3A0x2f7bba93dedee49a!2sOptum!5e0!3m2!1sen!2sus!4v1648875010312!5m2!1sen!2sus"
                 allowfullscreen="" loading="lazy"></iframe>
-
         <form action="#">
             <h3>get more info</h3>
             <div class="inputBox">
@@ -303,7 +250,6 @@
                 <input type="text" placeholder="text">
             </div>
             <div class="select-box">
-
                 <label for="contact-form" class="label contact-form"><span class="label-desc">Type of Query</span>
                 </label>
                 <select id="contact-form" class="select">
@@ -313,15 +259,10 @@
                     <option value="Choice 4">Press and Media</option>
                     <option value="Choice 5">Customer Feedback</option>
                 </select>
-
             </div>
-
-
             <input type="submit" value="contact now" class="btn" id="contact-submit-btn">
         </form>
-
     </div>
-
 </section>
 
 <jsp:include page="include/footer.jsp" />

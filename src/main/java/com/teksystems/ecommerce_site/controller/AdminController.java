@@ -1,6 +1,5 @@
 package com.teksystems.ecommerce_site.controller;
 
-
 import com.teksystems.ecommerce_site.database.dao.OrderDAO;
 import com.teksystems.ecommerce_site.database.dao.ProductDAO;
 import com.teksystems.ecommerce_site.database.dao.UserDAO;
@@ -23,7 +22,6 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
-
 @Slf4j
 @Controller
 @PreAuthorize("hasAuthority('ADMIN')")
@@ -41,7 +39,6 @@ public class AdminController {
     @Autowired
     private ProductService productService;
 
-
     @RequestMapping(value = "/admin/productlisting", method = RequestMethod.GET)
     public ModelAndView adminProduct(@Valid ProductFormBean productFormBean) throws Exception {
         ModelAndView response = new ModelAndView();
@@ -49,7 +46,6 @@ public class AdminController {
 
         List<Product> allProducts = productDAO.findAll();
         response.addObject("allProducts", allProducts);
-
         return response;
     }
 
@@ -57,25 +53,23 @@ public class AdminController {
     public ModelAndView productSubmit(@Valid ProductFormBean productFormBean) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("admin/productlisting");
-
         response.addObject("productFormBean", productFormBean);
 
         Product product = new Product();
-        productService.getProductDetails( productFormBean, product);
-
+        productService.getProductDetails(productFormBean, product);
         productDAO.save(product);
 
         try {
-            boolean deletesuccess = (new File("productlog.txt")).delete();
-            if (deletesuccess){
+            boolean deleteSuccess = (new File("productlog.txt")).delete();
+            if (deleteSuccess) {
                 log.info("productlog.txt deleted.");
             }
             BufferedWriter output = new BufferedWriter(new FileWriter("productlog.txt", true));
             List<Product> allProducts = productDAO.findAll();
-            output.write("Last updated: "+new Date()+"\n");
-            allProducts.forEach((Product)-> {
+            output.write("Last updated: " + new Date() + "\n");
+            allProducts.forEach((Product) -> {
                 try {
-                    output.write("ID: "+Product.getId()+" "+Product.getProductName()+" "+Product.getProductCategory()+" "+Product.getProductPrice()+" "+Product.getCreateDate()+"\n");
+                    output.write("ID: " + Product.getId() + " " + Product.getProductName() + " " + Product.getProductCategory() + " " + Product.getProductPrice() + " " + Product.getCreateDate() + "\n");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -86,25 +80,19 @@ public class AdminController {
             e.printStackTrace();
             log.error("Product output has failed.");
         }
-
         return new ModelAndView("redirect:/admin/productlisting");
     }
-
-
 
     @GetMapping("/admin/productEdit/{id}")
     public ModelAndView productEdit(@PathVariable("id") Integer id) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("admin/productEdit");
+
         System.out.println(id);
         ProductFormBean productFormBean = new ProductFormBean();
-
         Product product = productDAO.findById(id);
-
         log.info(String.valueOf(product));
         System.out.println(product);
-
-//        productService.getProductDetails( productFormBean, product);
 
         productFormBean.setId(product.getId());
         productFormBean.setProductName(product.getProductName());
@@ -115,11 +103,8 @@ public class AdminController {
         productFormBean.setProductCategory(product.getProductCategory());
         productFormBean.setCreateDate(new Date());
 
-        // in this case we are adding the RegisterFormBean to the model
         response.addObject("productFormBean", productFormBean);
-
         return response;
-//          return new ModelAndView("redirect:/admin/productlisting");
     }
 
     @PostMapping("/admin/productEdit/")
@@ -128,28 +113,23 @@ public class AdminController {
         response.setViewName("admin/productEdit");
 
         Product product = productDAO.findById(productFormBean.getId());
-
-        productService.getProductDetails( productFormBean, product);
-
+        productService.getProductDetails(productFormBean, product);
         productDAO.save(product);
 
         return new ModelAndView("redirect:/admin/productlisting");
     }
 
-        @RequestMapping(value = "/admin/productlisting/delete", method = RequestMethod.GET)
-        public ModelAndView productDelete(@RequestParam("id") Integer id) throws Exception {
+    @RequestMapping(value = "/admin/productlisting/delete", method = RequestMethod.GET)
+    public ModelAndView productDelete(@RequestParam("id") Integer id) throws Exception {
 
         Product selectedProduct = productDAO.findById(id);
 
-        if ( selectedProduct == null ) {
+        if (selectedProduct == null) {
             log.info("product is null");
-            // this is an error
         } else {
-
             productDAO.delete(selectedProduct);
             System.out.println("product deleted");
         }
-
         return new ModelAndView("redirect:/admin/productlisting");
     }
 
@@ -162,10 +142,7 @@ public class AdminController {
         allUsers.forEach(user -> {
             log.info(user.getFirstName());
         });
-
         response.addObject("allUsers", allUsers);
-
-
         return response;
     }
 
@@ -177,8 +154,6 @@ public class AdminController {
         List<Orders> allOrders = orderDAO.findAll();
 
         response.addObject("allOrders", allOrders);
-
         return response;
-
     }
 }

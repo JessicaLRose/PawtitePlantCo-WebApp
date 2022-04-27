@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
-
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
@@ -27,7 +26,6 @@ import java.util.Optional;
         @Autowired
         private ProductDAO productDAO;
 
-        //create product
         @Test
         @Order(1)
         @Rollback(value = false)
@@ -38,11 +36,8 @@ import java.util.Optional;
             productDAO.save(product2);
 
             log.info(String.valueOf(product));
-
             org.junit.jupiter.api.Assertions.assertTrue(product.getId() > 0);
         }
-
-        //read product
         @ParameterizedTest
         @Order(2)
         @ValueSource(strings = {"soft", "hardy"})
@@ -50,7 +45,6 @@ import java.util.Optional;
             List<Product> product = productDAO.findProductsByProductCategory("soft");
             org.junit.jupiter.api.Assertions.assertNotNull(product);
         }
-
         @Test
         @Order(3)
         public void getProductTest() {

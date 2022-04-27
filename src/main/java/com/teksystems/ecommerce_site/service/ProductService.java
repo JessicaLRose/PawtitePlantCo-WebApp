@@ -27,5 +27,4 @@ public class ProductService {
         product.setProductCategory(productFormBean.getProductCategory());
         product.setCreateDate(new Date());
     }
-
 }

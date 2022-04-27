@@ -6,7 +6,6 @@ import com.teksystems.ecommerce_site.database.entity.User;
 import com.teksystems.ecommerce_site.database.entity.UserRole;
 import com.teksystems.ecommerce_site.formbean.AccountFormBean;
 import com.teksystems.ecommerce_site.formbean.RegistrationFormBean;
-import com.teksystems.ecommerce_site.security.AuthenticatedUserService;
 import com.teksystems.ecommerce_site.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +46,6 @@ public class UserController {
 
         RegistrationFormBean form = new RegistrationFormBean();
         response.addObject("form", form);
-
         return response;
     }
 
@@ -58,20 +56,17 @@ public class UserController {
         log.info(form.toString());
 
         if (bindingResult.hasErrors()) {
-
             for (ObjectError error : bindingResult.getAllErrors()) {
                 log.info(((FieldError) error).getField() + " " + error.getDefaultMessage());
             }
+
             response.addObject("form", form);
-
             response.addObject("bindingResult", bindingResult);
-
             response.setViewName("user/register");
             return response;
         }
 
         User user = new User();
-
         user.setFirstName(form.getFirstName());
         user.setLastName(form.getLastName());
         user.setEmail(form.getEmail());
@@ -82,42 +77,31 @@ public class UserController {
         user.setPassword(password);
 
         User newUser = userDAO.save(user);
-
-        // create and save the user role object
         UserRole userRole = new UserRole();
         userRole.setId(newUser.getId());
         userRole.setUserRole("USER");
 
         userRoleDAO.save(userRole);
-
-        session.setAttribute("id", newUser.getId()); // save the user_id in session
+        session.setAttribute("id", newUser.getId());
 
         log.info(form.toString());
-
         log.info(form.toString());
 
         response.setViewName("redirect:/home");
-
         return response;
     }
-
 
     @RequestMapping(value = "/user/account/{id}")
     public ModelAndView userAccount(@PathVariable("id") Integer id) throws Exception {
         ModelAndView response = new ModelAndView();
 
-
         AccountFormBean accountFormBean = new AccountFormBean();
-
         User user = userDAO.findById(id);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String loggedUserEmail = authentication.getName();
+        User currentUser = userDAO.findByEmail(loggedUserEmail);
 
-//            <sec:authentication property="principal.username"/>
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // ask spring security for current user
-        String loggedUserEmail = authentication.getName(); // get current users email
-        User currentUser = userDAO.findByEmail(loggedUserEmail); // find user from db with this email
-
-        if (currentUser!= null && user.getId().equals(currentUser.getId())){
+        if (currentUser != null && user.getId().equals(currentUser.getId())) {
 
             log.info(String.valueOf(user));
             accountFormBean.setId(user.getId());
@@ -127,16 +111,12 @@ public class UserController {
             accountFormBean.setPhone(user.getPhone());
 
             response.addObject("accountFormBean", accountFormBean);
-
             response.setViewName("user/account");
             return response;
-
         }
         response.setViewName("redirect:/home");
         return response;
     }
-
-//    @PostMapping("/user/account/")
 
     @PostMapping(value = "/user/account/saved")
     public ModelAndView userAccountEdit(@Valid AccountFormBean accountFormBean) throws Exception {
@@ -144,16 +124,11 @@ public class UserController {
         response.setViewName("user/account/");
 
         User user = userDAO.findById(accountFormBean.getId());
-
         userService.getUserDetails(accountFormBean, user);
-
         userDAO.save(user);
 
         response.setViewName("redirect:/user/account/" + user.getId());
-
         return response;
     }
-
-
 }
 

@@ -34,17 +34,4 @@ public class UserService {
         user.setPhone(accountFormBean.getPhone());
         user.setCreateDate(new Date());
     }
-//    public boolean isAuthenticated(HttpSession session, @RequestParam String email, @RequestParam String password) {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String loggedUserEmail = authentication.getName();
-//
-//        User user = userDAO.findByEmail(loggedUserEmail);
-//
-//        if (user != null) {
-//            authentication.isAuthenticated();
-//        }
-//            return false;
-//
-//    }
-
 }
