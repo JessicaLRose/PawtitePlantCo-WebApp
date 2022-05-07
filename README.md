@@ -98,8 +98,3 @@ Admin Page:
 - Success messages upon completed forms.
 - Populate User's order history.
   
-## Contact
-
-Email: [JessicaLF17@yahoo.com]
-
-Project Link: [https://github.com/Jfatim/PawtitePlantCo-WebApp]
